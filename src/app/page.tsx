@@ -5,7 +5,6 @@ import {
   ShieldCheck,
   MapPin,
   ArrowUpRight,
-  FileText,
 } from "lucide-react";
 import { Container, Section, Eyebrow, Button } from "@/components/ui";
 import {
@@ -19,6 +18,7 @@ import { FaqList } from "@/components/faq";
 import { HomeHero } from "@/components/home-hero";
 import { FirstSteps } from "@/components/first-steps";
 import { ProcessSteps } from "@/components/process-steps";
+import { InsurancePacket } from "@/components/insurance-packet";
 import { ServicesTabs } from "@/components/services-tabs";
 import { Testimonials } from "@/components/testimonials";
 import { JsonLd, faqSchema, type Faq } from "@/lib/schema";
@@ -239,62 +239,7 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      {/* ─────────────────── Insurance ─────────────────── */}
-      <Section className="bg-sand-100">
-        <Container>
-          <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-16">
-            <div>
-              <Reveal direction="none">
-                <Eyebrow>Insurance</Eyebrow>
-              </Reveal>
-              <TextReveal
-                as="h2"
-                text="We document the job so your adjuster can approve it"
-                className="font-display text-[2rem] font-bold leading-[1.08] tracking-tight text-ocean-900 sm:text-[2.6rem] lg:text-[3.1rem]"
-              />
-              <Reveal delay={0.1}>
-                <p className="prose-measure mt-4 text-[15px] leading-relaxed text-ink-700">
-                  Moisture readings, photographs and daily drying logs from the
-                  first visit onward, written up the way carriers expect to
-                  receive them. We bill the insurer directly where the policy
-                  allows it.
-                </p>
-                <p className="prose-measure mt-4 text-[15px] leading-relaxed text-ink-700">
-                  We will also tell you when we think a claim is not worth
-                  filing. On a small loss the deductible sometimes exceeds the
-                  repair, and a claim on record can affect your renewal — which,
-                  given what has happened to condo premiums in Hawaii lately, is
-                  worth a moment of thought before you pick up the phone to your
-                  carrier.
-                </p>
-              </Reveal>
-            </div>
-
-            <Stagger as="ul" className="space-y-3">
-              {[
-                "Moisture mapping and photographs from visit one",
-                "Daily drying logs in the format carriers expect",
-                "Direct billing to the insurer where the policy allows",
-                "A straight answer on whether a claim is worth filing",
-              ].map((item) => (
-                <StaggerItem
-                  as="li"
-                  key={item}
-                  className="flex items-start gap-3 rounded-card border border-sand-300 bg-white p-4 transition-colors duration-300 hover:border-surf-500/50"
-                >
-                  <FileText
-                    className="mt-0.5 size-4 shrink-0 text-surf-600"
-                    aria-hidden="true"
-                  />
-                  <span className="prose-measure text-[15px] leading-relaxed text-ink-700">
-                    {item}
-                  </span>
-                </StaggerItem>
-              ))}
-            </Stagger>
-          </div>
-        </Container>
-      </Section>
+      <InsurancePacket />
 
       <Testimonials />
 
