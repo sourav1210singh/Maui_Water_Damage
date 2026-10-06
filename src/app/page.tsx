@@ -6,7 +6,6 @@ import {
   MapPin,
   ArrowRight,
   ArrowUpRight,
-  AlertTriangle,
   FileText,
 } from "lucide-react";
 import { Container, Section, Eyebrow, Button } from "@/components/ui";
@@ -19,6 +18,7 @@ import {
 } from "@/components/motion";
 import { FaqList } from "@/components/faq";
 import { HomeHero } from "@/components/home-hero";
+import { FirstSteps } from "@/components/first-steps";
 import { ProcessSteps } from "@/components/process-steps";
 import { JsonLd, faqSchema, type Faq } from "@/lib/schema";
 import { site, serviceAreas, services, img, photo } from "@/lib/site";
@@ -50,24 +50,6 @@ const faqs: Faq[] = [
   },
 ];
 
-const firstSteps = [
-  {
-    title: "Shut the water off, if you can do it safely",
-    body: "Main shutoff is usually by the meter at the street or on the exterior wall. If you cannot find it or reach it safely, leave it and call us.",
-  },
-  {
-    title: "Cut power to the wet rooms at the breaker",
-    body: "Never stand in standing water to reach a switch or outlet. If the panel itself is wet, stay out and call an electrician first.",
-  },
-  {
-    title: "Lift what you can off the floor",
-    body: "Rugs, electronics, anything with cloth or paper. Put furniture legs on blocks or foil so the stain does not transfer into damp carpet.",
-  },
-  {
-    title: "Photograph everything before you move it",
-    body: "Wide shots of each room and close-ups of the damage. Adjusters pay for what they can see, and this is the one step people skip.",
-  },
-];
 
 export default function HomePage() {
   return (
@@ -107,58 +89,7 @@ export default function HomePage() {
       </div>
 
       {/* ───────────── Help before selling: first 4 steps ───────────── */}
-      <Section className="bg-sand-50">
-        <Container>
-          <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
-            <div>
-              <Reveal direction="none">
-                <Eyebrow>Before we get there</Eyebrow>
-              </Reveal>
-              <TextReveal
-                as="h2"
-                text="Water coming in right now? Do these four things."
-                className="font-display text-[2rem] font-bold leading-[1.08] tracking-tight text-ocean-900 sm:text-[2.6rem] lg:text-[3.1rem]"
-              />
-              <Reveal delay={0.1}>
-                <p className="prose-measure mt-4 text-[15px] leading-relaxed text-ink-700">
-                  None of this requires us, and all of it reduces what the repair
-                  ends up costing you. Work through it while you wait.
-                </p>
-              </Reveal>
-              <Reveal delay={0.16} className="mt-6 flex items-start gap-2.5 rounded-lg border border-alert-500/25 bg-alert-400/8 p-4">
-                <AlertTriangle
-                  className="mt-0.5 size-4 shrink-0 text-alert-600"
-                  aria-hidden="true"
-                />
-                <p className="text-sm leading-relaxed text-ink-700">
-                  If the ceiling is sagging or bulging, stay out of that room.
-                  Trapped water is heavy and ceilings come down without warning.
-                </p>
-              </Reveal>
-            </div>
-
-            <Stagger as="ol" className="space-y-4">
-              {firstSteps.map((step, i) => (
-                <StaggerItem key={step.title}>
-                  <li className="flex gap-4 rounded-card border border-sand-200 bg-white p-5 shadow-card transition-shadow duration-300 hover:shadow-lift">
-                    <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-ocean-900 font-display text-sm font-bold text-sand-50">
-                      {i + 1}
-                    </span>
-                    <div>
-                      <h3 className="font-display text-[17px] font-semibold leading-snug text-ocean-900">
-                        {step.title}
-                      </h3>
-                      <p className="prose-measure mt-1.5 text-[15px] leading-relaxed text-ink-700">
-                        {step.body}
-                      </p>
-                    </div>
-                  </li>
-                </StaggerItem>
-              ))}
-            </Stagger>
-          </div>
-        </Container>
-      </Section>
+      <FirstSteps />
 
       {/* ───────────────────── Services ───────────────────── */}
       <Section className="border-y border-sand-200 bg-white">

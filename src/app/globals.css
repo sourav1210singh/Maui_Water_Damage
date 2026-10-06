@@ -157,3 +157,52 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ───────────────────────────────────────────────────────────────
+   First-steps horizontal accordion
+
+   These rules live here rather than inline because every one of
+   them is either a multi-property transition with commas inside a
+   cubic-bezier() — which Tailwind's arbitrary-value parser splits in
+   the wrong place — or a value that has to change at a breakpoint,
+   which an inline style cannot express. React feeds them the state
+   through custom properties instead.
+
+   Everything below lg is deliberately untouched: on a phone the
+   section is a plain stack of open cards and none of this applies.
+   ─────────────────────────────────────────────────────────────── */
+@media (min-width: 1024px) {
+  .fs-panel {
+    flex: var(--fs-grow) 1 0%;
+    filter: var(--fs-filter);
+    transition:
+      flex 1s cubic-bezier(0.77, 0, 0.175, 1),
+      filter 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
+  .fs-inner {
+    opacity: var(--fs-op);
+    transition: opacity 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
+  /* 0fr → 1fr rather than a max-height guess: the four bodies are
+     different lengths and any fixed max-height either clips the
+     longest or makes the shortest ease against dead space. */
+  .fs-body {
+    grid-template-rows: var(--fs-rows);
+    opacity: var(--fs-op);
+    transition:
+      grid-template-rows 0.9s cubic-bezier(0.77, 0, 0.175, 1),
+      opacity 0.6s cubic-bezier(0.77, 0, 0.175, 1) 0.1s;
+  }
+
+  /* Tags arrive after the panel has finished widening, so they land
+     in their final position instead of sliding sideways with it. */
+  .fs-tag {
+    opacity: var(--fs-op);
+    transform: var(--fs-tag-t);
+    transition:
+      opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1) var(--fs-tag-delay),
+      transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) var(--fs-tag-delay);
+  }
+}
