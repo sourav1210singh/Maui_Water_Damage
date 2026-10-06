@@ -70,27 +70,27 @@ export function ServicesTabs() {
     <Section className="border-y border-sand-200 bg-white">
       <Container>
         <Reveal>
-          <div className="relative overflow-hidden rounded-3xl bg-ocean-950 p-6 shadow-[0_30px_80px_-40px_rgba(8,20,26,0.55)] sm:p-8 lg:p-14">
+          <div className="relative overflow-hidden rounded-3xl border border-sand-200 bg-sand-100 p-6 shadow-[0_24px_60px_-40px_rgba(8,20,26,0.3)] sm:p-8 lg:p-14">
             {/* Ghosted brand mark bleeding off the corner. Hidden on phones,
                 where it would sit behind the heading rather than beside it.
-                Deliberately the dark tone: the light one fills its badge plate
-                with sand-50, which at any usable opacity stops reading as a
-                watermark and starts reading as a grey panel. The dark plate is
-                a shade off the card, so only the droplet shows. */}
+                Light tone, now that the card is light: that variant fills its
+                badge plate with sand-50, near enough to the card to disappear,
+                which leaves just the droplet ghosted. The dark tone would put
+                a soft dark square in the corner instead. */}
             <Mark
-              tone="dark"
+              tone="light"
               className="pointer-events-none absolute -right-12 -top-12 hidden size-52 select-none opacity-[0.12] sm:block lg:size-72"
             />
 
             <div className="relative max-w-3xl">
-              <Eyebrow onDark>What we do</Eyebrow>
+              <Eyebrow>What we do</Eyebrow>
               <TextReveal
                 as="h2"
                 text="Everything from the first bucket to the last coat of paint"
-                className="font-display text-[2rem] font-bold leading-[1.08] tracking-tight text-white sm:text-[2.4rem] lg:text-[2.9rem]"
+                className="font-display text-[2rem] font-bold leading-[1.08] tracking-tight text-ocean-900 sm:text-[2.4rem] lg:text-[2.9rem]"
               />
               <Reveal delay={0.1}>
-                <p className="mt-4 text-[16px] leading-relaxed text-ocean-200 lg:text-[17px]">
+                <p className="mt-4 prose-measure text-[16px] leading-relaxed text-ink-700 lg:text-[17px]">
                   Mitigation and the rebuild under one contract, so there is no
                   gap between the company that dries your house and the company
                   that puts it back.
@@ -99,7 +99,7 @@ export function ServicesTabs() {
             </div>
 
             <div
-              className="relative mt-8 h-px w-full bg-white/10 lg:mt-10"
+              className="relative mt-8 h-px w-full bg-sand-300 lg:mt-10"
               aria-hidden="true"
             />
 
@@ -124,7 +124,7 @@ export function ServicesTabs() {
                     className={`shrink-0 whitespace-nowrap rounded-full px-5 py-2.5 font-display text-[14px] font-semibold transition-all duration-300 ${
                       on
                         ? "bg-surf-500 text-ocean-950 shadow-[0_10px_25px_-12px_rgba(15,148,136,0.9)]"
-                        : "border border-white/25 text-sand-200 hover:border-white/60 hover:text-white"
+                        : "border border-sand-300 bg-white text-ink-700 hover:border-ocean-800 hover:text-ocean-900"
                     }`}
                   >
                     {t.title}
@@ -143,15 +143,15 @@ export function ServicesTabs() {
                   photograph too, which meant every tab change showed an empty
                   box for as long as the next image took to arrive. */}
               <div key={active} className="fade-swap order-2 lg:order-1">
-                <h3 className="font-display text-[24px] font-bold tracking-tight text-white lg:text-[30px]">
+                <h3 className="font-display text-[24px] font-bold tracking-tight text-ocean-900 lg:text-[30px]">
                   {current.title}
                 </h3>
-                <p className="mt-5 text-[16px] leading-relaxed text-sand-200 lg:text-[17px]">
+                <p className="mt-5 text-[16px] leading-relaxed text-ink-700 lg:text-[17px]">
                   {current.body}
                 </p>
                 <Link
                   href={href}
-                  className="group mt-7 inline-flex items-center gap-2 rounded-lg bg-surf-500 px-5 py-3 font-display text-[15px] font-semibold text-ocean-950 transition-colors duration-200 hover:bg-surf-400"
+                  className="group mt-7 inline-flex items-center gap-2 rounded-lg bg-ocean-800 px-5 py-3 font-display text-[15px] font-semibold text-sand-50 transition-colors duration-200 hover:bg-ocean-900"
                 >
                   {current.live ? "How the process works" : "Talk to us about this"}
                   <ArrowRight
@@ -164,7 +164,7 @@ export function ServicesTabs() {
               {/* All five stay mounted and cross-fade, same as the process
                   panel does. Switching tabs is a hover-speed interaction and
                   nobody should watch a photograph download to do it. */}
-              <div className="relative order-1 h-64 overflow-hidden rounded-2xl bg-ocean-900 ring-1 ring-white/10 sm:h-72 lg:order-2 lg:h-[420px]">
+              <div className="relative order-1 h-64 overflow-hidden rounded-2xl bg-sand-200 ring-1 ring-sand-300 sm:h-72 lg:order-2 lg:h-[420px]">
                 {tabs.map((t, i) => (
                   <Image
                     key={t.slug}
