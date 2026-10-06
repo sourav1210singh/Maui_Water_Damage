@@ -6,7 +6,6 @@ import { useState } from "react";
 import { useLenis } from "lenis/react";
 import { Phone, Menu, X, ArrowUpRight } from "lucide-react";
 import { Logo } from "./logo";
-import { Container } from "./ui";
 import { site } from "@/lib/site";
 
 const nav = [
@@ -49,16 +48,26 @@ export function SiteHeader() {
   const ease = "transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]";
 
   return (
-    <header
-      className={`sticky top-0 z-50 border-b bg-sand-50/85 backdrop-blur-xl ${ease} ${
-        scrolled ? "border-sand-300/80 shadow-[0_1px_24px_-8px_rgba(8,20,26,0.18)]" : "border-sand-200/60"
-      }`}
-    >
-      <Container
-        className={`flex items-center justify-between gap-5 ${ease} ${
-          scrolled ? "h-[60px] md:h-[64px]" : "h-[68px] md:h-[80px]"
+    <header className="sticky top-0 z-50">
+      {/* The morph is driven by this wrapper's padding, not by the bar's own
+          width. Animating width between a percentage and a pixel value is
+          unreliable; padding with calc() interpolates cleanly, and pulling the
+          bar inward from both sides is what turns it into a centred pill.
+          max() keeps it from going negative below ~1040px. */}
+      <div
+        className={`${ease} ${
+          scrolled
+            ? "px-3 pt-3 lg:px-[max(1rem,calc(50%-520px))]"
+            : "px-0 pt-0"
         }`}
       >
+        <div
+          className={`flex items-center justify-between gap-5 border backdrop-blur-xl ${ease} ${
+            scrolled
+              ? "rounded-full border-black/10 bg-sand-50/80 px-4 py-2 shadow-[0_12px_40px_-14px_rgba(8,20,26,0.35)] md:px-5"
+              : "rounded-none border-transparent border-b-sand-200/60 bg-sand-50/85 px-5 py-3 shadow-none sm:px-8 md:py-4 lg:px-12"
+          }`}
+        >
         <Link href="/" aria-label={`${site.name} — home`} className="shrink-0">
           <Logo showTagline={!scrolled} />
         </Link>
@@ -123,11 +132,17 @@ export function SiteHeader() {
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>
         </div>
-      </Container>
+        </div>
+      </div>
 
       {open && (
-        <div id="mobile-nav" className="border-t border-sand-200 bg-sand-50 lg:hidden">
-          <Container className="flex flex-col py-1">
+        <div
+          id="mobile-nav"
+          className={`mx-3 overflow-hidden border border-black/10 bg-sand-50/95 backdrop-blur-xl lg:hidden ${ease} ${
+            scrolled ? "mt-2 rounded-[22px]" : "mt-0 rounded-none border-x-0 border-t-0"
+          }`}
+        >
+          <div className="flex flex-col px-4 py-1">
             {nav.map((item) => (
               <Link
                 key={item.href}
@@ -138,7 +153,7 @@ export function SiteHeader() {
                 {item.label}
               </Link>
             ))}
-          </Container>
+          </div>
         </div>
       )}
     </header>
