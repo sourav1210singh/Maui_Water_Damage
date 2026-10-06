@@ -224,3 +224,14 @@
 .fade-swap {
   animation: fadeSwap 500ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
+
+/* Horizontal carousels carry their own arrows and a progress rail, so the
+   native bar is redundant and, on Windows, a permanent grey stripe under
+   the cards. */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
