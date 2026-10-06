@@ -58,8 +58,15 @@ export function HomeHero() {
 
   return (
     <div className="w-full bg-sand-50 p-3 md:p-5">
+      {/* From lg the box takes the footage's own 16:9 ratio, so object-cover
+          has nothing left to crop and the whole frame is visible. It was
+          running at 2.08:1 before, which cut 15% off the top and bottom and
+          read as a zoomed-in video. max-h keeps it from overflowing a short
+          laptop screen; below lg the box is content-driven and some crop is
+          unavoidable, so object-position favours the lower half where the
+          technician and the floor are. */}
       <section
-        className="relative isolate flex min-h-[580px] w-full flex-col overflow-hidden rounded-[1.5rem] bg-ocean-950 md:min-h-[640px] md:rounded-[3rem] lg:min-h-[74vh]">
+        className="relative isolate flex min-h-[500px] w-full flex-col overflow-hidden rounded-[1.5rem] bg-ocean-950 sm:min-h-[560px] md:min-h-[620px] md:rounded-[3rem] lg:aspect-[16/9] lg:min-h-0 lg:max-h-[86vh]">
         {/* Poster is always rendered: it is the LCP element and paints
             immediately. The video, when allowed, layers over it. */}
         <Image
@@ -68,7 +75,7 @@ export function HomeHero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover"
+          className="object-cover object-[50%_62%] lg:object-center"
         />
 
         {showVideo && (
@@ -83,7 +90,7 @@ export function HomeHero() {
             // stalled instead of playing.
             preload="auto"
             poster="/media/hero-crew-1600.jpg"
-            className="absolute inset-0 size-full object-cover"
+            className="absolute inset-0 size-full object-cover object-[50%_62%] lg:object-center"
           >
             <source src="/media/hero-crew.mp4" type="video/mp4" />
           </video>
@@ -91,15 +98,24 @@ export function HomeHero() {
 
         {/* Scrim. The previous pass put grey text straight onto bright footage
             and the headline vanished at 375px — this carries the contrast. */}
+        {/* Two light layers instead of one heavy one. The flat 0.72/0.58/0.82
+            wash was dimming the footage far more than the text needed; this
+            drops it to roughly half and puts the contrast where it is actually
+            required — a soft pool under the copy — so the video stays bright
+            everywhere else. */}
         <div
-          className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,26,35,0.72)_0%,rgba(4,26,35,0.58)_45%,rgba(4,26,35,0.82)_100%)]"
+          className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,26,35,0.46)_0%,rgba(4,26,35,0.26)_45%,rgba(4,26,35,0.60)_100%)]"
+          aria-hidden="true"
+        />
+        <div
+          className="absolute inset-0 bg-[radial-gradient(ellipse_62%_54%_at_50%_40%,rgba(4,26,35,0.50)_0%,rgba(4,26,35,0.18)_55%,rgba(4,26,35,0)_78%)]"
           aria-hidden="true"
         />
 
         {/* pb clears the cut-out corner panel at the bottom-right. The stat
             card is not a factor on mobile because it is hidden there — see
             below. */}
-        <div className="relative z-10 flex w-full flex-1 flex-col items-center px-6 pb-28 pt-14 text-center sm:pb-32 md:pt-16 lg:pt-20">
+        <div className="relative z-10 flex w-full flex-1 flex-col items-center px-6 pb-24 pt-10 text-center sm:pb-32 sm:pt-14 md:pt-16 lg:pt-20">
           <motion.div
             data-reveal=""
             {...rise(0)}
