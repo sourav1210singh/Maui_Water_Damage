@@ -18,11 +18,10 @@ import {
   Stagger,
   StaggerItem,
   TextReveal,
-  Parallax,
   ImageReveal,
-  HeroIntro,
 } from "@/components/motion";
 import { FaqList } from "@/components/faq";
+import { HomeHero } from "@/components/home-hero";
 import { JsonLd, faqSchema, type Faq } from "@/lib/schema";
 import { site, serviceAreas, services, img, photo } from "@/lib/site";
 
@@ -103,87 +102,9 @@ const process = [
 export default function HomePage() {
   return (
     <>
-      {/* ───────────────────────── Hero ───────────────────────── */}
-      <section className="relative isolate overflow-hidden bg-ocean-950">
-        {/* -inset-y-16 gives the parallax room to drift without exposing an
-            edge at either end of its travel. */}
-        <Parallax distance={80} className="absolute -inset-y-16 inset-x-0">
-          <Image
-            src={photo(img.mauiAerial, 1920)}
-            alt="Aerial view of the South Maui coastline"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-          />
-        </Parallax>
-        {/* Explicit stops rather than Tailwind's gradient scale: the text block
-            needs ~90% coverage for AA contrast, but the photo should still read
-            as Maui on the right. Stacking a second dim layer crushed it to
-            black, so contrast is handled here and nowhere else. */}
-        <div
-          className="absolute inset-0 bg-[linear-gradient(100deg,rgba(4,26,35,0.96)_0%,rgba(4,26,35,0.90)_34%,rgba(4,26,35,0.62)_62%,rgba(4,26,35,0.30)_100%)]"
-          aria-hidden="true"
-        />
-
-        <Container className="relative py-16 sm:py-24 lg:py-28">
-          <div className="max-w-2xl">
-            <HeroIntro>
-              <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-surf-400/30 bg-ocean-900/60 px-3.5 py-1.5 text-[13px] font-medium text-surf-400">
-                <span className="relative flex size-2">
-                  <span className="absolute inline-flex size-full animate-ping rounded-full bg-surf-400 opacity-70" />
-                  <span className="relative inline-flex size-2 rounded-full bg-surf-400" />
-                </span>
-                Dispatching now — 24 hours a day
-              </p>
-            </HeroIntro>
-
-            <TextReveal
-              as="h1"
-              trigger="mount"
-              delay={0.08}
-              text="Water damage restoration on Maui, at any hour"
-              className="font-display text-[2.1rem] font-bold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-[3.4rem]"
-            />
-
-            <HeroIntro delay={0.34}>
-              <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-ocean-100 sm:text-lg">
-                Burst pipe, roof leak, a washing-machine hose that let go while
-                you were out. We answer the phone at 2am and start pulling water
-                out on the same visit. In this humidity mold can take hold inside
-                48 hours, so the sooner we are drying, the less has to be torn
-                out.
-              </p>
-            </HeroIntro>
-
-            {/* Short delay on the CTA deliberately — it is the one thing on the
-                page that must never feel withheld. */}
-            <HeroIntro delay={0.44}>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-                <Button
-                  href={site.phoneHref}
-                  variant="emergency"
-                  className="px-6 py-4 text-base shadow-lift transition-transform hover:scale-[1.02]"
-                  aria-label={`Call ${site.phone} now`}
-                >
-                  <Phone className="size-5" aria-hidden="true" />
-                  Call {site.phone}
-                </Button>
-                <Button
-                  href="/contact"
-                  className="border border-white/25 bg-white/5 px-6 py-4 text-base text-white backdrop-blur-sm transition-colors hover:bg-white/10"
-                >
-                  Tell us what happened
-                </Button>
-              </div>
-
-              <p className="mt-5 text-sm text-ocean-200">
-                Serving Kīhei, Kahului, Wailuku, Lahaina, Pāʻia and Upcountry.
-              </p>
-            </HeroIntro>
-          </div>
-        </Container>
-      </section>
+      {/* Hero lives in its own component now — video/poster, scrim and the
+          two floating cards are enough logic to not belong inline here. */}
+      <HomeHero />
 
       {/* ──────────────────── Trust strip ──────────────────── */}
       <div className="border-b border-sand-200 bg-sand-100">

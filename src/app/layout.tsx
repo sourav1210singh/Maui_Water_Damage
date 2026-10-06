@@ -3,7 +3,9 @@ import { Archivo, Inter } from "next/font/google";
 import "./globals.css";
 import "lenis/dist/lenis.css";
 import { SmoothScroll } from "@/components/smooth-scroll";
-import { SiteChrome, EmergencyBarSlot } from "@/components/site-chrome";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
+import { EmergencyBar } from "@/components/emergency-bar";
 import { JsonLd, localBusinessSchema, organizationSchema } from "@/lib/schema";
 import { site } from "@/lib/site";
 
@@ -62,10 +64,19 @@ export default function RootLayout({
         </a>
 
         <SmoothScroll>
-          <SiteChrome>{children}</SiteChrome>
+          <SiteHeader />
+
+          {/* pb-20 on mobile keeps the fixed call bar from covering the footer */}
+          <main id="main" className="pb-20 md:pb-0">
+            {children}
+          </main>
+
+          <SiteFooter />
         </SmoothScroll>
 
-        <EmergencyBarSlot />
+        {/* Outside the Lenis wrapper: position:fixed must not inherit a
+            smooth-scroll transform context. */}
+        <EmergencyBar />
 
         <JsonLd data={[localBusinessSchema(), organizationSchema()]} />
       </body>
