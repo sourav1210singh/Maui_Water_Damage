@@ -39,9 +39,20 @@ export function Section({
 }
 
 /** Small uppercase label that sits above a section heading. */
-export function Eyebrow({ children }: { children: ReactNode }) {
+export function Eyebrow({
+  children,
+  onDark = false,
+}: {
+  children: ReactNode;
+  /** surf-600 is a dark teal — legible on sand, nearly invisible on navy. */
+  onDark?: boolean;
+}) {
   return (
-    <p className="mb-3 font-display text-xs font-semibold uppercase tracking-[0.14em] text-surf-600">
+    <p
+      className={`mb-3 font-display text-xs font-semibold uppercase tracking-[0.14em] ${
+        onDark ? "text-surf-400" : "text-surf-600"
+      }`}
+    >
       {children}
     </p>
   );

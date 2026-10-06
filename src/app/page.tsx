@@ -4,7 +4,6 @@ import {
   Phone,
   ShieldCheck,
   MapPin,
-  ArrowRight,
   ArrowUpRight,
   FileText,
 } from "lucide-react";
@@ -20,8 +19,9 @@ import { FaqList } from "@/components/faq";
 import { HomeHero } from "@/components/home-hero";
 import { FirstSteps } from "@/components/first-steps";
 import { ProcessSteps } from "@/components/process-steps";
+import { ServicesTabs } from "@/components/services-tabs";
 import { JsonLd, faqSchema, type Faq } from "@/lib/schema";
-import { site, serviceAreas, services, img, photo } from "@/lib/site";
+import { site, serviceAreas, img, photo } from "@/lib/site";
 
 const faqs: Faq[] = [
   {
@@ -91,94 +91,7 @@ export default function HomePage() {
       {/* ───────────── Help before selling: first 4 steps ───────────── */}
       <FirstSteps />
 
-      {/* ───────────────────── Services ───────────────────── */}
-      <Section className="border-y border-sand-200 bg-white">
-        <Container>
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <div className="max-w-xl">
-              <Reveal direction="none">
-                <Eyebrow>What we do</Eyebrow>
-              </Reveal>
-              <TextReveal
-                as="h2"
-                text="Everything from the first bucket to the last coat of paint"
-                className="font-display text-[2rem] font-bold leading-[1.08] tracking-tight text-ocean-900 sm:text-[2.6rem] lg:text-[3.1rem]"
-              />
-            </div>
-            <Reveal delay={0.15}>
-              <Link
-                href="/water-damage-restoration"
-                className="group inline-flex items-center gap-1.5 font-display text-[15px] font-semibold text-ocean-700 hover:text-ocean-900"
-              >
-                Water damage, in detail
-                <ArrowRight
-                  className="size-4 transition-transform duration-300 group-hover:translate-x-1"
-                  aria-hidden="true"
-                />
-              </Link>
-            </Reveal>
-          </div>
-
-          <Stagger className="mt-9 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {/* Lead card is intentionally larger — the others are secondary */}
-            <StaggerItem className="sm:col-span-2 lg:col-span-2">
-              <article className="group relative h-full overflow-hidden rounded-card border border-sand-200 bg-ocean-950">
-                <Image
-                  src={photo(img.ceilingDamage, 1200)}
-                  alt="Water-stained and peeling ceiling after a roof leak"
-                  width={1200}
-                  height={800}
-                  sizes="(max-width: 640px) 100vw, 66vw"
-                  className="absolute inset-0 size-full object-cover opacity-55 transition-opacity duration-300 group-hover:opacity-65"
-                />
-                {/* This photo is pale, so a bottom-up scrim guarantees the white
-                    heading stays legible rather than relying on the image. */}
-                <div
-                  className="absolute inset-0 bg-gradient-to-t from-ocean-950 via-ocean-950/75 to-ocean-950/25"
-                  aria-hidden="true"
-                />
-                <div className="relative flex h-full flex-col justify-end p-6 sm:min-h-[300px] sm:p-8">
-                  <span className="mb-2 inline-flex w-fit rounded bg-surf-500 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-ocean-950">
-                    Most common call
-                  </span>
-                  <h3 className="font-display text-2xl font-bold text-white">
-                    Water damage restoration
-                  </h3>
-                  <p className="mt-2 max-w-md text-[15px] leading-relaxed text-ocean-100">
-                    Extraction, structural drying and daily moisture readings
-                    after a burst pipe, roof leak or appliance failure.
-                  </p>
-                  <Link
-                    href="/water-damage-restoration"
-                    className="mt-4 inline-flex items-center gap-1.5 font-display text-[15px] font-semibold text-surf-400 hover:text-white"
-                  >
-                    How the process works
-                    <ArrowRight
-                      className="size-4 transition-transform duration-300 group-hover:translate-x-1"
-                      aria-hidden="true"
-                    />
-                  </Link>
-                </div>
-              </article>
-            </StaggerItem>
-
-            {services
-              .filter((s) => s.slug !== "water-damage-restoration")
-              .map((s) => (
-                <StaggerItem key={s.slug}>
-                  <article className="h-full rounded-card border border-sand-200 bg-sand-50 p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-surf-500/40 hover:shadow-card">
-                    <h3 className="font-display text-[17px] font-semibold text-ocean-900">
-                      {s.title}
-                    </h3>
-                    <p className="prose-measure mt-2 text-[15px] leading-relaxed text-ink-700">
-                      {s.short}
-                    </p>
-                  </article>
-                </StaggerItem>
-              ))}
-          </Stagger>
-        </Container>
-      </Section>
+      <ServicesTabs />
 
       {/* ──────────────── The 48-hour mold argument ──────────────── */}
       <Section className="bg-ocean-950 text-sand-100">

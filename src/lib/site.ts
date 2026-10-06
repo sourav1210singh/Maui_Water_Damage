@@ -132,6 +132,8 @@ export const img = {
   mold: "https://images.unsplash.com/photo-1649777882133-525e923fd5d7",
   technician: "https://images.unsplash.com/photo-1676210134050-6f12c6898395",
   pipes: "https://images.unsplash.com/photo-1646009445351-b8192e095f3a",
+  stormRidge: "https://images.unsplash.com/photo-1693004647158-bce1e20abd4c",
+  rebuild: "https://images.unsplash.com/photo-1618832515490-e181c4794a45",
 } as const;
 
 /** Build a sized Unsplash URL. */

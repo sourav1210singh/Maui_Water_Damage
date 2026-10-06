@@ -15,7 +15,7 @@
 
 type Tone = "dark" | "light";
 
-function Mark({ tone, className = "" }: { tone: Tone; className?: string }) {
+export function Mark({ tone, className = "" }: { tone: Tone; className?: string }) {
   // The badge carries the mark's weight. An outline-only droplet thinned out
   // and nearly vanished at favicon and small-header sizes; a solid plate holds
   // its silhouette all the way down to 16px.
