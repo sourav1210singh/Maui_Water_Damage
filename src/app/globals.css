@@ -52,6 +52,15 @@
   --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
+  /* Used only by /hero-preview.
+     The spec this preview follows loaded "Helvetica Regular" from
+     db.onlinewebfonts.com. That is not used here: Helvetica is a licensed
+     Monotype typeface and that CDN redistributes it without a licence, so
+     embedding it would hand the client a liability on a commercial site.
+     This stack renders real Helvetica on macOS and Arial — metrically
+     near-identical — elsewhere, so the design reads the same. */
+  --font-helvetica: "Helvetica Neue", Helvetica, Arial, ui-sans-serif, sans-serif;
+
   --radius-card: 0.625rem;
 }
 
