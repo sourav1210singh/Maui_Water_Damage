@@ -20,6 +20,7 @@ import { HomeHero } from "@/components/home-hero";
 import { FirstSteps } from "@/components/first-steps";
 import { ProcessSteps } from "@/components/process-steps";
 import { ServicesTabs } from "@/components/services-tabs";
+import { Testimonials } from "@/components/testimonials";
 import { JsonLd, faqSchema, type Faq } from "@/lib/schema";
 import { site, serviceAreas, img, photo } from "@/lib/site";
 
@@ -100,8 +101,8 @@ export default function HomePage() {
             <ImageReveal className="relative aspect-[4/3] rounded-card">
               <div className="relative size-full">
                 <Image
-                  src={photo(img.mold, 1000)}
-                  alt="Mold growth spreading across a damp interior wall"
+                  src={photo(img.wallDamp, 1000)}
+                  alt="Early mold blooming through paint on a damp interior wall"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover"
@@ -295,9 +296,8 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      {/* Social-proof slot sits here. Left out rather than filled with invented
-          testimonials — see proposal 01 in ui-suggestions.html for the block
-          intended to go here once the client decides. */}
+      <Testimonials />
+
 
       {/* ─────────────────── FAQ ─────────────────── */}
       <Section className="border-t border-sand-200 bg-white">

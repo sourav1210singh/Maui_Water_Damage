@@ -5,6 +5,7 @@ import {
   useScroll,
   useTransform,
   useReducedMotion,
+  useInView,
   type Variants,
 } from "motion/react";
 import { createElement, useRef, type ReactNode } from "react";
@@ -271,7 +272,17 @@ export function Parallax({
 
 /* ──────────────────────── ImageReveal ──────────────────────── */
 
-/** Image settles in from a slight scale-up behind a wipe. */
+/**
+ * Image settles in from a slight scale-up behind a wipe.
+ *
+ * Driven by useInView and a CSS transition rather than `whileInView`, which
+ * is what everything else here uses. Motion 14 could not resolve the
+ * `clipPath` keyframes on this element: it left the element parked on its
+ * `initial` and stalled every other property on the same node with it, so
+ * the image box rendered permanently blank. CSS interpolates clip-path
+ * natively, and the reduced-motion block in globals.css already neutralises
+ * the transition, so nothing is lost by moving it out of Motion.
+ */
 export function ImageReveal({
   children,
   className = "",
@@ -282,28 +293,32 @@ export function ImageReveal({
   delay?: number;
 }) {
   const reduced = useReducedMotion();
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-70px" });
 
   if (reduced) return <div className={className}>{children}</div>;
 
+  const EASE_CSS = "cubic-bezier(0.22, 1, 0.36, 1)";
+
   return (
-    <motion.div
-      data-reveal=""
-      className={`overflow-hidden ${className}`}
-      initial={{ clipPath: "inset(0 0 100% 0)" }}
-      whileInView={{ clipPath: "inset(0 0 0% 0)" }}
-      viewport={{ once: true, margin: "-70px" }}
-      transition={{ duration: 0.8, delay, ease: EASE }}
-    >
-      <motion.div
+    // The observed element is this one, and it is never clipped. Putting the
+    // wipe here instead deadlocks the whole thing: a clip-path of
+    // inset(0 0 100%) leaves the element with zero painted area, so
+    // IntersectionObserver reports ratio 0 and never reports it as in view, so
+    // the clip never opens. It stays blank forever.
+    <div ref={ref} className={`overflow-hidden ${className}`}>
+      <div
+        data-reveal=""
         className="size-full"
-        initial={{ scale: 1.1 }}
-        whileInView={{ scale: 1 }}
-        viewport={{ once: true, margin: "-70px" }}
-        transition={{ duration: 1.1, delay, ease: EASE }}
+        style={{
+          clipPath: inView ? "inset(0% 0% 0% 0%)" : "inset(0% 0% 100% 0%)",
+          transform: inView ? "scale(1)" : "scale(1.06)",
+          transition: `clip-path 900ms ${EASE_CSS} ${delay}s, transform 1100ms ${EASE_CSS} ${delay}s`,
+        }}
       >
         {children}
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   );
 }
 

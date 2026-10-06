@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Insurance section — four directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ocean-50:#eef5f8; --ocean-100:#d6e8ef; --ocean-200:#aed0dd; --ocean-300:#76aec3;
+  --ocean-500:#1f6d8a; --ocean-700:#0e475b; --ocean-800:#0a3647; --ocean-900:#072834; --ocean-950:#041a23;
+  --ink-500:#4a5a61; --ink-700:#2a3940; --ink-900:#111e24;
+  --sand-50:#fbf9f5; --sand-100:#f5f1e9; --sand-200:#ebe4d7; --sand-300:#d9cfbb; --sand-400:#bfb093;
+  --alert-500:#d6412a; --alert-600:#bc3019;
+  --surf-400:#2bb3a3; --surf-500:#0f9488; --surf-600:#0b7a70;
+  --display:'Archivo',system-ui,sans-serif; --body:'Inter',system-ui,sans-serif;
+  --ease:cubic-bezier(.4,0,.2,1);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--body);color:var(--ink-900);background:var(--sand-50);-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--display);letter-spacing:-.02em;margin:0}
+p{margin:0;text-wrap:pretty}
+.wrap{max-width:1700px;margin:0 auto;padding:0 20px}
+@media(min-width:640px){.wrap{padding:0 32px}}
+@media(min-width:1024px){.wrap{padding:0 48px}}
+
+/* page chrome */
+.pagehead{background:var(--ocean-950);color:var(--sand-100);padding:40px 0 44px}
+.pagehead h1{color:#fff;font-size:30px;font-weight:800;line-height:1.1}
+.pagehead p{margin-top:10px;color:var(--ocean-200);font-size:15px;max-width:72ch;line-height:1.65}
+.optionbar{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;padding:40px 0 0}
+.tag{font-family:var(--display);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#fff;background:var(--ocean-800);padding:6px 12px;border-radius:999px}
+.tag.rec{background:var(--surf-600)}
+.optionbar h2{font-size:21px;font-weight:700}
+.why{padding:8px 0 22px;color:var(--ink-500);font-size:14px;line-height:1.6;max-width:92ch}
+.why b{color:var(--ink-700);font-weight:600}
+hr.sep{border:0;border-top:1px solid var(--sand-300);margin:56px 0 0}
+
+/* shared section bits */
+.sec{padding:56px 0 64px}
+.eyebrow{font-family:var(--display);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--surf-600);margin-bottom:12px}
+.eyebrow.on-dark{color:var(--surf-400)}
+.h2{font-family:var(--display);font-size:clamp(1.9rem,3.1vw,3.1rem);font-weight:700;line-height:1.08;letter-spacing:-.02em;color:var(--ocean-900)}
+.h2.on-dark{color:#fff}
+.lead{margin-top:16px;font-size:15px;line-height:1.7;color:var(--ink-700);max-width:62ch}
+.lead.on-dark{color:var(--ocean-100)}
+.lead+.lead{margin-top:14px}
+
+/* ─────────── A: claim packet ─────────── */
+.a-grid{display:grid;gap:40px}
+@media(min-width:1024px){.a-grid{grid-template-columns:1.05fr .95fr;gap:72px;align-items:center}}
+.packet{position:relative;height:420px}
+.doc{position:absolute;left:0;right:0;background:#fff;border:1px solid var(--sand-300);border-radius:12px;padding:20px 22px;
+  box-shadow:0 1px 2px rgb(8 20 26/.04),0 18px 40px -22px rgb(8 20 26/.3);
+  transition:transform .45s var(--ease),box-shadow .45s var(--ease);transform-origin:50% 100%}
+.doc:nth-of-type(1){top:0;   transform:rotate(-2.2deg) translateY(0)}
+.doc:nth-of-type(2){top:96px;transform:rotate(1.4deg)  translateY(0)}
+.doc:nth-of-type(3){top:192px;transform:rotate(-1deg)  translateY(0)}
+.doc:nth-of-type(4){top:288px;transform:rotate(2deg)   translateY(0)}
+.packet:hover .doc{transform:rotate(0) translateY(0)}
+.doc:hover{box-shadow:0 2px 6px rgb(8 20 26/.08),0 28px 56px -22px rgb(8 20 26/.42);z-index:5}
+.doc-top{display:flex;align-items:center;gap:10px}
+.doc-ico{width:30px;height:30px;border-radius:8px;background:var(--ocean-50);color:var(--ocean-700);display:grid;place-items:center;flex:0 0 auto}
+.doc-ico svg{width:15px;height:15px}
+.doc h4{font-size:15px;font-weight:700;color:var(--ocean-900)}
+.doc small{display:block;margin-top:5px;font-size:13px;color:var(--ink-500);line-height:1.55}
+.stamp{position:absolute;right:-6px;top:-14px;z-index:6;font-family:var(--display);font-size:11px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--surf-600);border:2px solid var(--surf-500);border-radius:6px;padding:6px 10px;background:var(--sand-50);transform:rotate(6deg)}
+
+/* ─────────── B: drying log ─────────── */
+.b-card{background:var(--ocean-950);border-radius:26px;padding:28px;color:#fff;overflow:hidden}
+@media(min-width:640px){.b-card{padding:36px}}
+@media(min-width:1024px){.b-card{padding:52px}}
+.b-grid{display:grid;gap:34px}
+@media(min-width:1024px){.b-grid{grid-template-columns:1fr 1.15fr;gap:60px;align-items:center}}
+.logsheet{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 30px 70px -36px rgb(0 0 0/.7)}
+.logsheet header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;background:var(--sand-100);border-bottom:1px solid var(--sand-300)}
+.logsheet header p{font-family:var(--display);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ocean-900)}
+.logsheet header span{font-size:11px;color:var(--ink-500);font-variant-numeric:tabular-nums}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+th,td{text-align:right;padding:10px 12px;font-size:13px;border-bottom:1px solid var(--sand-200)}
+th:first-child,td:first-child{text-align:left}
+thead th{font-family:var(--display);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-500);background:#fff}
+tbody td{color:var(--ink-700)}
+tbody td:first-child{color:var(--ocean-900);font-weight:500}
+td.met{color:var(--surf-600);font-weight:700}
+.logsheet footer{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 18px;background:var(--sand-50)}
+.logsheet footer span{font-size:12px;color:var(--ink-500)}
+.pill-ok{font-family:var(--display);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ocean-950);background:var(--surf-400);border-radius:999px;padding:5px 11px}
+.b-list{margin:26px 0 0;padding:0;list-style:none;display:grid;gap:11px}
+.b-list li{display:flex;gap:11px;align-items:flex-start;font-size:14.5px;line-height:1.6;color:var(--ocean-100)}
+.b-list svg{width:16px;height:16px;flex:0 0 auto;margin-top:3px;color:var(--surf-400)}
+
+/* ─────────── C: two panels ─────────── */
+.c-head{max-width:66ch}
+.c-cols{display:grid;gap:18px;margin-top:38px}
+@media(min-width:900px){.c-cols{grid-template-columns:1fr 1fr;gap:22px}}
+.panel{border-radius:18px;padding:28px;border:1px solid var(--sand-300);background:#fff}
+.panel.dark{background:var(--ocean-900);border-color:var(--ocean-800);color:#fff}
+.panel h3{font-size:19px;font-weight:700;color:var(--ocean-900)}
+.panel.dark h3{color:#fff}
+.panel .kicker{font-family:var(--display);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--surf-600);margin-bottom:9px}
+.panel.dark .kicker{color:var(--surf-400)}
+.panel ul{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:0}
+.panel li{display:flex;gap:12px;padding:13px 0;border-top:1px solid var(--sand-200);font-size:14.5px;line-height:1.6;color:var(--ink-700)}
+.panel.dark li{border-top-color:rgb(255 255 255/.12);color:var(--ocean-100)}
+.panel li em{font-style:normal;font-family:var(--display);font-weight:700;font-size:12px;color:var(--ocean-300);flex:0 0 22px;padding-top:2px;font-variant-numeric:tabular-nums}
+.panel.dark li em{color:var(--surf-400)}
+.panel p.note{margin-top:18px;font-size:14px;line-height:1.65;color:var(--ink-500)}
+.panel.dark p.note{color:var(--ocean-200)}
+
+/* ─────────── D: carrier summary sheet ─────────── */
+.d-head{max-width:62ch}
+.sheet{margin-top:36px;background:#fff;border:1px solid var(--sand-300);border-radius:16px;overflow:hidden;
+  box-shadow:0 1px 2px rgb(8 20 26/.04),0 24px 56px -30px rgb(8 20 26/.3)}
+.sheet-head{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid var(--sand-200);background:var(--sand-50)}
+.sheet-head h3{font-size:16px;font-weight:700;color:var(--ocean-900)}
+.sheet-head small{display:block;margin-top:3px;font-size:12.5px;color:var(--ink-500)}
+.sheet-rows{display:grid}
+.row{display:grid;gap:10px;padding:18px 24px;border-bottom:1px solid var(--sand-200);align-items:start}
+@media(min-width:800px){.row{grid-template-columns:200px 1fr max-content;gap:22px;align-items:center}}
+.row:last-child{border-bottom:0}
+.row .lbl{font-family:var(--display);font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-500)}
+.row .val{font-size:14.5px;line-height:1.6;color:var(--ink-700)}
+.row .state{justify-self:start}
+@media(min-width:800px){.row .state{justify-self:end}}
+.chip{font-family:var(--display);font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;padding:5px 10px;border-radius:999px;white-space:nowrap}
+.chip.inc{background:var(--surf-500);color:#fff}
+.chip.ask{background:var(--sand-200);color:var(--ink-700)}
+.sheet-foot{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;padding:18px 24px;background:var(--ocean-950);color:var(--ocean-100);font-size:14px;line-height:1.6}
+.sheet-foot strong{color:#fff;font-family:var(--display)}
+</style>
+</head>
+<body>
+
+<div class="pagehead">
+  <div class="wrap">
+    <h1>Insurance section — four directions</h1>
+    <p>Same copy and palette as the live site, so what you see here is what it will look like. Hover the cards in A. My pick is B, and the reason is under each one.</p>
+  </div>
+</div>
+
+<!-- ══════════════ A ══════════════ -->
+<div class="wrap">
+  <div class="optionbar"><span class="tag">Option A</span><h2>The claim packet</h2></div>
+  <p class="why">The right column becomes the thing itself — a stack of the four documents the adjuster actually receives, hovering to square up. <b>Strength:</b> shows the deliverable instead of describing it. <b>Risk:</b> the tilt is decorative, and decoration sits oddly in a section about paperwork.</p>
+</div>
+<div class="sec" style="background:var(--sand-100)">
+  <div class="wrap a-grid">
+    <div>
+      <p class="eyebrow">Insurance</p>
+      <h2 class="h2">We document the job so your adjuster can approve it</h2>
+      <p class="lead">Moisture readings, photographs and daily drying logs from the first visit onward, written up the way carriers expect to receive them. We bill the insurer directly where the policy allows it.</p>
+      <p class="lead">We will also tell you when we think a claim is not worth filing. On a small loss the deductible sometimes exceeds the repair, and a claim on record can affect your renewal.</p>
+    </div>
+    <div class="packet">
+      <span class="stamp">Adjuster-ready</span>
+      <div class="doc">
+        <div class="doc-top">
+          <span class="doc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/></svg></span>
+          <h4>Moisture map, visit one</h4>
+        </div>
+        <small>Every wet reading plotted against a floor plan, before anything is moved.</small>
+      </div>
+      <div class="doc">
+        <div class="doc-top">
+          <span class="doc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 10h16M10 10v10"/></svg></span>
+          <h4>Daily drying log</h4>
+        </div>
+        <small>Same marked points, same time each day, until the structure meets dry standard.</small>
+      </div>
+      <div class="doc">
+        <div class="doc-top">
+          <span class="doc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18v12H3z"/><circle cx="12" cy="13" r="3.2"/><path d="M8 7l1.6-2.4h4.8L16 7"/></svg></span>
+          <h4>Photograph set</h4>
+        </div>
+        <small>Wide shots per room and close-ups of damage, timestamped.</small>
+      </div>
+      <div class="doc">
+        <div class="doc-top">
+          <span class="doc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h9l4 4v14H6z"/><path d="M9 12h7M9 16h7"/></svg></span>
+          <h4>Carrier-format invoice</h4>
+        </div>
+        <small>Line items in the structure your insurer's software expects. Billed direct where allowed.</small>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="wrap"><hr class="sep"></div>
+
+<!-- ══════════════ B ══════════════ -->
+<div class="wrap">
+  <div class="optionbar"><span class="tag rec">Option B — recommended</span><h2>The drying log</h2></div>
+  <p class="why">One dark card holding a real moisture log, with the readings falling day by day until they cross dry standard. <b>Strength:</b> this is the single most convincing artefact the company produces, and nobody else on Maui shows one. It proves "measured, not guessed" in one glance and gives the AI-search crawlers a table of concrete numbers to quote. <b>Risk:</b> needs real numbers from the client before launch.</p>
+</div>
+<div class="sec" style="background:var(--sand-100)">
+  <div class="wrap">
+    <div class="b-card">
+      <div class="b-grid">
+        <div>
+          <p class="eyebrow on-dark">Insurance</p>
+          <h2 class="h2 on-dark">We document the job so your adjuster can approve it</h2>
+          <p class="lead on-dark">Moisture readings, photographs and daily drying logs from the first visit onward, written up the way carriers expect to receive them. We bill the insurer directly where the policy allows it.</p>
+          <ul class="b-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg><span>Moisture mapping and photographs from visit one</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg><span>Daily logs in the format carriers expect</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg><span>Direct billing to the insurer where the policy allows</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg><span>A straight answer on whether a claim is worth filing</span></li>
+          </ul>
+        </div>
+
+        <div class="logsheet">
+          <header>
+            <p>Drying log — Kīhei, single-family</p>
+            <span>%WME · target ≤ 12.0</span>
+          </header>
+          <table>
+            <thead>
+              <tr><th>Reading point</th><th>Day 1</th><th>Day 2</th><th>Day 3</th><th>Day 4</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Kitchen subfloor</td><td>28.4</td><td>21.0</td><td>16.2</td><td class="met">11.9</td></tr>
+              <tr><td>Hall closet, base</td><td>24.1</td><td>18.6</td><td>14.0</td><td class="met">11.4</td></tr>
+              <tr><td>Living room, south wall</td><td>19.8</td><td>15.2</td><td>12.4</td><td class="met">10.8</td></tr>
+              <tr><td>Ambient RH, %</td><td>71</td><td>58</td><td>49</td><td class="met">44</td></tr>
+            </tbody>
+          </table>
+          <footer>
+            <span>Equipment removed day 4. Report issued same day.</span>
+            <span class="pill-ok">Dry standard met</span>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="wrap"><hr class="sep"></div>
+
+<!-- ══════════════ C ══════════════ -->
+<div class="wrap">
+  <div class="optionbar"><span class="tag">Option C</span><h2>What we file / what we talk you out of</h2></div>
+  <p class="why">Splits the section's two arguments into two panels, with the honest-counsel half given equal weight on a dark panel. <b>Strength:</b> "we will tell you not to claim" is the most trust-building sentence in the section and currently it is buried in a second paragraph. <b>Risk:</b> two side-by-side lists is a quieter layout than the rest of the page.</p>
+</div>
+<div class="sec" style="background:var(--sand-100)">
+  <div class="wrap">
+    <div class="c-head">
+      <p class="eyebrow">Insurance</p>
+      <h2 class="h2">We document the job so your adjuster can approve it</h2>
+      <p class="lead">Two halves of the same job: give the carrier everything it needs to say yes, and tell you plainly when filing is the wrong move.</p>
+    </div>
+    <div class="c-cols">
+      <div class="panel">
+        <p class="kicker">What your adjuster receives</p>
+        <h3>Enough to approve without a second visit</h3>
+        <ul>
+          <li><em>01</em><span>Moisture mapping and photographs from visit one, before anything is moved</span></li>
+          <li><em>02</em><span>Daily drying logs from the same marked points, in the carrier's format</span></li>
+          <li><em>03</em><span>Final readings against dry standard, with the date equipment came out</span></li>
+          <li><em>04</em><span>A line-item invoice, billed direct to the insurer where the policy allows</span></li>
+        </ul>
+      </div>
+      <div class="panel dark">
+        <p class="kicker">When we say don't file</p>
+        <h3>A claim is not always the cheaper option</h3>
+        <ul>
+          <li><em>—</em><span>The repair comes in under your deductible</span></li>
+          <li><em>—</em><span>The loss is small and your renewal is close</span></li>
+          <li><em>—</em><span>The cause is seepage or maintenance, which Hawaii policies exclude</span></li>
+          <li><em>—</em><span>It is mold only, which most policies here cap very low or exclude outright</span></li>
+        </ul>
+        <p class="note">A claim on record can follow you into renewal, and given what has happened to condo premiums in Hawaii lately that is worth a moment of thought before you phone your carrier.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="wrap"><hr class="sep"></div>
+
+<!-- ══════════════ D ══════════════ -->
+<div class="wrap">
+  <div class="optionbar"><span class="tag">Option D</span><h2>The coverage sheet</h2></div>
+  <p class="why">A full-width document showing what a Hawaii policy typically does and does not pay for, with our documentation line underneath. <b>Strength:</b> answers the question people are actually searching — "is this covered?" — and that is exactly the kind of table Google's AI Overview lifts. <b>Risk:</b> it is coverage guidance, so it needs a plain disclaimer and sign-off from the client.</p>
+</div>
+<div class="sec" style="background:var(--sand-100)">
+  <div class="wrap">
+    <div class="d-head">
+      <p class="eyebrow">Insurance</p>
+      <h2 class="h2">We document the job so your adjuster can approve it</h2>
+      <p class="lead">Most Hawaii homeowners policies draw the line in the same four places. Here is where, and what we hand the carrier in each case.</p>
+    </div>
+
+    <div class="sheet">
+      <div class="sheet-head">
+        <div>
+          <h3>Typical Hawaii homeowners policy</h3>
+          <small>General guidance only — your own policy wording decides it.</small>
+        </div>
+        <span class="chip inc">We document either way</span>
+      </div>
+      <div class="sheet-rows">
+        <div class="row">
+          <p class="lbl">Burst pipe or hose</p>
+          <p class="val">Sudden and accidental. Generally covered, including the water damage to floors, walls and contents.</p>
+          <div class="state"><span class="chip inc">Usually paid</span></div>
+        </div>
+        <div class="row">
+          <p class="lbl">Long-term seepage</p>
+          <p class="val">A slow leak that has been going for weeks reads as maintenance, not an event. Usually excluded.</p>
+          <div class="state"><span class="chip ask">Usually not</span></div>
+        </div>
+        <div class="row">
+          <p class="lbl">Outside flooding</p>
+          <p class="val">Storm surge, runoff and rising groundwater need separate flood cover. Not part of a standard policy.</p>
+          <div class="state"><span class="chip ask">Separate policy</span></div>
+        </div>
+        <div class="row">
+          <p class="lbl">Mold</p>
+          <p class="val">Excluded outright or capped very low on most policies written in Hawaii — which is why the first 48 hours decide the bill.</p>
+          <div class="state"><span class="chip ask">Capped or excluded</span></div>
+        </div>
+      </div>
+      <div class="sheet-foot">
+        <span><strong>In every row above</strong>, you get moisture mapping and photographs from visit one, daily drying logs in the carrier's format, and direct billing where the policy allows.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" style="padding-top:48px;padding-bottom:64px">
+  <p class="why" style="max-width:88ch">
+    <b>Short version:</b> B is the one I would build. It turns the section's claim into evidence, it is the only one of the four that no competitor on Maui has, and the table is exactly the shape of content that gets quoted by AI answers. D is the strongest second and could live on the cost page instead, so you could have both. A is the prettiest and the least substantial. C is good writing in a layout that is a bit quiet for this spot.
+  </p>
+</div>
+
+</body>
+</html>
