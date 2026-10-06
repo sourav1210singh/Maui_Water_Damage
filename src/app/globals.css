@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+/* ───────────────────────────────────────────────────────────────
+   Maui Water Damage Pros — design tokens
+
+   Palette is rooted in the island rather than the usual SaaS blue:
+   deep ocean for authority, warm volcanic sand for ground, and a
+   single hot alert red reserved exclusively for emergency actions.
+
+   Rule: the alert colour is never used decoratively. If something
+   is alert-red it is because tapping it gets you help.
+   ─────────────────────────────────────────────────────────────── */
+
+@theme {
+  /* Deep ocean — primary brand */
+  --color-ocean-50: #eef5f8;
+  --color-ocean-100: #d6e8ef;
+  --color-ocean-200: #aed0dd;
+  --color-ocean-300: #76aec3;
+  --color-ocean-400: #448ba6;
+  --color-ocean-500: #1f6d8a;
+  --color-ocean-600: #14576f;
+  --color-ocean-700: #0e475b;
+  --color-ocean-800: #0a3647;
+  --color-ocean-900: #072834;
+  --color-ocean-950: #041a23;
+
+  /* Volcanic ink — text and dark surfaces */
+  --color-ink-500: #4a5a61;
+  --color-ink-700: #2a3940;
+  --color-ink-900: #111e24;
+  --color-ink-950: #08141a;
+
+  /* Warm sand — page ground, keeps it off sterile white */
+  --color-sand-50: #fbf9f5;
+  --color-sand-100: #f5f1e9;
+  --color-sand-200: #ebe4d7;
+  --color-sand-300: #d9cfbb;
+  --color-sand-400: #bfb093;
+
+  /* Emergency — reserved for call actions only */
+  --color-alert-400: #e85c42;
+  --color-alert-500: #d6412a;
+  --color-alert-600: #bc3019;
+  --color-alert-700: #9a2614;
+
+  /* Surf — sparing accent for highlights and icons */
+  --color-surf-400: #2bb3a3;
+  --color-surf-500: #0f9488;
+  --color-surf-600: #0b7a70;
+
+  --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-card: 0.625rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-sand-50);
+    color: var(--color-ink-900);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Visible focus for keyboard users — someone stressed at 2am may well
+     be tabbing through on a cracked screen. */
+  :focus-visible {
+    outline: 3px solid var(--color-surf-500);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background: var(--color-ocean-800);
+    color: var(--color-sand-50);
+  }
+}
+
+@layer utilities {
+  /* Tabular figures for phone numbers and cost tables so columns line up */
+  .nums {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .shadow-card {
+    box-shadow:
+      0 1px 2px rgb(8 20 26 / 0.04),
+      0 8px 24px -12px rgb(8 20 26 / 0.12);
+  }
+
+  .shadow-lift {
+    box-shadow:
+      0 2px 4px rgb(8 20 26 / 0.06),
+      0 18px 40px -16px rgb(8 20 26 / 0.22);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
