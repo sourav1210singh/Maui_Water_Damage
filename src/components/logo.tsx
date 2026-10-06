@@ -16,31 +16,38 @@
 type Tone = "dark" | "light";
 
 function Mark({ tone, className = "" }: { tone: Tone; className?: string }) {
-  const outline = tone === "light" ? "stroke-sand-50" : "stroke-ocean-900";
-  const water = tone === "light" ? "fill-surf-400" : "fill-surf-500";
+  // The badge carries the mark's weight. An outline-only droplet thinned out
+  // and nearly vanished at favicon and small-header sizes; a solid plate holds
+  // its silhouette all the way down to 16px.
+  const plate = tone === "light" ? "fill-sand-50" : "fill-ocean-900";
+  const outline = tone === "light" ? "stroke-ocean-900" : "stroke-sand-50";
+  const water = tone === "light" ? "fill-surf-500" : "fill-surf-400";
 
   return (
     <svg
-      viewBox="0 0 40 40"
+      viewBox="0 0 48 48"
       className={className}
       aria-hidden="true"
       focusable="false"
     >
-      {/* Water, filled to a wave-topped line across the bulb of the droplet.
-          The arc traces the droplet's own lower circle (centre 20,21.6 r12)
-          so the fill sits flush inside the outline at every size. */}
-      <path
-        d="M8.08 23q5.96-3.2 11.92 0t11.92 0A12 12 0 0 1 8.08 23Z"
-        className={water}
-      />
-      {/* Droplet outline drawn last so it sits cleanly over the water edge */}
-      <path
-        d="M20 3c6.9 8.2 12 14.2 12 18.6a12 12 0 1 1-24 0C8 17.2 13.1 11.2 20 3Z"
-        fill="none"
-        className={outline}
-        strokeWidth="2.6"
-        strokeLinejoin="round"
-      />
+      <rect width="48" height="48" rx="12" className={plate} />
+      <g transform="translate(9 8)">
+        {/* Water, filled to a wave-topped line across the bulb. The arc traces
+            the droplet's own lower circle so the fill sits flush inside the
+            stroke at every size. */}
+        <path
+          d="M6.06 17.25q4.47-2.4 8.94 0t8.94 0A9 9 0 0 1 6.06 17.25Z"
+          className={water}
+        />
+        {/* Droplet drawn last so its stroke sits cleanly over the water edge */}
+        <path
+          d="M15 2.25c5.18 6.15 9 10.65 9 13.95a9 9 0 1 1-18 0c0-3.3 3.83-7.8 9-13.95Z"
+          fill="none"
+          className={outline}
+          strokeWidth="2.1"
+          strokeLinejoin="round"
+        />
+      </g>
     </svg>
   );
 }
