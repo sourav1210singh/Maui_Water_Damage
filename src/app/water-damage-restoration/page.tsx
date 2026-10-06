@@ -70,7 +70,7 @@ export default function WaterDamagePage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative isolate overflow-hidden bg-ocean-950">
+      <section data-hero-surface className="relative isolate overflow-hidden bg-ocean-950">
         <Parallax distance={70} className="absolute -inset-y-14 inset-x-0">
           <Image
             src={photo(img.ceilingDamage, 1920)}
@@ -85,7 +85,7 @@ export default function WaterDamagePage() {
           className="absolute inset-0 bg-[linear-gradient(100deg,rgba(4,26,35,0.96)_0%,rgba(4,26,35,0.90)_38%,rgba(4,26,35,0.68)_70%,rgba(4,26,35,0.45)_100%)]"
           aria-hidden="true"
         />
-        <Container className="relative py-14 sm:py-20">
+        <Container className="relative pb-14 pt-28 sm:pb-20 sm:pt-32">
           <div className="max-w-2xl">
             <Breadcrumbs trail={trail} tone="dark" />
             <TextReveal

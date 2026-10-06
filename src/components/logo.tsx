@@ -62,10 +62,13 @@ export function Logo({
 
   return (
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
-      <Mark tone={tone} className="size-9 shrink-0" />
+      <Mark tone={tone} className="size-8 shrink-0 sm:size-9" />
 
+      {/* Steps down on small screens: inside the floating header pill at 375px
+          the full-size lockup ate 241px of 351px, leaving the controls cramped
+          against the edge. */}
       <span className="flex flex-col justify-center leading-none">
-        <span className="font-display text-[17px] font-bold leading-[1.05] tracking-[-0.02em]">
+        <span className="font-display text-[15px] font-bold leading-[1.05] tracking-[-0.02em] sm:text-[17px]">
           <span className={name}>Maui Water Damage</span>{" "}
           <span className={accent}>Pros</span>
         </span>

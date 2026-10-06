@@ -58,7 +58,9 @@ export function HomeHero() {
 
   return (
     <div className="w-full bg-sand-50 p-3 md:p-5">
-      <section className="relative isolate flex min-h-[580px] w-full flex-col overflow-hidden rounded-[1.5rem] bg-ocean-950 md:min-h-[640px] md:rounded-[3rem] lg:min-h-[74vh]">
+      <section
+        data-hero-surface
+        className="relative isolate flex min-h-[580px] w-full flex-col overflow-hidden rounded-[1.5rem] bg-ocean-950 md:min-h-[640px] md:rounded-[3rem] lg:min-h-[74vh]">
         {/* Poster is always rendered: it is the LCP element and paints
             immediately. The video, when allowed, layers over it. */}
         <Image
@@ -98,8 +100,9 @@ export function HomeHero() {
         {/* pb clears the cut-out corner panel at the bottom-right. The stat
             card is not a factor on mobile because it is hidden there — see
             below. */}
-        <div className="relative z-10 flex w-full flex-1 flex-col items-center px-6 pb-28 pt-12 text-center sm:pb-32 md:pt-16 lg:pt-20">
+        <div className="relative z-10 flex w-full flex-1 flex-col items-center px-6 pb-28 pt-28 text-center sm:pb-32 md:pt-32 lg:pt-36">
           <motion.div
+            data-reveal=""
             {...rise(0)}
             className="mb-5 flex w-fit items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur-md"
           >
@@ -115,6 +118,7 @@ export function HomeHero() {
           </motion.div>
 
           <motion.h1
+            data-reveal=""
             {...rise(0.08)}
             className="max-w-4xl font-display text-[2.1rem] font-bold leading-[1.06] tracking-tight text-white sm:text-5xl lg:text-[4rem]"
           >
@@ -122,6 +126,7 @@ export function HomeHero() {
           </motion.h1>
 
           <motion.p
+            data-reveal=""
             {...rise(0.16)}
             className="mt-5 max-w-xl text-[15px] leading-relaxed text-ocean-100 sm:text-lg"
           >
@@ -130,6 +135,7 @@ export function HomeHero() {
           </motion.p>
 
           <motion.div
+            data-reveal=""
             {...rise(0.24)}
             className="mt-8 flex w-full flex-col items-center gap-3 sm:w-auto sm:flex-row"
           >
@@ -153,6 +159,7 @@ export function HomeHero() {
             top of the secondary CTA. A decorative stat does not get to cover a
             call-to-action on the screen size that produces most of the calls. */}
         <motion.div
+          data-reveal=""
           initial={reduced ? undefined : { x: -18, opacity: 0 }}
           animate={reduced ? undefined : { x: 0, opacity: 1 }}
           transition={{ duration: 0.7, delay: 0.3, ease: EASE }}
@@ -183,6 +190,7 @@ export function HomeHero() {
             where the panel meets the card edge, so the join reads as one cut
             shape rather than a rectangle pasted on. */}
         <motion.div
+          data-reveal=""
           initial={reduced ? undefined : { y: 18, opacity: 0 }}
           animate={reduced ? undefined : { y: 0, opacity: 1 }}
           transition={{ duration: 0.7, delay: 0.42, ease: EASE }}

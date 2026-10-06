@@ -72,7 +72,7 @@ export default function KiheiPage() {
 
   return (
     <>
-      <section className="relative isolate overflow-hidden bg-ocean-950">
+      <section data-hero-surface className="relative isolate overflow-hidden bg-ocean-950">
         <Parallax distance={70} className="absolute -inset-y-14 inset-x-0">
           <Image
             src={photo(img.mauiBay, 1920)}
@@ -87,7 +87,7 @@ export default function KiheiPage() {
           className="absolute inset-0 bg-[linear-gradient(100deg,rgba(4,26,35,0.96)_0%,rgba(4,26,35,0.88)_36%,rgba(4,26,35,0.60)_68%,rgba(4,26,35,0.32)_100%)]"
           aria-hidden="true"
         />
-        <Container className="relative py-14 sm:py-20">
+        <Container className="relative pb-14 pt-28 sm:pb-20 sm:pt-32">
           <div className="max-w-2xl">
             <Breadcrumbs trail={trail} tone="dark" />
             <p className="mb-3 inline-flex items-center gap-1.5 text-[13px] font-medium text-surf-400">

@@ -25,8 +25,8 @@ export default function ContactPage() {
 
   return (
     <>
-      <section className="border-b border-sand-200 bg-ocean-950">
-        <Container className="py-12 sm:py-16">
+      <section data-hero-surface className="border-b border-sand-200 bg-ocean-950">
+        <Container className="pb-12 pt-28 sm:pb-16 sm:pt-32">
           <div className="max-w-2xl">
             <Breadcrumbs trail={trail} tone="dark" />
             <h1 className="font-display text-[2rem] font-bold leading-[1.1] tracking-tight text-white sm:text-[2.7rem]">
