@@ -52,6 +52,42 @@ function Mark({ tone, className = "" }: { tone: Tone; className?: string }) {
   );
 }
 
+/**
+ * Centred, mark-over-wordmark lockup. Used where the logo is the anchor of a
+ * composition rather than a corner mark — currently the footer.
+ */
+export function LogoStacked({
+  className = "",
+  tone = "light",
+}: {
+  className?: string;
+  tone?: Tone;
+}) {
+  const name = tone === "light" ? "text-sand-50" : "text-ocean-900";
+  const accent = tone === "light" ? "text-surf-400" : "text-surf-600";
+  const tagline = tone === "light" ? "text-ocean-200" : "text-ink-500";
+  const rule = tone === "light" ? "bg-ocean-300/40" : "bg-sand-400";
+
+  return (
+    <span className={`inline-flex flex-col items-center ${className}`}>
+      <Mark tone={tone} className="size-14" />
+      <span className="mt-3.5 font-display text-[22px] leading-none font-bold tracking-[-0.02em] sm:text-[26px]">
+        <span className={name}>Maui Water Damage</span>{" "}
+        <span className={accent}>Pros</span>
+      </span>
+      <span className="mt-3 flex items-center gap-2.5">
+        <span className={`h-px w-8 ${rule}`} aria-hidden="true" />
+        <span
+          className={`font-display text-[10px] font-semibold uppercase leading-none tracking-[0.2em] ${tagline}`}
+        >
+          24/7 Emergency Restoration
+        </span>
+        <span className={`h-px w-8 ${rule}`} aria-hidden="true" />
+      </span>
+    </span>
+  );
+}
+
 export function Logo({
   className = "",
   tone = "dark",
