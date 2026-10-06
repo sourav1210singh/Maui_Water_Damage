@@ -5,6 +5,7 @@ import {
   ShieldCheck,
   MapPin,
   ArrowRight,
+  ArrowUpRight,
   AlertTriangle,
   FileText,
 } from "lucide-react";
@@ -341,46 +342,52 @@ export default function HomePage() {
                   </Button>
                 </div>
               </Reveal>
+
+              {/* Towns sit here rather than under the map: they are real text,
+                  and nothing inside an iframe is crawlable. They are the
+                  proximity signal this whole section exists for. */}
+              <Stagger as="ul" className="mt-8 flex flex-wrap gap-2.5">
+                {serviceAreas.map((area) => {
+                  const pill =
+                    "group inline-flex items-center gap-2 rounded-full border border-sand-300 bg-white px-4 py-2 font-display text-[14px] font-semibold text-ocean-800 transition-all duration-[250ms] ease-[cubic-bezier(0.4,0,0.2,1)] hover:-translate-y-0.5 hover:border-ocean-800 hover:bg-ocean-800 hover:text-sand-50 hover:shadow-card";
+                  return (
+                    <StaggerItem as="li" key={area.slug}>
+                      {area.slug === "kihei" ? (
+                        <Link href={`/service-areas/${area.slug}`} className={pill}>
+                          {area.name}
+                          <ArrowUpRight
+                            aria-hidden="true"
+                            className="size-3.5 text-surf-600 transition-all duration-[250ms] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-surf-400"
+                          />
+                        </Link>
+                      ) : (
+                        <span className={pill}>
+                          {area.name}
+                          {/* The region label only appears on hover: ten pills
+                              carrying it permanently would wrap into a wall. */}
+                          <span className="max-w-0 overflow-hidden whitespace-nowrap text-[12px] font-normal text-ocean-200 opacity-0 transition-all duration-[250ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:max-w-[8rem] group-hover:opacity-100">
+                            {area.region}
+                          </span>
+                        </span>
+                      )}
+                    </StaggerItem>
+                  );
+                })}
+              </Stagger>
             </div>
 
             <Reveal>
+              {/* Keyless Google embed — no Maps API key is configured, so the
+                  pins are Google's own place labels rather than branded
+                  markers. Swapping in custom markers is a key away. */}
               <div className="overflow-hidden rounded-card border border-sand-300 bg-white shadow-card">
-                {/* Keyless Google embed — no Maps API key is configured, so the
-                    pins are Google's own place labels rather than branded
-                    markers. Swapping in custom markers is a key away. */}
                 <iframe
                   src="https://maps.google.com/maps?q=Maui,Hawaii&z=10&output=embed"
                   title="Map of Maui showing the areas we serve"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  className="block h-[300px] w-full border-0 sm:h-[360px]"
+                  className="block h-[320px] w-full border-0 sm:h-[420px]"
                 />
-
-                {/* The town names stay as real text rather than living only
-                    inside the iframe — they are the proximity signal this
-                    section exists for, and nothing in an iframe is crawlable. */}
-                <ul className="grid grid-cols-2 gap-x-5 gap-y-0 border-t border-sand-200 px-5 py-1 sm:grid-cols-3">
-                  {serviceAreas.map((area) => (
-                    <li
-                      key={area.slug}
-                      className="border-b border-sand-200/70 py-2.5 last:border-0"
-                    >
-                      {area.slug === "kihei" ? (
-                        <Link
-                          href={`/service-areas/${area.slug}`}
-                          className="font-display text-[14px] font-semibold text-ocean-800 hover:text-surf-600"
-                        >
-                          {area.name}
-                        </Link>
-                      ) : (
-                        <span className="font-display text-[14px] font-semibold text-ocean-800">
-                          {area.name}
-                        </span>
-                      )}
-                      <p className="text-[11px] text-ink-500">{area.region}</p>
-                    </li>
-                  ))}
-                </ul>
               </div>
             </Reveal>
           </div>
