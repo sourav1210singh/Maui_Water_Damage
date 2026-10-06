@@ -343,28 +343,46 @@ export default function HomePage() {
               </Reveal>
             </div>
 
-            <Stagger className="grid grid-cols-2 gap-x-6 gap-y-1 sm:grid-cols-3">
-              {serviceAreas.map((area) => (
-                <StaggerItem
-                  key={area.slug}
-                  className="border-b border-sand-200 py-3 last:border-0"
-                >
-                  {area.slug === "kihei" ? (
-                    <Link
-                      href={`/service-areas/${area.slug}`}
-                      className="font-display text-[15px] font-semibold text-ocean-800 hover:text-surf-600"
+            <Reveal>
+              <div className="overflow-hidden rounded-card border border-sand-300 bg-white shadow-card">
+                {/* Keyless Google embed — no Maps API key is configured, so the
+                    pins are Google's own place labels rather than branded
+                    markers. Swapping in custom markers is a key away. */}
+                <iframe
+                  src="https://maps.google.com/maps?q=Maui,Hawaii&z=10&output=embed"
+                  title="Map of Maui showing the areas we serve"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="block h-[300px] w-full border-0 sm:h-[360px]"
+                />
+
+                {/* The town names stay as real text rather than living only
+                    inside the iframe — they are the proximity signal this
+                    section exists for, and nothing in an iframe is crawlable. */}
+                <ul className="grid grid-cols-2 gap-x-5 gap-y-0 border-t border-sand-200 px-5 py-1 sm:grid-cols-3">
+                  {serviceAreas.map((area) => (
+                    <li
+                      key={area.slug}
+                      className="border-b border-sand-200/70 py-2.5 last:border-0"
                     >
-                      {area.name}
-                    </Link>
-                  ) : (
-                    <span className="font-display text-[15px] font-semibold text-ocean-800">
-                      {area.name}
-                    </span>
-                  )}
-                  <p className="text-xs text-ink-500">{area.region}</p>
-                </StaggerItem>
-              ))}
-            </Stagger>
+                      {area.slug === "kihei" ? (
+                        <Link
+                          href={`/service-areas/${area.slug}`}
+                          className="font-display text-[14px] font-semibold text-ocean-800 hover:text-surf-600"
+                        >
+                          {area.name}
+                        </Link>
+                      ) : (
+                        <span className="font-display text-[14px] font-semibold text-ocean-800">
+                          {area.name}
+                        </span>
+                      )}
+                      <p className="text-[11px] text-ink-500">{area.region}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
           </div>
         </Container>
       </Section>
