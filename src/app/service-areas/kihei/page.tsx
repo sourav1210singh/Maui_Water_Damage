@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { Phone, MapPin, Clock, Building2, Waves, Home } from "lucide-react";
 import {
   Container,
@@ -10,7 +9,7 @@ import {
   Breadcrumbs,
   PlaceholderNote,
 } from "@/components/ui";
-import { Reveal } from "@/components/reveal";
+import { Stagger, StaggerItem, TextReveal, Parallax } from "@/components/motion";
 import { FaqList } from "@/components/faq";
 import {
   JsonLd,
@@ -75,14 +74,16 @@ export default function KiheiPage() {
   return (
     <>
       <section className="relative isolate overflow-hidden bg-ocean-950">
-        <Image
-          src={photo(img.mauiBay, 1920)}
-          alt="South Maui coastline near Kīhei"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
+        <Parallax distance={70} className="absolute -inset-y-14 inset-x-0">
+          <Image
+            src={photo(img.mauiBay, 1920)}
+            alt="South Maui coastline near Kīhei"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+        </Parallax>
         <div
           className="absolute inset-0 bg-[linear-gradient(100deg,rgba(4,26,35,0.96)_0%,rgba(4,26,35,0.88)_36%,rgba(4,26,35,0.60)_68%,rgba(4,26,35,0.32)_100%)]"
           aria-hidden="true"
@@ -94,9 +95,12 @@ export default function KiheiPage() {
               <MapPin className="size-3.5" aria-hidden="true" />
               South Shore · Maui County
             </p>
-            <h1 className="font-display text-[2rem] font-bold leading-[1.1] tracking-tight text-white sm:text-[2.9rem]">
-              Water damage restoration in Kīhei
-            </h1>
+            <TextReveal
+              as="h1"
+              trigger="mount"
+              text="Water damage restoration in Kīhei"
+              className="font-display text-[2rem] font-bold leading-[1.1] tracking-tight text-white sm:text-[2.9rem]"
+            />
             <p className="mt-5 text-[17px] leading-relaxed text-ocean-100">
               We cover Kīhei and the whole South Shore around the clock, with
                 extraction gear on the truck. Most South Maui water damage is
@@ -150,9 +154,11 @@ export default function KiheiPage() {
         <Container>
           <div className="max-w-2xl">
             <Eyebrow>What South Maui actually deals with</Eyebrow>
-            <h2 className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]">
-              Kīhei water damage has its own pattern
-            </h2>
+            <TextReveal
+                as="h2"
+                text="Kīhei water damage has its own pattern"
+                className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]"
+              />
             <p className="mt-4 text-[15px] leading-relaxed text-ink-700">
               The South Shore is the driest part of the island, so people are
               surprised by how much water damage work there is here. Almost none
@@ -160,13 +166,16 @@ export default function KiheiPage() {
             </p>
           </div>
 
-          <div className="mt-8 grid gap-5 sm:grid-cols-3">
-            {localIssues.map((item, i) => {
+          <Stagger className="mt-8 grid gap-5 sm:grid-cols-3">
+            {localIssues.map((item) => {
               const Icon = item.icon;
               return (
-                <Reveal key={item.title} delay={i * 0.05}>
-                  <article className="h-full rounded-card border border-sand-200 bg-white p-6 shadow-card">
-                    <Icon className="size-6 text-surf-600" aria-hidden="true" />
+                <StaggerItem key={item.title}>
+                  <article className="group h-full rounded-card border border-sand-200 bg-white p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lift">
+                    <Icon
+                      className="size-6 text-surf-600 transition-transform duration-300 group-hover:scale-110"
+                      aria-hidden="true"
+                    />
                     <h3 className="mt-3.5 font-display text-[17px] font-semibold text-ocean-900">
                       {item.title}
                     </h3>
@@ -174,10 +183,10 @@ export default function KiheiPage() {
                       {item.body}
                     </p>
                   </article>
-                </Reveal>
+                </StaggerItem>
               );
             })}
-          </div>
+          </Stagger>
         </Container>
       </Section>
 
@@ -187,9 +196,11 @@ export default function KiheiPage() {
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
             <div>
               <Eyebrow>For owners, managers and AOAOs</Eyebrow>
-              <h2 className="font-display text-[1.75rem] font-bold leading-tight text-white sm:text-[2.1rem]">
-                When one unit floods three
-              </h2>
+              <TextReveal
+                as="h2"
+                text="When one unit floods three"
+                className="font-display text-[1.75rem] font-bold leading-tight text-white sm:text-[2.1rem]"
+              />
               <p className="mt-4 text-[15px] leading-relaxed text-ocean-100">
                 Condo losses are the hardest to handle well, because the
                 technical work is the easy part. The difficulty is that two or
@@ -232,9 +243,11 @@ export default function KiheiPage() {
           <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
             <div>
               <Eyebrow>Kīhei questions</Eyebrow>
-              <h2 className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]">
-                Asked by South Shore owners
-              </h2>
+              <TextReveal
+                as="h2"
+                text="Asked by South Shore owners"
+                className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]"
+              />
             </div>
             <FaqList items={faqs} />
           </div>
@@ -244,9 +257,11 @@ export default function KiheiPage() {
       {/* Other areas */}
       <Section className="border-t border-sand-200 bg-white">
         <Container>
-          <h2 className="font-display text-[1.5rem] font-bold text-ocean-900">
-            We also cover
-          </h2>
+          <TextReveal
+                as="h2"
+                text="We also cover"
+                className="font-display text-[1.5rem] font-bold text-ocean-900"
+              />
           <ul className="mt-5 flex flex-wrap gap-2.5">
             {serviceAreas
               .filter((a) => a.slug !== "kihei")

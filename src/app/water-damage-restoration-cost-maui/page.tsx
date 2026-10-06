@@ -5,11 +5,10 @@ import {
   Container,
   Section,
   Eyebrow,
-  Button,
   Breadcrumbs,
   PlaceholderNote,
 } from "@/components/ui";
-import { Reveal } from "@/components/reveal";
+import { Stagger, StaggerItem, TextReveal } from "@/components/motion";
 import { FaqList } from "@/components/faq";
 import { JsonLd, faqSchema, breadcrumbSchema, type Faq } from "@/lib/schema";
 import { site } from "@/lib/site";
@@ -112,9 +111,11 @@ export default function CostPage() {
         <Container>
           <div className="max-w-2xl">
             <Eyebrow>By severity</Eyebrow>
-            <h2 className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]">
-              Typical cost by how bad it is
-            </h2>
+            <TextReveal
+                as="h2"
+                text="Typical cost by how bad it is"
+                className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]"
+              />
             <p className="mt-4 text-[15px] leading-relaxed text-ink-700">
               Severity is the main driver, and it is mostly decided by how long
               the water sat before anyone started drying.
@@ -174,9 +175,11 @@ export default function CostPage() {
           <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
             <div>
               <Eyebrow>Line by line</Eyebrow>
-              <h2 className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]">
-                What makes up the bill
-              </h2>
+              <TextReveal
+                as="h2"
+                text="What makes up the bill"
+                className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]"
+              />
               <p className="mt-4 text-[15px] leading-relaxed text-ink-700">
                 Restoration is priced from itemised rates rather than a single
                 lump sum, which is why two quotes for the same job can look so
@@ -221,22 +224,27 @@ export default function CostPage() {
         <Container>
           <div className="max-w-2xl">
             <Eyebrow>Island economics</Eyebrow>
-            <h2 className="font-display text-[1.75rem] font-bold leading-tight text-white sm:text-[2.1rem]">
-              Why the mainland numbers do not apply here
-            </h2>
+            <TextReveal
+                as="h2"
+                text="Why the mainland numbers do not apply here"
+                className="font-display text-[1.75rem] font-bold leading-tight text-white sm:text-[2.1rem]"
+              />
             <p className="mt-4 text-[15px] leading-relaxed text-ocean-100">
               Almost every cost guide online is written for the mainland. Four
               things make Maui genuinely different, and they compound.
             </p>
           </div>
 
-          <div className="mt-9 grid gap-5 sm:grid-cols-2">
-            {drivers.map((d, i) => {
+          <Stagger className="mt-9 grid gap-5 sm:grid-cols-2">
+            {drivers.map((d) => {
               const Icon = d.icon;
               return (
-                <Reveal key={d.title} delay={i * 0.05}>
-                  <article className="h-full rounded-card border border-ocean-800 bg-ocean-900/50 p-6">
-                    <Icon className="size-6 text-surf-400" aria-hidden="true" />
+                <StaggerItem key={d.title}>
+                  <article className="group h-full rounded-card border border-ocean-800 bg-ocean-900/50 p-6 transition-colors duration-300 hover:border-surf-500/40">
+                    <Icon
+                      className="size-6 text-surf-400 transition-transform duration-300 group-hover:scale-110"
+                      aria-hidden="true"
+                    />
                     <h3 className="mt-3.5 font-display text-[17px] font-semibold text-white">
                       {d.title}
                     </h3>
@@ -244,10 +252,10 @@ export default function CostPage() {
                       {d.body}
                     </p>
                   </article>
-                </Reveal>
+                </StaggerItem>
               );
             })}
-          </div>
+          </Stagger>
         </Container>
       </Section>
 
@@ -256,9 +264,11 @@ export default function CostPage() {
         <Container>
           <div className="max-w-3xl">
             <Eyebrow>Insurance</Eyebrow>
-            <h2 className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]">
-              What your policy will and will not pay for
-            </h2>
+            <TextReveal
+                as="h2"
+                text="What your policy will and will not pay for"
+                className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]"
+              />
             <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-ink-700">
               <p>
                 <strong className="font-semibold text-ocean-900">Generally covered:</strong>{" "}
@@ -305,9 +315,11 @@ export default function CostPage() {
           <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
             <div>
               <Eyebrow>Cost questions</Eyebrow>
-              <h2 className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]">
-                The ones that come up on every estimate
-              </h2>
+              <TextReveal
+                as="h2"
+                text="The ones that come up on every estimate"
+                className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]"
+              />
               <div className="mt-6">
                 <Link
                   href="/water-damage-restoration"
@@ -327,9 +339,11 @@ export default function CostPage() {
         <Container className="py-12 sm:py-14">
           <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:justify-between">
             <div className="max-w-xl">
-              <h2 className="font-display text-[1.5rem] font-bold leading-tight text-white sm:text-[1.9rem]">
-                Want a real number for your place?
-              </h2>
+              <TextReveal
+                as="h2"
+                text="Want a real number for your place?"
+                className="font-display text-[1.5rem] font-bold leading-tight text-white sm:text-[1.9rem]"
+              />
               <p className="mt-2 text-[15px] text-white/90">
                 We will look at it and tell you what it will actually take.
               </p>

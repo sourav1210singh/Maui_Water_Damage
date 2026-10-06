@@ -13,7 +13,15 @@ import {
   FileText,
 } from "lucide-react";
 import { Container, Section, Eyebrow, Button, PlaceholderNote } from "@/components/ui";
-import { Reveal } from "@/components/reveal";
+import {
+  Reveal,
+  Stagger,
+  StaggerItem,
+  TextReveal,
+  Parallax,
+  ImageReveal,
+  HeroIntro,
+} from "@/components/motion";
 import { FaqList } from "@/components/faq";
 import { JsonLd, faqSchema, type Faq } from "@/lib/schema";
 import { site, serviceAreas, services, img, photo } from "@/lib/site";
@@ -97,14 +105,18 @@ export default function HomePage() {
     <>
       {/* ───────────────────────── Hero ───────────────────────── */}
       <section className="relative isolate overflow-hidden bg-ocean-950">
-        <Image
-          src={photo(img.mauiAerial, 1920)}
-          alt="Aerial view of the South Maui coastline"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
+        {/* -inset-y-16 gives the parallax room to drift without exposing an
+            edge at either end of its travel. */}
+        <Parallax distance={80} className="absolute -inset-y-16 inset-x-0">
+          <Image
+            src={photo(img.mauiAerial, 1920)}
+            alt="Aerial view of the South Maui coastline"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+        </Parallax>
         {/* Explicit stops rather than Tailwind's gradient scale: the text block
             needs ~90% coverage for AA contrast, but the photo should still read
             as Maui on the right. Stacking a second dim layer crushed it to
@@ -116,46 +128,59 @@ export default function HomePage() {
 
         <Container className="relative py-16 sm:py-24 lg:py-28">
           <div className="max-w-2xl">
-            <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-surf-400/30 bg-ocean-900/60 px-3.5 py-1.5 text-[13px] font-medium text-surf-400">
-              <span className="relative flex size-2">
-                <span className="absolute inline-flex size-full animate-ping rounded-full bg-surf-400 opacity-70" />
-                <span className="relative inline-flex size-2 rounded-full bg-surf-400" />
-              </span>
-              Dispatching now — 24 hours a day
-            </p>
+            <HeroIntro>
+              <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-surf-400/30 bg-ocean-900/60 px-3.5 py-1.5 text-[13px] font-medium text-surf-400">
+                <span className="relative flex size-2">
+                  <span className="absolute inline-flex size-full animate-ping rounded-full bg-surf-400 opacity-70" />
+                  <span className="relative inline-flex size-2 rounded-full bg-surf-400" />
+                </span>
+                Dispatching now — 24 hours a day
+              </p>
+            </HeroIntro>
 
-            <h1 className="font-display text-[2.1rem] font-bold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-[3.4rem]">
-              Water damage restoration on Maui, at any hour
-            </h1>
+            <TextReveal
+              as="h1"
+              trigger="mount"
+              delay={0.08}
+              text="Water damage restoration on Maui, at any hour"
+              className="font-display text-[2.1rem] font-bold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-[3.4rem]"
+            />
 
-            <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-ocean-100 sm:text-lg">
-              Burst pipe, roof leak, a washing-machine hose that let go while you
-              were out. We answer the phone at 2am and start pulling water out on
-              the same visit. In this humidity mold can take hold inside 48
-              hours, so the sooner we are drying, the less has to be torn out.
-            </p>
+            <HeroIntro delay={0.34}>
+              <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-ocean-100 sm:text-lg">
+                Burst pipe, roof leak, a washing-machine hose that let go while
+                you were out. We answer the phone at 2am and start pulling water
+                out on the same visit. In this humidity mold can take hold inside
+                48 hours, so the sooner we are drying, the less has to be torn
+                out.
+              </p>
+            </HeroIntro>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <Button
-                href={site.phoneHref}
-                variant="emergency"
-                className="px-6 py-4 text-base"
-                aria-label={`Call ${site.phone} now`}
-              >
-                <Phone className="size-5" aria-hidden="true" />
-                Call {site.phone}
-              </Button>
-              <Button
-                href="/contact"
-                className="border border-white/25 bg-white/5 px-6 py-4 text-base text-white hover:bg-white/10"
-              >
-                Tell us what happened
-              </Button>
-            </div>
+            {/* Short delay on the CTA deliberately — it is the one thing on the
+                page that must never feel withheld. */}
+            <HeroIntro delay={0.44}>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+                <Button
+                  href={site.phoneHref}
+                  variant="emergency"
+                  className="px-6 py-4 text-base shadow-lift transition-transform hover:scale-[1.02]"
+                  aria-label={`Call ${site.phone} now`}
+                >
+                  <Phone className="size-5" aria-hidden="true" />
+                  Call {site.phone}
+                </Button>
+                <Button
+                  href="/contact"
+                  className="border border-white/25 bg-white/5 px-6 py-4 text-base text-white backdrop-blur-sm transition-colors hover:bg-white/10"
+                >
+                  Tell us what happened
+                </Button>
+              </div>
 
-            <p className="mt-5 text-sm text-ocean-200">
-              Serving Kīhei, Kahului, Wailuku, Lahaina, Pāʻia and Upcountry.
-            </p>
+              <p className="mt-5 text-sm text-ocean-200">
+                Serving Kīhei, Kahului, Wailuku, Lahaina, Pāʻia and Upcountry.
+              </p>
+            </HeroIntro>
           </div>
         </Container>
       </section>
@@ -163,9 +188,10 @@ export default function HomePage() {
       {/* ──────────────────── Trust strip ──────────────────── */}
       <div className="border-b border-sand-200 bg-sand-100">
         <Container>
-          <ul className="grid grid-cols-2 divide-sand-300 sm:grid-cols-4 sm:divide-x">
+          <Stagger as="ul" className="grid grid-cols-2 divide-sand-300 sm:grid-cols-4 sm:divide-x">
             {site.credentials.map((c, i) => (
-              <li
+              <StaggerItem
+                as="li"
                 key={c.label}
                 className={`flex items-start gap-2.5 py-4 sm:justify-center sm:py-5 ${
                   i % 2 === 0 ? "pr-3" : "pl-3 sm:pl-0"
@@ -183,9 +209,9 @@ export default function HomePage() {
                     {c.detail}
                   </p>
                 </div>
-              </li>
+              </StaggerItem>
             ))}
-          </ul>
+          </Stagger>
         </Container>
       </div>
 
@@ -194,15 +220,21 @@ export default function HomePage() {
         <Container>
           <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
             <div>
-              <Eyebrow>Before we get there</Eyebrow>
-              <h2 className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]">
-                Water coming in right now? Do these four things.
-              </h2>
-              <p className="mt-4 text-[15px] leading-relaxed text-ink-700">
-                None of this requires us, and all of it reduces what the repair
-                ends up costing you. Work through it while you wait.
-              </p>
-              <div className="mt-6 flex items-start gap-2.5 rounded-lg border border-alert-500/25 bg-alert-400/8 p-4">
+              <Reveal direction="none">
+                <Eyebrow>Before we get there</Eyebrow>
+              </Reveal>
+              <TextReveal
+                as="h2"
+                text="Water coming in right now? Do these four things."
+                className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]"
+              />
+              <Reveal delay={0.1}>
+                <p className="mt-4 text-[15px] leading-relaxed text-ink-700">
+                  None of this requires us, and all of it reduces what the repair
+                  ends up costing you. Work through it while you wait.
+                </p>
+              </Reveal>
+              <Reveal delay={0.16} className="mt-6 flex items-start gap-2.5 rounded-lg border border-alert-500/25 bg-alert-400/8 p-4">
                 <AlertTriangle
                   className="mt-0.5 size-4 shrink-0 text-alert-600"
                   aria-hidden="true"
@@ -211,13 +243,13 @@ export default function HomePage() {
                   If the ceiling is sagging or bulging, stay out of that room.
                   Trapped water is heavy and ceilings come down without warning.
                 </p>
-              </div>
+              </Reveal>
             </div>
 
-            <ol className="space-y-4">
+            <Stagger as="ol" className="space-y-4">
               {firstSteps.map((step, i) => (
-                <Reveal key={step.title} delay={i * 0.05}>
-                  <li className="flex gap-4 rounded-card border border-sand-200 bg-white p-5 shadow-card">
+                <StaggerItem key={step.title}>
+                  <li className="flex gap-4 rounded-card border border-sand-200 bg-white p-5 shadow-card transition-shadow duration-300 hover:shadow-lift">
                     <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-ocean-900 font-display text-sm font-bold text-sand-50">
                       {i + 1}
                     </span>
@@ -230,9 +262,9 @@ export default function HomePage() {
                       </p>
                     </div>
                   </li>
-                </Reveal>
+                </StaggerItem>
               ))}
-            </ol>
+            </Stagger>
           </div>
         </Container>
       </Section>
@@ -242,23 +274,32 @@ export default function HomePage() {
         <Container>
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div className="max-w-xl">
-              <Eyebrow>What we do</Eyebrow>
-              <h2 className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]">
-                Everything from the first bucket to the last coat of paint
-              </h2>
+              <Reveal direction="none">
+                <Eyebrow>What we do</Eyebrow>
+              </Reveal>
+              <TextReveal
+                as="h2"
+                text="Everything from the first bucket to the last coat of paint"
+                className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]"
+              />
             </div>
-            <Link
-              href="/water-damage-restoration"
-              className="inline-flex items-center gap-1.5 font-display text-[15px] font-semibold text-ocean-700 hover:text-ocean-900"
-            >
-              Water damage, in detail
-              <ArrowRight className="size-4" aria-hidden="true" />
-            </Link>
+            <Reveal delay={0.15}>
+              <Link
+                href="/water-damage-restoration"
+                className="group inline-flex items-center gap-1.5 font-display text-[15px] font-semibold text-ocean-700 hover:text-ocean-900"
+              >
+                Water damage, in detail
+                <ArrowRight
+                  className="size-4 transition-transform duration-300 group-hover:translate-x-1"
+                  aria-hidden="true"
+                />
+              </Link>
+            </Reveal>
           </div>
 
-          <div className="mt-9 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <Stagger className="mt-9 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {/* Lead card is intentionally larger — the others are secondary */}
-            <Reveal className="sm:col-span-2 lg:col-span-2">
+            <StaggerItem className="sm:col-span-2 lg:col-span-2">
               <article className="group relative h-full overflow-hidden rounded-card border border-sand-200 bg-ocean-950">
                 <Image
                   src={photo(img.ceilingDamage, 1200)}
@@ -290,17 +331,20 @@ export default function HomePage() {
                     className="mt-4 inline-flex items-center gap-1.5 font-display text-[15px] font-semibold text-surf-400 hover:text-white"
                   >
                     How the process works
-                    <ArrowRight className="size-4" aria-hidden="true" />
+                    <ArrowRight
+                      className="size-4 transition-transform duration-300 group-hover:translate-x-1"
+                      aria-hidden="true"
+                    />
                   </Link>
                 </div>
               </article>
-            </Reveal>
+            </StaggerItem>
 
             {services
               .filter((s) => s.slug !== "water-damage-restoration")
-              .map((s, i) => (
-                <Reveal key={s.slug} delay={i * 0.04}>
-                  <article className="h-full rounded-card border border-sand-200 bg-sand-50 p-6">
+              .map((s) => (
+                <StaggerItem key={s.slug}>
+                  <article className="h-full rounded-card border border-sand-200 bg-sand-50 p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-surf-500/40 hover:shadow-card">
                     <h3 className="font-display text-[17px] font-semibold text-ocean-900">
                       {s.title}
                     </h3>
@@ -308,9 +352,9 @@ export default function HomePage() {
                       {s.short}
                     </p>
                   </article>
-                </Reveal>
+                </StaggerItem>
               ))}
-          </div>
+          </Stagger>
 
           <PlaceholderNote>
             Only the water damage page is built in this mockup. The other four
@@ -323,8 +367,8 @@ export default function HomePage() {
       <Section className="bg-ocean-950 text-sand-100">
         <Container>
           <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-            <Reveal>
-              <div className="relative aspect-[4/3] overflow-hidden rounded-card">
+            <ImageReveal className="relative aspect-[4/3] rounded-card">
+              <div className="relative size-full">
                 <Image
                   src={photo(img.mold, 1000)}
                   alt="Mold growth spreading across a damp interior wall"
@@ -333,53 +377,52 @@ export default function HomePage() {
                   className="object-cover"
                 />
               </div>
-            </Reveal>
+            </ImageReveal>
 
             <div>
-              <Eyebrow>Why the clock matters here</Eyebrow>
-              <h2 className="font-display text-[1.75rem] font-bold leading-tight text-white sm:text-[2.1rem]">
-                On Maui, mold starts in about 48 hours
-              </h2>
-              <p className="mt-4 text-[15px] leading-relaxed text-ocean-100 sm:text-base">
-                Warm air that never really dries out is what makes this island
-                beautiful and what makes a water leak expensive. Mold can take
-                hold within 24 to 48 hours of a water event in this climate —
-                considerably faster than the mainland timelines most advice is
-                written for.
-              </p>
-              <p className="mt-4 text-[15px] leading-relaxed text-ocean-100 sm:text-base">
-                It matters financially as well as structurally. Most Hawaii
-                homeowners policies exclude mold damage outright or cap it very
-                low, so what insurance would have covered as water damage on day
-                one can become your own bill by day three.
-              </p>
+              <Reveal direction="none">
+                <Eyebrow>Why the clock matters here</Eyebrow>
+              </Reveal>
+              <TextReveal
+                as="h2"
+                text="On Maui, mold starts in about 48 hours"
+                className="font-display text-[1.75rem] font-bold leading-tight text-white sm:text-[2.1rem]"
+              />
+              <Reveal delay={0.12}>
+                <p className="mt-4 text-[15px] leading-relaxed text-ocean-100 sm:text-base">
+                  Warm air that never really dries out is what makes this island
+                  beautiful and what makes a water leak expensive. Mold can take
+                  hold within 24 to 48 hours of a water event in this climate —
+                  considerably faster than the mainland timelines most advice is
+                  written for.
+                </p>
+                <p className="mt-4 text-[15px] leading-relaxed text-ocean-100 sm:text-base">
+                  It matters financially as well as structurally. Most Hawaii
+                  homeowners policies exclude mold damage outright or cap it very
+                  low, so what insurance would have covered as water damage on
+                  day one can become your own bill by day three.
+                </p>
+              </Reveal>
 
-              <dl className="mt-8 grid grid-cols-3 gap-4 border-t border-ocean-800 pt-6">
-                <div>
-                  <dt className="text-xs uppercase tracking-wider text-ocean-300">
-                    Mold begins
-                  </dt>
-                  <dd className="nums mt-1 font-display text-2xl font-bold text-surf-400">
-                    24–48h
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-xs uppercase tracking-wider text-ocean-300">
-                    Typical drying
-                  </dt>
-                  <dd className="nums mt-1 font-display text-2xl font-bold text-surf-400">
-                    3–5 days
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-xs uppercase tracking-wider text-ocean-300">
-                    We answer
-                  </dt>
-                  <dd className="nums mt-1 font-display text-2xl font-bold text-surf-400">
-                    24/7
-                  </dd>
-                </div>
-              </dl>
+              <Stagger
+                as="dl"
+                className="mt-8 grid grid-cols-3 gap-4 border-t border-ocean-800 pt-6"
+              >
+                {[
+                  { k: "Mold begins", v: "24–48h" },
+                  { k: "Typical drying", v: "3–5 days" },
+                  { k: "We answer", v: "24/7" },
+                ].map((stat) => (
+                  <StaggerItem key={stat.k}>
+                    <dt className="text-xs uppercase tracking-wider text-ocean-300">
+                      {stat.k}
+                    </dt>
+                    <dd className="nums mt-1 font-display text-2xl font-bold text-surf-400">
+                      {stat.v}
+                    </dd>
+                  </StaggerItem>
+                ))}
+              </Stagger>
             </div>
           </div>
         </Container>
@@ -389,24 +432,33 @@ export default function HomePage() {
       <Section className="bg-sand-50">
         <Container>
           <div className="max-w-xl">
-            <Eyebrow>What happens next</Eyebrow>
-            <h2 className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]">
-              Five steps, and you will know where you are in them
-            </h2>
-            <p className="mt-4 text-[15px] leading-relaxed text-ink-700">
-              Most of the stress in a water loss comes from not knowing what is
-              supposed to happen. This is the whole job.
-            </p>
+            <Reveal direction="none">
+              <Eyebrow>What happens next</Eyebrow>
+            </Reveal>
+            <TextReveal
+              as="h2"
+              text="Five steps, and you will know where you are in them"
+              className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]"
+            />
+            <Reveal delay={0.1}>
+              <p className="mt-4 text-[15px] leading-relaxed text-ink-700">
+                Most of the stress in a water loss comes from not knowing what is
+                supposed to happen. This is the whole job.
+              </p>
+            </Reveal>
           </div>
 
-          <ol className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          <Stagger as="ol" className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {process.map((step, i) => {
               const Icon = step.icon;
               return (
-                <Reveal key={step.title} delay={i * 0.05}>
-                  <li className="h-full rounded-card border border-sand-200 bg-white p-5 shadow-card">
+                <StaggerItem key={step.title}>
+                  <li className="group h-full rounded-card border border-sand-200 bg-white p-5 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-surf-500/40 hover:shadow-lift">
                     <div className="flex items-center gap-2.5">
-                      <Icon className="size-5 text-surf-600" aria-hidden="true" />
+                      <Icon
+                        className="size-5 text-surf-600 transition-transform duration-300 group-hover:scale-110"
+                        aria-hidden="true"
+                      />
                       <span className="nums font-display text-xs font-bold text-sand-400">
                         0{i + 1}
                       </span>
@@ -418,10 +470,10 @@ export default function HomePage() {
                       {step.body}
                     </p>
                   </li>
-                </Reveal>
+                </StaggerItem>
               );
             })}
-          </ol>
+          </Stagger>
         </Container>
       </Section>
 
@@ -430,26 +482,32 @@ export default function HomePage() {
         <Container>
           <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
             <div>
-              <Eyebrow>Where we go</Eyebrow>
-              <h2 className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]">
-                All of Maui, and we know the drive times
-              </h2>
-              <p className="mt-4 text-[15px] leading-relaxed text-ink-700">
-                Central Maui and the South Shore are usually quickest. Upcountry
-                and the West Side take longer, and we will say so on the phone
-                rather than quote you an arrival time we cannot keep.
-              </p>
-              <div className="mt-6">
-                <Button href="/service-areas/kihei" variant="ghost">
-                  <MapPin className="size-4" aria-hidden="true" />
-                  See the Kīhei page
-                </Button>
-              </div>
+              <Reveal direction="none">
+                <Eyebrow>Where we go</Eyebrow>
+              </Reveal>
+              <TextReveal
+                as="h2"
+                text="All of Maui, and we know the drive times"
+                className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]"
+              />
+              <Reveal delay={0.1}>
+                <p className="mt-4 text-[15px] leading-relaxed text-ink-700">
+                  Central Maui and the South Shore are usually quickest.
+                  Upcountry and the West Side take longer, and we will say so on
+                  the phone rather than quote you an arrival time we cannot keep.
+                </p>
+                <div className="mt-6">
+                  <Button href="/service-areas/kihei" variant="ghost">
+                    <MapPin className="size-4" aria-hidden="true" />
+                    See the Kīhei page
+                  </Button>
+                </div>
+              </Reveal>
             </div>
 
-            <div className="grid grid-cols-2 gap-x-6 gap-y-1 sm:grid-cols-3">
+            <Stagger className="grid grid-cols-2 gap-x-6 gap-y-1 sm:grid-cols-3">
               {serviceAreas.map((area) => (
-                <div
+                <StaggerItem
                   key={area.slug}
                   className="border-b border-sand-200 py-3 last:border-0"
                 >
@@ -466,9 +524,9 @@ export default function HomePage() {
                     </span>
                   )}
                   <p className="text-xs text-ink-500">{area.region}</p>
-                </div>
+                </StaggerItem>
               ))}
-            </div>
+            </Stagger>
           </div>
         </Container>
       </Section>
@@ -478,34 +536,43 @@ export default function HomePage() {
         <Container>
           <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-16">
             <div>
-              <Eyebrow>Insurance</Eyebrow>
-              <h2 className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]">
-                We document the job so your adjuster can approve it
-              </h2>
-              <p className="mt-4 text-[15px] leading-relaxed text-ink-700">
-                Moisture readings, photographs and daily drying logs from the
-                first visit onward, written up the way carriers expect to receive
-                them. We bill the insurer directly where the policy allows it.
-              </p>
-              <p className="mt-4 text-[15px] leading-relaxed text-ink-700">
-                We will also tell you when we think a claim is not worth filing.
-                On a small loss the deductible sometimes exceeds the repair, and
-                a claim on record can affect your renewal — which, given what has
-                happened to condo premiums in Hawaii lately, is worth a moment of
-                thought before you pick up the phone to your carrier.
-              </p>
+              <Reveal direction="none">
+                <Eyebrow>Insurance</Eyebrow>
+              </Reveal>
+              <TextReveal
+                as="h2"
+                text="We document the job so your adjuster can approve it"
+                className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]"
+              />
+              <Reveal delay={0.1}>
+                <p className="mt-4 text-[15px] leading-relaxed text-ink-700">
+                  Moisture readings, photographs and daily drying logs from the
+                  first visit onward, written up the way carriers expect to
+                  receive them. We bill the insurer directly where the policy
+                  allows it.
+                </p>
+                <p className="mt-4 text-[15px] leading-relaxed text-ink-700">
+                  We will also tell you when we think a claim is not worth
+                  filing. On a small loss the deductible sometimes exceeds the
+                  repair, and a claim on record can affect your renewal — which,
+                  given what has happened to condo premiums in Hawaii lately, is
+                  worth a moment of thought before you pick up the phone to your
+                  carrier.
+                </p>
+              </Reveal>
             </div>
 
-            <ul className="space-y-3">
+            <Stagger as="ul" className="space-y-3">
               {[
                 "Moisture mapping and photographs from visit one",
                 "Daily drying logs in the format carriers expect",
                 "Direct billing to the insurer where the policy allows",
                 "A straight answer on whether a claim is worth filing",
               ].map((item) => (
-                <li
+                <StaggerItem
+                  as="li"
                   key={item}
-                  className="flex items-start gap-3 rounded-card border border-sand-300 bg-white p-4"
+                  className="flex items-start gap-3 rounded-card border border-sand-300 bg-white p-4 transition-colors duration-300 hover:border-surf-500/50"
                 >
                   <FileText
                     className="mt-0.5 size-4 shrink-0 text-surf-600"
@@ -514,9 +581,9 @@ export default function HomePage() {
                   <span className="text-[15px] leading-relaxed text-ink-700">
                     {item}
                   </span>
-                </li>
+                </StaggerItem>
               ))}
-            </ul>
+            </Stagger>
           </div>
         </Container>
       </Section>
@@ -524,7 +591,7 @@ export default function HomePage() {
       {/* ─────────────────── Reviews (honest gap) ─────────────────── */}
       <Section className="bg-sand-50">
         <Container>
-          <div className="mx-auto max-w-2xl rounded-card border border-dashed border-sand-400 bg-white p-8 text-center">
+          <Reveal className="mx-auto max-w-2xl rounded-card border border-dashed border-sand-400 bg-white p-8 text-center">
             <h2 className="font-display text-xl font-bold text-ocean-900">
               Reviews go here
             </h2>
@@ -539,7 +606,7 @@ export default function HomePage() {
               carry 595 and 972 reviews. Building this up is the single highest
               priority outside the website itself.
             </p>
-          </div>
+          </Reveal>
         </Container>
       </Section>
 
@@ -548,16 +615,24 @@ export default function HomePage() {
         <Container>
           <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
             <div>
-              <Eyebrow>Common questions</Eyebrow>
-              <h2 className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]">
-                The things people ask at 2am
-              </h2>
-              <p className="mt-4 text-[15px] leading-relaxed text-ink-700">
-                Still stuck? Call. We would rather talk you through it than have
-                you guess.
-              </p>
+              <Reveal direction="none">
+                <Eyebrow>Common questions</Eyebrow>
+              </Reveal>
+              <TextReveal
+                as="h2"
+                text="The things people ask at 2am"
+                className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]"
+              />
+              <Reveal delay={0.1}>
+                <p className="mt-4 text-[15px] leading-relaxed text-ink-700">
+                  Still stuck? Call. We would rather talk you through it than
+                  have you guess.
+                </p>
+              </Reveal>
             </div>
-            <FaqList items={faqs} />
+            <Reveal delay={0.08}>
+              <FaqList items={faqs} />
+            </Reveal>
           </div>
         </Container>
       </Section>
@@ -565,7 +640,7 @@ export default function HomePage() {
       {/* ─────────────────── Final CTA ─────────────────── */}
       <section className="bg-alert-600">
         <Container className="py-12 sm:py-16">
-          <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
+          <Reveal className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
             <div className="max-w-xl">
               <h2 className="font-display text-[1.6rem] font-bold leading-tight text-white sm:text-[2rem]">
                 Still dripping? Call us now.
@@ -577,12 +652,12 @@ export default function HomePage() {
             </div>
             <a
               href={site.phoneHref}
-              className="nums inline-flex items-center gap-3 rounded-lg bg-white px-7 py-4 font-display text-lg font-bold tracking-tight text-alert-700 transition-transform hover:scale-[1.02]"
+              className="nums inline-flex items-center gap-3 rounded-lg bg-white px-7 py-4 font-display text-lg font-bold tracking-tight text-alert-700 shadow-lift transition-transform duration-200 hover:scale-[1.03] active:scale-100"
             >
               <Phone className="size-5" aria-hidden="true" />
               {site.phone}
             </a>
-          </div>
+          </Reveal>
         </Container>
       </section>
 

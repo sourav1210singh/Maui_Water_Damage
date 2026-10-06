@@ -57,7 +57,10 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth;
+    /* No `scroll-behavior: smooth` here on purpose — Lenis drives scrolling
+       and the two fight each other, producing a visible stutter. Lenis is
+       disabled under prefers-reduced-motion, which falls back to native
+       instant scrolling, which is the correct behaviour anyway. */
     -webkit-text-size-adjust: 100%;
   }
 
@@ -116,9 +119,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
   *,
   *::before,
   *::after {

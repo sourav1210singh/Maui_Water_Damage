@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Archivo, Inter } from "next/font/google";
 import "./globals.css";
+import "lenis/dist/lenis.css";
+import { SmoothScroll } from "@/components/smooth-scroll";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { EmergencyBar } from "@/components/emergency-bar";
@@ -61,14 +63,19 @@ export default function RootLayout({
           Skip to content
         </a>
 
-        <SiteHeader />
+        <SmoothScroll>
+          <SiteHeader />
 
-        {/* pb-20 on mobile keeps the fixed call bar from covering the footer */}
-        <main id="main" className="pb-20 md:pb-0">
-          {children}
-        </main>
+          {/* pb-20 on mobile keeps the fixed call bar from covering the footer */}
+          <main id="main" className="pb-20 md:pb-0">
+            {children}
+          </main>
 
-        <SiteFooter />
+          <SiteFooter />
+        </SmoothScroll>
+
+        {/* Outside the Lenis wrapper: these are position:fixed and must not be
+            affected by the smooth-scroll transform context. */}
         <EmergencyBar />
 
         <JsonLd data={[localBusinessSchema(), organizationSchema()]} />

@@ -9,7 +9,7 @@ import {
   Button,
   Breadcrumbs,
 } from "@/components/ui";
-import { Reveal } from "@/components/reveal";
+import { Stagger, StaggerItem, TextReveal, Parallax } from "@/components/motion";
 import { FaqList } from "@/components/faq";
 import {
   JsonLd,
@@ -71,14 +71,16 @@ export default function WaterDamagePage() {
     <>
       {/* Hero */}
       <section className="relative isolate overflow-hidden bg-ocean-950">
-        <Image
-          src={photo(img.ceilingDamage, 1920)}
-          alt="Water-stained ceiling with peeling paint after a leak"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
+        <Parallax distance={70} className="absolute -inset-y-14 inset-x-0">
+          <Image
+            src={photo(img.ceilingDamage, 1920)}
+            alt="Water-stained ceiling with peeling paint after a leak"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+        </Parallax>
         <div
           className="absolute inset-0 bg-[linear-gradient(100deg,rgba(4,26,35,0.96)_0%,rgba(4,26,35,0.90)_38%,rgba(4,26,35,0.68)_70%,rgba(4,26,35,0.45)_100%)]"
           aria-hidden="true"
@@ -86,9 +88,12 @@ export default function WaterDamagePage() {
         <Container className="relative py-14 sm:py-20">
           <div className="max-w-2xl">
             <Breadcrumbs trail={trail} tone="dark" />
-            <h1 className="font-display text-[2rem] font-bold leading-[1.1] tracking-tight text-white sm:text-[2.9rem]">
-              Water damage restoration on Maui
-            </h1>
+            <TextReveal
+              as="h1"
+              trigger="mount"
+              text="Water damage restoration on Maui"
+              className="font-display text-[2rem] font-bold leading-[1.1] tracking-tight text-white sm:text-[2.9rem]"
+            />
             {/* Answer-first paragraph: self-contained and extractable */}
             <p className="mt-5 text-[17px] leading-relaxed text-ocean-100">
               Water damage restoration is the process of removing standing water,
@@ -119,9 +124,11 @@ export default function WaterDamagePage() {
         <Container>
           <div className="max-w-2xl">
             <Eyebrow>How losses are classified</Eyebrow>
-            <h2 className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]">
-              The three categories of water, and why they decide everything
-            </h2>
+            <TextReveal
+                as="h2"
+                text="The three categories of water, and why they decide everything"
+                className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]"
+              />
             <p className="mt-4 text-[15px] leading-relaxed text-ink-700">
               Every water loss is graded by how contaminated the water is. That
               grade determines what can be dried and kept, what has to be thrown
@@ -173,14 +180,16 @@ export default function WaterDamagePage() {
         <Container>
           <div className="max-w-2xl">
             <Eyebrow>What we get called for</Eyebrow>
-            <h2 className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]">
-              Six causes account for most of the work on this island
-            </h2>
+            <TextReveal
+                as="h2"
+                text="Six causes account for most of the work on this island"
+                className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]"
+              />
           </div>
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {causes.map((c, i) => (
-              <Reveal key={c.title} delay={i * 0.04}>
-                <article className="h-full rounded-card border border-sand-200 bg-sand-50 p-5">
+          <Stagger className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {causes.map((c) => (
+              <StaggerItem key={c.title}>
+                <article className="h-full rounded-card border border-sand-200 bg-sand-50 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-surf-500/40 hover:shadow-card">
                   <h3 className="font-display text-[16px] font-semibold leading-snug text-ocean-900">
                     {c.title}
                   </h3>
@@ -188,9 +197,9 @@ export default function WaterDamagePage() {
                     {c.body}
                   </p>
                 </article>
-              </Reveal>
+              </StaggerItem>
             ))}
-          </div>
+          </Stagger>
         </Container>
       </Section>
 
@@ -199,24 +208,26 @@ export default function WaterDamagePage() {
         <Container>
           <div className="max-w-2xl">
             <Eyebrow>The work itself</Eyebrow>
-            <h2 className="font-display text-[1.75rem] font-bold leading-tight text-white sm:text-[2.1rem]">
-              What actually happens, hour by hour
-            </h2>
+            <TextReveal
+                as="h2"
+                text="What actually happens, hour by hour"
+                className="font-display text-[1.75rem] font-bold leading-tight text-white sm:text-[2.1rem]"
+              />
           </div>
 
-          <ol className="mt-10 space-y-5">
+          <Stagger as="ol" className="mt-10 space-y-5">
             {[
               { icon: Search, h: "Inspection and moisture mapping", t: "Before anything is moved we meter the affected rooms and the rooms next to them, and run a thermal camera over walls, ceilings and floors. Water travels further than it looks — a leak at a shower pan routinely shows up two rooms away. Everything gets photographed for the claim at this point." },
               { icon: Droplets, h: "Extraction", t: "Standing water comes out first with truck-mounted or portable units. On carpet we extract through the pad where it is salvageable. This is the single highest-value hour of the whole job: every gallon removed now is a gallon that does not have to be evaporated over the next four days." },
               { icon: Wind, h: "Drying setup", t: "Air movers positioned to sweep the wet surfaces, dehumidifiers sized to the volume of the space. Where water is trapped inside a wall or under cabinets we drill discreet access holes or lift a section of baseboard rather than tearing out the whole wall." },
               { icon: Gauge, h: "Daily monitoring", t: "We come back every day, take readings from the same marked points, and log them. Equipment moves or comes out as areas reach dry standard. You get told where things stand each day rather than wondering." },
               { icon: Hammer, h: "Reconstruction", t: "Once the structure is genuinely dry — measured, not assumed — we patch, texture, paint, and put flooring and trim back. The goal is that you cannot tell where the damage was." },
-            ].map((s, i) => {
+            ].map((s) => {
               const Icon = s.icon;
               return (
-                <Reveal key={s.h} delay={i * 0.04}>
-                  <li className="flex gap-5 rounded-card border border-ocean-800 bg-ocean-900/50 p-5 sm:p-6">
-                    <div className="flex size-11 shrink-0 items-center justify-center rounded-lg bg-ocean-800">
+                <StaggerItem key={s.h}>
+                  <li className="group flex gap-5 rounded-card border border-ocean-800 bg-ocean-900/50 p-5 transition-colors duration-300 hover:border-surf-500/40 sm:p-6">
+                    <div className="flex size-11 shrink-0 items-center justify-center rounded-lg bg-ocean-800 transition-colors duration-300 group-hover:bg-ocean-700">
                       <Icon className="size-5 text-surf-400" aria-hidden="true" />
                     </div>
                     <div>
@@ -228,10 +239,10 @@ export default function WaterDamagePage() {
                       </p>
                     </div>
                   </li>
-                </Reveal>
+                </StaggerItem>
               );
             })}
-          </ol>
+          </Stagger>
         </Container>
       </Section>
 
@@ -240,9 +251,11 @@ export default function WaterDamagePage() {
         <Container>
           <div className="flex flex-col items-start justify-between gap-6 rounded-card border border-sand-300 bg-white p-7 sm:flex-row sm:items-center sm:p-9">
             <div className="max-w-xl">
-              <h2 className="font-display text-[1.5rem] font-bold leading-tight text-ocean-900">
-                What does this cost on Maui?
-              </h2>
+              <TextReveal
+                as="h2"
+                text="What does this cost on Maui?"
+                className="font-display text-[1.5rem] font-bold leading-tight text-ocean-900"
+              />
               <p className="mt-2.5 text-[15px] leading-relaxed text-ink-700">
                 Most Maui homes land between $1,500 and $6,000 for mitigation.
                 We have broken it down by severity, with the island-specific
@@ -263,9 +276,11 @@ export default function WaterDamagePage() {
       {/* Areas */}
       <Section className="border-y border-sand-200 bg-white">
         <Container>
-          <h2 className="font-display text-[1.5rem] font-bold text-ocean-900">
-            Where we work
-          </h2>
+          <TextReveal
+                as="h2"
+                text="Where we work"
+                className="font-display text-[1.5rem] font-bold text-ocean-900"
+              />
           <ul className="mt-5 flex flex-wrap gap-2.5">
             {serviceAreas.map((a) => (
               <li key={a.slug}>
@@ -293,9 +308,11 @@ export default function WaterDamagePage() {
           <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
             <div>
               <Eyebrow>Questions</Eyebrow>
-              <h2 className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]">
-                Water damage, answered properly
-              </h2>
+              <TextReveal
+                as="h2"
+                text="Water damage, answered properly"
+                className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]"
+              />
             </div>
             <FaqList items={faqs} />
           </div>
