@@ -10,7 +10,10 @@ export function SiteFooter() {
       <Container className="py-12 sm:py-16">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-1">
-            <Logo tone="light" />
+            {/* Tagline off here: the footer column is narrow enough that it
+                wraps to two lines, and the hours are already stated in the
+                "Get help" column alongside. */}
+            <Logo tone="light" showTagline={false} />
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-ocean-200">
               Water damage restoration and structural drying across Maui. We
               answer the phone at any hour.

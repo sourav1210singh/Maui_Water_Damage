@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <title>Maui Water Damage Pros</title>
+  <!-- Solid badge: a browser tab is 16px, so the mark needs its own
+       background rather than relying on the browser's theme for contrast. -->
+  <rect width="48" height="48" rx="11" fill="#072834"/>
+  <g transform="translate(4 4)">
+    <path d="M8.08 23q5.96-3.2 11.92 0t11.92 0A12 12 0 0 1 8.08 23Z" fill="#2bb3a3"/>
+    <path d="M20 3c6.9 8.2 12 14.2 12 18.6a12 12 0 1 1-24 0C8 17.2 13.1 11.2 20 3Z"
+          fill="none" stroke="#fbf9f5" stroke-width="2.8" stroke-linejoin="round"/>
+  </g>
+</svg>
