@@ -127,7 +127,7 @@ export default function WaterDamagePage() {
             <TextReveal
                 as="h2"
                 text="The three categories of water, and why they decide everything"
-                className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]"
+                className="font-display text-[2rem] font-bold leading-[1.08] tracking-tight text-ocean-900 sm:text-[2.6rem] lg:text-[3.1rem]"
               />
             <p className="prose-measure mt-4 text-[15px] leading-relaxed text-ink-700">
               Every water loss is graded by how contaminated the water is. That
@@ -183,7 +183,7 @@ export default function WaterDamagePage() {
             <TextReveal
                 as="h2"
                 text="Six causes account for most of the work on this island"
-                className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]"
+                className="font-display text-[2rem] font-bold leading-[1.08] tracking-tight text-ocean-900 sm:text-[2.6rem] lg:text-[3.1rem]"
               />
           </div>
           <Stagger className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -211,7 +211,7 @@ export default function WaterDamagePage() {
             <TextReveal
                 as="h2"
                 text="What actually happens, hour by hour"
-                className="font-display text-[1.75rem] font-bold leading-tight text-white sm:text-[2.1rem]"
+                className="font-display text-[2rem] font-bold leading-[1.08] tracking-tight text-white sm:text-[2.6rem] lg:text-[3.1rem]"
               />
           </div>
 
@@ -311,7 +311,7 @@ export default function WaterDamagePage() {
               <TextReveal
                 as="h2"
                 text="Water damage, answered properly"
-                className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]"
+                className="font-display text-[2rem] font-bold leading-[1.08] tracking-tight text-ocean-900 sm:text-[2.6rem] lg:text-[3.1rem]"
               />
             </div>
             <FaqList items={faqs} />

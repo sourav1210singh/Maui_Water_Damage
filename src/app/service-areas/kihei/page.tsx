@@ -156,7 +156,7 @@ export default function KiheiPage() {
             <TextReveal
                 as="h2"
                 text="Kīhei water damage has its own pattern"
-                className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]"
+                className="font-display text-[2rem] font-bold leading-[1.08] tracking-tight text-ocean-900 sm:text-[2.6rem] lg:text-[3.1rem]"
               />
             <p className="prose-measure mt-4 text-[15px] leading-relaxed text-ink-700">
               The South Shore is the driest part of the island, so people are
@@ -198,7 +198,7 @@ export default function KiheiPage() {
               <TextReveal
                 as="h2"
                 text="When one unit floods three"
-                className="font-display text-[1.75rem] font-bold leading-tight text-white sm:text-[2.1rem]"
+                className="font-display text-[2rem] font-bold leading-[1.08] tracking-tight text-white sm:text-[2.6rem] lg:text-[3.1rem]"
               />
               <p className="prose-measure mt-4 text-[15px] leading-relaxed text-ocean-100">
                 Condo losses are the hardest to handle well, because the
@@ -245,7 +245,7 @@ export default function KiheiPage() {
               <TextReveal
                 as="h2"
                 text="Asked by South Shore owners"
-                className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]"
+                className="font-display text-[2rem] font-bold leading-[1.08] tracking-tight text-ocean-900 sm:text-[2.6rem] lg:text-[3.1rem]"
               />
             </div>
             <FaqList items={faqs} />

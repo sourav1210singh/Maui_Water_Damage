@@ -127,6 +127,20 @@
       0 8px 24px -12px rgb(8 20 26 / 0.12);
   }
 
+  /* The lit top edge that makes the glass bar read as a surface. Kept as real
+     utilities rather than Tailwind arbitrary values — the commas inside
+     rgba() break arbitrary-value parsing, so the drop shadow silently never
+     applied when written inline. */
+  .glass-edge {
+    box-shadow: inset 0 4px 4px 0 rgb(255 255 255 / 0.45);
+  }
+
+  .glass-edge-lifted {
+    box-shadow:
+      inset 0 4px 4px 0 rgb(255 255 255 / 0.45),
+      0 10px 30px -12px rgb(8 20 26 / 0.28);
+  }
+
   .shadow-lift {
     box-shadow:
       0 2px 4px rgb(8 20 26 / 0.06),

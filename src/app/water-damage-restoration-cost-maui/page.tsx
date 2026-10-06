@@ -113,7 +113,7 @@ export default function CostPage() {
             <TextReveal
                 as="h2"
                 text="Typical cost by how bad it is"
-                className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]"
+                className="font-display text-[2rem] font-bold leading-[1.08] tracking-tight text-ocean-900 sm:text-[2.6rem] lg:text-[3.1rem]"
               />
             <p className="prose-measure mt-4 text-[15px] leading-relaxed text-ink-700">
               Severity is the main driver, and it is mostly decided by how long
@@ -169,7 +169,7 @@ export default function CostPage() {
               <TextReveal
                 as="h2"
                 text="What makes up the bill"
-                className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]"
+                className="font-display text-[2rem] font-bold leading-[1.08] tracking-tight text-ocean-900 sm:text-[2.6rem] lg:text-[3.1rem]"
               />
               <p className="prose-measure mt-4 text-[15px] leading-relaxed text-ink-700">
                 Restoration is priced from itemised rates rather than a single
@@ -218,7 +218,7 @@ export default function CostPage() {
             <TextReveal
                 as="h2"
                 text="Why the mainland numbers do not apply here"
-                className="font-display text-[1.75rem] font-bold leading-tight text-white sm:text-[2.1rem]"
+                className="font-display text-[2rem] font-bold leading-[1.08] tracking-tight text-white sm:text-[2.6rem] lg:text-[3.1rem]"
               />
             <p className="prose-measure mt-4 text-[15px] leading-relaxed text-ocean-100">
               Almost every cost guide online is written for the mainland. Four
@@ -258,7 +258,7 @@ export default function CostPage() {
             <TextReveal
                 as="h2"
                 text="What your policy will and will not pay for"
-                className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]"
+                className="font-display text-[2rem] font-bold leading-[1.08] tracking-tight text-ocean-900 sm:text-[2.6rem] lg:text-[3.1rem]"
               />
             <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-ink-700">
               <p>
@@ -309,7 +309,7 @@ export default function CostPage() {
               <TextReveal
                 as="h2"
                 text="The ones that come up on every estimate"
-                className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]"
+                className="font-display text-[2rem] font-bold leading-[1.08] tracking-tight text-ocean-900 sm:text-[2.6rem] lg:text-[3.1rem]"
               />
               <div className="mt-6">
                 <Link
