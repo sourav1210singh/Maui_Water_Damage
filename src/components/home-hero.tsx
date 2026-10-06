@@ -63,8 +63,8 @@ export function HomeHero() {
         {/* Poster is always rendered: it is the LCP element and paints
             immediately. The video, when allowed, layers over it. */}
         <Image
-          src="/media/hero-coast-1600.jpg"
-          alt="Aerial view of surf washing onto a Maui beach"
+          src="/media/hero-crew-1600.jpg"
+          alt="A restoration technician extracting standing water from a flooded living-room floor"
           fill
           priority
           sizes="100vw"
@@ -82,10 +82,10 @@ export function HomeHero() {
             // with autoPlay is contradictory — it can leave the first frame
             // stalled instead of playing.
             preload="auto"
-            poster="/media/hero-coast-1600.jpg"
+            poster="/media/hero-crew-1600.jpg"
             className="absolute inset-0 size-full object-cover"
           >
-            <source src="/media/hero-coast.mp4" type="video/mp4" />
+            <source src="/media/hero-crew.mp4" type="video/mp4" />
           </video>
         )}
 
