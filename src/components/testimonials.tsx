@@ -7,7 +7,7 @@ import { Container, Section, Eyebrow } from "./ui";
 import { Reveal, TextReveal } from "./motion";
 
 /**
- * PLACEHOLDER CONTENT — every quote and name below is written, not collected.
+ * PLACEHOLDER CONTENT. Every quote and name below is written, not collected.
  *
  * They are here so the client can see the block in position and judge the
  * layout. All six must be replaced with real reviews before this site goes
@@ -17,7 +17,7 @@ import { Reveal, TextReveal } from "./motion";
  * Deliberately not marked up as Review or AggregateRating JSON-LD. Fabricated
  * reviews in structured data are what Google issues manual actions for, and a
  * penalty picked up during a mockup would follow the real domain. Once these
- * are real, the schema can go in — see schema.tsx, where the builder was left
+ * are real, the schema can go in. See schema.tsx, where the builder was left
  * out for the same reason.
  *
  * No star ratings and no avatars, for the same reason: we have neither.
@@ -32,7 +32,7 @@ type Testimonial = {
 const testimonials: Testimonial[] = [
   {
     quote:
-      "Pipe let go in the upstairs bathroom at about eleven at night. They said forty-five minutes and were here in forty. What I did not expect was being told to stay out of the room below because the ceiling was holding water — I would have walked straight under it.",
+      "Pipe let go in the upstairs bathroom at about eleven at night. They said forty-five minutes and were here in forty. What I did not expect was being told to stay out of the room below because the ceiling was holding water. I would have walked straight under it.",
     name: "Keoni L.",
     town: "Kīhei",
     job: "Burst supply line",
@@ -168,13 +168,13 @@ export function Testimonials() {
         {/* One Reveal around the whole carousel rather than per card. The cards
             past the third are scrolled outside the viewport, so a per-card
             whileInView would leave them sitting at opacity 0 until they were
-            paged into view — the first thing you would see on pressing next is
+            paged into view, and the first thing you would see on pressing next is
             an empty card fading in. */}
         <Reveal delay={0.1} className="mt-12">
           {/* Scroll-snap rather than a transform carousel: touch swipe,
               trackpad and keyboard arrows all come free and native, it keeps
               working with JavaScript off, and the buttons below are only a
-              convenience on top of it. Hence tabIndex and the region label —
+              convenience on top of it. Hence tabIndex and the region label:
               a scrollable box has to be reachable by keyboard. */}
           <ul
             ref={trackRef}
@@ -185,7 +185,7 @@ export function Testimonials() {
             // scroll-px has to match px. Without it a snap-start card aligns
             // to the padding edge, so the browser immediately scrolls the
             // track by the padding width and the first card can never sit at
-            // the start — the previous button stayed live on a fresh load.
+            // the start, and the previous button stayed live on a fresh load.
             className="no-scrollbar -mx-5 flex snap-x snap-mandatory scroll-px-5 gap-5 overflow-x-auto px-5 pb-1 sm:-mx-8 sm:scroll-px-8 sm:px-8 lg:-mx-12 lg:scroll-px-12 lg:px-12"
           >
             {testimonials.map((t) => (
@@ -217,7 +217,7 @@ export function Testimonials() {
           </ul>
 
           {/* Replaces dots. With three cards visible out of six, dots imply a
-              page count that does not exist — the track scrolls by one card,
+              page count that does not exist. The track scrolls by one card,
               not by a page. */}
           <div
             aria-hidden="true"

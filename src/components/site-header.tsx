@@ -18,7 +18,7 @@ const nav = [
 /**
  * Condenses the bar once the page has moved.
  *
- * Reads Lenis rather than the window `scroll` event — Lenis drives scrolling
+ * Reads Lenis rather than the window `scroll` event. Lenis drives scrolling
  * itself and emits very few native events, which left a plain listener latched
  * in whichever state it happened to read first.
  */
@@ -37,7 +37,7 @@ function useScrolled(threshold = 24) {
 
 /**
  * A full-width translucent bar, not a floating card. Edge to edge, with the
- * page background showing through a blur — the content underneath scrolls
+ * page background showing through a blur, and the content underneath scrolls
  * beneath it rather than past a detached pill.
  */
 export function SiteHeader() {
@@ -68,7 +68,7 @@ export function SiteHeader() {
               : "rounded-none border-transparent border-b-sand-200/60 bg-sand-50/85 px-5 py-3 shadow-none sm:px-8 md:py-4 lg:px-12"
           }`}
         >
-        <Link href="/" aria-label={`${site.name} — home`} className="shrink-0">
+        <Link href="/" aria-label={`${site.name}, home`} className="shrink-0">
           <Logo showTagline={!scrolled} />
         </Link>
 
@@ -111,7 +111,7 @@ export function SiteHeader() {
             </span>
           </a>
 
-          {/* Phones get the icon-only call button — the full number is already
+          {/* Phones get the icon-only call button. The full number is already
               permanent in the bottom call bar. */}
           <a
             href={site.phoneHref}

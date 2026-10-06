@@ -5,7 +5,7 @@ import { site, serviceAreas } from "./site";
  *
  * Deliberately absent: AggregateRating and Review. Google penalises
  * self-serving review markup, and the client has no verified reviews yet.
- * These get added once real reviews exist — not before.
+ * These get added once real reviews exist, not before.
  */
 
 const ORG_ID = `${site.url}/#organization`;
@@ -23,7 +23,7 @@ export function localBusinessSchema() {
       "Emergency water damage restoration, structural drying and mold remediation across Maui. Available 24 hours a day.",
     address: {
       "@type": "PostalAddress",
-      // Omitted while blank — see the note in site.ts
+      // Omitted while blank. See the note in site.ts
       ...(site.address.street ? { streetAddress: site.address.street } : {}),
       addressLocality: site.address.locality,
       addressRegion: site.address.region,
@@ -35,7 +35,7 @@ export function localBusinessSchema() {
       latitude: site.geo.lat,
       longitude: site.geo.lng,
     },
-    // 24/7 — matches the "Open 24 hours" signal Google shows in the local pack
+    // 24/7, matching the "Open 24 hours" signal Google shows in the local pack
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
@@ -117,7 +117,7 @@ export type Faq = { q: string; a: string };
  * FAQPage schema.
  *
  * Note for the client: Google stopped showing FAQ *rich results* on
- * 7 May 2026. This markup is not for a visual snippet — it is here because
+ * 7 May 2026. This markup is not for a visual snippet. It is here because
  * pages carrying FAQPage schema are substantially more likely to be pulled
  * into AI Overviews, and because other engines still parse it.
  */

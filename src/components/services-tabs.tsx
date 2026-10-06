@@ -13,7 +13,7 @@ import { services, img, photo } from "@/lib/site";
 /**
  * Presentation copy for each service, keyed by slug.
  *
- * Titles and the `live` flags are not repeated here — they come from
+ * Titles and the `live` flags are not repeated here. They come from
  * `services` in site.ts, which the footer, the schema and the nav also read.
  * Only the things that exist solely for this section live in this file.
  */
@@ -22,12 +22,12 @@ const detail: Record<
   { body: string; image: string; alt: string }
 > = {
   "water-damage-restoration": {
-    body: "Burst supply lines, roof leaks after a Kona storm, a washing-machine hose that let go while you were at work. Standing water comes out first, then we dry the structure itself — subfloor, framing, the cavity behind the baseboard — and log readings from the same marked points every day until it reaches dry standard.",
+    body: "Burst supply lines, roof leaks after a Kona storm, a washing-machine hose that let go while you were at work. Standing water comes out first, then we dry the structure itself, including the subfloor, the framing and the cavity behind the baseboard, and log readings from the same marked points every day until it reaches dry standard.",
     image: img.ceilingDamage,
     alt: "Water-stained and collapsing ceiling after a roof leak",
   },
   "mold-remediation": {
-    body: "Here the clock runs closer to 48 hours than the 72 the mainland guides quote, because the humidity rarely drops far enough to stop it. Containment goes up before anything is disturbed, removal happens under negative air, and clearance is verified by an independent hygienist — so you end up holding a document rather than a reassurance.",
+    body: "Here the clock runs closer to 48 hours than the 72 the mainland guides quote, because the humidity rarely drops far enough to stop it. Containment goes up before anything is disturbed, removal happens under negative air, and clearance is verified by an independent hygienist, so you end up holding a document rather than a reassurance.",
     image: img.mold,
     alt: "Black mold spreading across a ceiling corner",
   },
@@ -37,7 +37,7 @@ const detail: Record<
     alt: "Rain and mist rolling over a green ridge above a tiled roof",
   },
   "sewage-cleanup": {
-    body: "Backed-up mains, failed lift stations, septic that could not take the storm. Everything porous it touched comes out — carpet, pad, and drywall cut to a line above the water — and what stays is cleaned and treated under containment while the crew works in full PPE. You get the rooms back, not a deodorised version of the problem.",
+    body: "Backed-up mains, failed lift stations, septic that could not take the storm. Everything porous it touched comes out: carpet, pad, and drywall cut to a line above the water. What stays is cleaned and treated under containment while the crew works in full PPE. You get the rooms back, not a deodorised version of the problem.",
     image: img.pipes,
     alt: "Plumbing manifold running across a mechanical-room wall",
   },
@@ -173,7 +173,7 @@ export function ServicesTabs() {
                     fill
                     // A fixed width, not a vw fraction. Four of these five are
                     // transparent at load time, and the browser resolved their
-                    // `sizes` before the box had a layout — so it fell back to
+                    // `sizes` before the box had a layout, so it fell back to
                     // the widest srcset candidate and started pulling 3840px
                     // JPEGs. The column is never wider than ~722px (1700 cap,
                     // less the gutters, card padding and the grid gap).

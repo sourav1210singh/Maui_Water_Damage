@@ -48,7 +48,7 @@ const steps: Step[] = [
     n: "02",
     spine: "Kill the power",
     title: "Cut power to the wet rooms",
-    body: "At the breaker, not at the wall switch — reaching for a switch or an outlet means putting your hand near a live contact in a room that is now conductive. If the panel itself is wet, stay out and call an electrician first.",
+    body: "At the breaker, not at the wall switch. Reaching for a switch or an outlet means putting your hand near a live contact in a room that is now conductive. If the panel itself is wet, stay out and call an electrician first.",
     tags: ["Breaker panel", "Not the wall switch", "Dry hands, dry floor"],
     icon: ZapOff,
     image: "/media/steps/first-2.jpg",
@@ -85,7 +85,7 @@ const steps: Step[] = [
  * Laid out as a horizontal accordion on desktop: four panels share one row,
  * and the one under the cursor takes 2.6 shares of the width while the rest
  * hold 1 each. Widths are driven by flex-grow rather than percentages so the
- * four always total exactly the row at every frame of the animation —
+ * four always total exactly the row at every frame of the animation, and
  * interpolating four independent percentages lets them drift apart and opens
  * a seam mid-transition.
  *
@@ -160,7 +160,7 @@ export function FirstSteps() {
                   }
                 >
                   {/* Image band on phones, full bleed behind everything on
-                      desktop. Layering is plain DOM order — this block first,
+                      desktop. Layering is plain DOM order: this block first,
                       the copy after it with `relative`. A negative z-index on
                       this wrapper looked tidier but painted it underneath the
                       panel's own background colour and the photographs simply
@@ -177,7 +177,7 @@ export function FirstSteps() {
                         transform: !reduced && on ? "scale(1.05)" : "scale(1)",
                       }}
                     />
-                    {/* Heavier than the reference's gradient on purpose — at
+                    {/* Heavier than the reference's gradient on purpose. At
                         0.85/0.1 the body copy sat on top of a sunlit frame and
                         failed contrast. These stops hold it legible on all
                         four photographs. */}
@@ -191,7 +191,7 @@ export function FirstSteps() {
                     />
                   </div>
 
-                  {/* Outlined while idle, filled once active — the number is
+                  {/* Outlined while idle, filled once active. The number is
                       the only thing that reads from across the row when a
                       panel is down to its collapsed width. */}
                   <div
@@ -224,7 +224,7 @@ export function FirstSteps() {
                     {step.spine}
                   </span>
 
-                  {/* The whole block fades, not just the body — a collapsed
+                  {/* The whole block fades, not just the body. A collapsed
                       panel is far too narrow to hold the horizontal title, and
                       leaving it behind ran it straight through the spine
                       label and out past the panel edge. */}

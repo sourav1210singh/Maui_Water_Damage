@@ -28,7 +28,7 @@ const EASE = [0.22, 1, 0.36, 1] as const;
  * Motion components are resolved from this table rather than built with
  * motion.create() inside a render. Creating a component during render hands
  * React a new component type every pass, which remounts the subtree and
- * re-fires animations — and React's lint rules correctly flag it.
+ * re-fires animations, and React's lint rules correctly flag it.
  */
 const MOTION_TAGS = {
   div: motion.div,
@@ -161,7 +161,7 @@ export function StaggerItem({
 /* ───────────────────────── TextReveal ───────────────────────── */
 
 /**
- * Headline reveal — each word rises out from behind a mask.
+ * Headline reveal. Each word rises out from behind a mask.
  *
  * The whole string is exposed to assistive tech via aria-label on the wrapper
  * and the word spans are hidden, so a screen reader reads one clean sentence
@@ -236,7 +236,7 @@ export function TextReveal({
 
 /**
  * Scroll-linked vertical drift. Used on hero imagery only.
- * `distance` is total travel in pixels across the element's scroll range —
+ * `distance` is total travel in pixels across the element's scroll range,
  * keep it small, because a background that moves faster than the eye expects
  * reads as a broken sticky element rather than depth.
  */
@@ -326,7 +326,7 @@ export function ImageReveal({
 
 /**
  * Entrance for above-the-fold hero content. Runs on mount rather than on
- * scroll, and is deliberately the fastest animation on the site — the call
+ * scroll, and is deliberately the fastest animation on the site. The call
  * button must not feel withheld.
  */
 export function HeroIntro({

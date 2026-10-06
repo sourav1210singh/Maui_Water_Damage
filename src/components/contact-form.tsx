@@ -11,8 +11,8 @@ type Errors = Partial<Record<"name" | "phone" | "town" | "detail", string>>;
  *
  * NOT WIRED TO A BACKEND. On submit it validates and shows a confirmation
  * state so the flow can be reviewed, but nothing is sent anywhere. Before
- * launch this needs a real handler — a route handler posting to the client's
- * email or CRM — plus spam protection.
+ * launch this needs a real handler, a route handler posting to the client's
+ * email or CRM, plus spam protection.
  */
 export function ContactForm() {
   const [errors, setErrors] = useState<Errors>({});
@@ -48,7 +48,7 @@ export function ContactForm() {
       >
         <CheckCircle2 className="mx-auto size-10 text-surf-600" aria-hidden="true" />
         <h3 className="mt-4 font-display text-xl font-bold text-ocean-900">
-          Got it — we will call you straight back
+          Got it. We will call you straight back
         </h3>
         <p className="mt-2.5 text-[15px] leading-relaxed text-ink-700">
           If water is actively coming in, please call rather than wait for us to
@@ -125,7 +125,7 @@ export function ContactForm() {
           </option>
           {serviceAreas.map((a) => (
             <option key={a.slug} value={a.name}>
-              {a.name} — {a.region}
+              {a.name}, {a.region}
             </option>
           ))}
           <option value="Other">Somewhere else on Maui</option>

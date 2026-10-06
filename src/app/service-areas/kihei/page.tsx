@@ -33,11 +33,11 @@ const faqs: Faq[] = [
   },
   {
     q: "Do you work in Kīhei condos and vacation rentals?",
-    a: "Regularly — it is most of what South Maui water damage looks like. We are used to coordinating with building management and resident managers, working within restricted hours, and handling the situation where a leak in one unit has gone through a ceiling into the one below. For short-term rentals we will work around a booking calendar where it is safe to do so, and tell you honestly when it is not.",
+    a: "Regularly. It is most of what South Maui water damage looks like. We are used to coordinating with building management and resident managers, working within restricted hours, and handling the situation where a leak in one unit has gone through a ceiling into the one below. For short-term rentals we will work around a booking calendar where it is safe to do so, and tell you honestly when it is not.",
   },
   {
     q: "A unit above mine flooded my condo. Who pays?",
-    a: "It depends on your building's governing documents and where the failure occurred. Broadly, the AOAO policy tends to cover common elements and the original structure, while your own HO-6 policy covers improvements, contents and often the deductible gap. Get it documented properly from day one either way — the photographs and moisture readings we take on the first visit are what the two carriers end up arguing over.",
+    a: "It depends on your building's governing documents and where the failure occurred. Broadly, the AOAO policy tends to cover common elements and the original structure, while your own HO-6 policy covers improvements, contents and often the deductible gap. Get it documented properly from day one either way, because the photographs and moisture readings we take on the first visit are what the two carriers end up arguing over.",
   },
   {
     q: "Why does South Maui get so much water damage if it barely rains?",
@@ -103,7 +103,7 @@ export default function KiheiPage() {
             <p className="mt-5 text-[17px] leading-relaxed text-ocean-100">
               We cover Kīhei and the whole South Shore around the clock, with
                 extraction gear on the truck. Most South Maui water damage is
-              plumbing rather than weather — aging supply lines, water heaters
+              plumbing rather than weather: aging supply lines, water heaters
               past their service life, and condensate lines dripping quietly
               inside a wall.
             </p>
@@ -189,7 +189,7 @@ export default function KiheiPage() {
         </Container>
       </Section>
 
-      {/* Condo / AOAO — the segment no competitor addresses */}
+      {/* Condo / AOAO. The segment no competitor addresses */}
       <Section className="border-y border-sand-200 bg-ocean-950 text-sand-100">
         <Container>
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
@@ -207,9 +207,9 @@ export default function KiheiPage() {
                 all need to agree on what happened and who pays.
               </p>
               <p className="prose-measure mt-4 text-[15px] leading-relaxed text-ocean-100">
-                We document each affected unit as its own file — separate
-                moisture readings, separate photographs, separate drying logs —
-                so the AOAO policy and the individual HO-6 policies can be
+                We document each affected unit as its own file, with separate
+                moisture readings, separate photographs and separate drying
+                logs, so the AOAO policy and the individual HO-6 policies can be
                 settled without anyone having to reconstruct events from memory
                 weeks later.
               </p>

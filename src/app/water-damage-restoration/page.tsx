@@ -32,11 +32,11 @@ export const metadata: Metadata = {
 const faqs: Faq[] = [
   {
     q: "What are the three categories of water damage?",
-    a: "Category 1 is clean water from a supply line, water heater or rainfall. Category 2 is grey water from a washing machine, dishwasher or overflowing toilet bowl without solids. Category 3 is black water containing sewage, ground flooding or anything that has been sitting long enough to grow bacteria. The category determines what can be dried and saved and what has to be removed, and it escalates over time — clean water left standing becomes Category 2 within about 48 hours.",
+    a: "Category 1 is clean water from a supply line, water heater or rainfall. Category 2 is grey water from a washing machine, dishwasher or overflowing toilet bowl without solids. Category 3 is black water containing sewage, ground flooding or anything that has been sitting long enough to grow bacteria. The category determines what can be dried and saved and what has to be removed, and it escalates over time. Clean water left standing becomes Category 2 within about 48 hours.",
   },
   {
     q: "Can wet drywall and carpet be saved, or does it all come out?",
-    a: "It depends on the category and how long it has been wet. Clean water caught early means most drywall, carpet and padding can be dried in place. Grey water usually means the padding goes and the carpet is cleaned and sanitised. Category 3 means carpet, padding and the lower section of drywall are removed and disposed of — there is no safe way to dry contaminated porous material.",
+    a: "It depends on the category and how long it has been wet. Clean water caught early means most drywall, carpet and padding can be dried in place. Grey water usually means the padding goes and the carpet is cleaned and sanitised. Category 3 means carpet, padding and the lower section of drywall are removed and disposed of. There is no safe way to dry contaminated porous material.",
   },
   {
     q: "Why does drying take longer on Maui than the mainland?",
@@ -48,7 +48,7 @@ const faqs: Faq[] = [
   },
   {
     q: "Do you handle the repair work as well as the drying?",
-    a: "Yes. Mitigation — extraction, drying and monitoring — comes first and is the urgent part. Reconstruction follows: drywall, texture, paint, flooring, trim and cabinetry. Keeping both with one contractor avoids the gap where a drying company leaves and you have to find a builder yourself.",
+    a: "Yes. Mitigation comes first and is the urgent part: extraction, drying and monitoring. Reconstruction follows: drywall, texture, paint, flooring, trim and cabinetry. Keeping both with one contractor avoids the gap where a drying company leaves and you have to find a builder yourself.",
   },
 ];
 
@@ -118,7 +118,7 @@ export default function WaterDamagePage() {
         </Container>
       </section>
 
-      {/* Categories table — tabular data in a real <table>, which is the
+      {/* Categories table. Tabular data in a real <table>, which is the
           format Google and the LLM crawlers lift most reliably */}
       <Section className="bg-sand-50">
         <Container>
@@ -167,7 +167,7 @@ export default function WaterDamagePage() {
                   <th scope="row" className="py-4 pr-4 align-top font-display font-semibold text-alert-600">Category 3<br /><span className="text-xs font-normal text-ink-500">Black water</span></th>
                   <td className="py-4 pr-4 align-top text-ink-700">Sewage, ground flooding, long-standing water</td>
                   <td className="py-4 pr-4 align-top text-ink-700">Grossly contaminated. Containment and protective equipment required.</td>
-                  <td className="py-4 align-top text-ink-700">Porous materials come out — carpet, padding, lower drywall</td>
+                  <td className="py-4 align-top text-ink-700">Porous materials come out: carpet, padding, lower drywall</td>
                 </tr>
               </tbody>
             </table>
@@ -217,11 +217,11 @@ export default function WaterDamagePage() {
 
           <Stagger as="ol" className="mt-10 space-y-5">
             {[
-              { icon: Search, h: "Inspection and moisture mapping", t: "Before anything is moved we meter the affected rooms and the rooms next to them, and run a thermal camera over walls, ceilings and floors. Water travels further than it looks — a leak at a shower pan routinely shows up two rooms away. Everything gets photographed for the claim at this point." },
+              { icon: Search, h: "Inspection and moisture mapping", t: "Before anything is moved we meter the affected rooms and the rooms next to them, and run a thermal camera over walls, ceilings and floors. Water travels further than it looks. A leak at a shower pan routinely shows up two rooms away. Everything gets photographed for the claim at this point." },
               { icon: Droplets, h: "Extraction", t: "Standing water comes out first with truck-mounted or portable units. On carpet we extract through the pad where it is salvageable. This is the single highest-value hour of the whole job: every gallon removed now is a gallon that does not have to be evaporated over the next four days." },
               { icon: Wind, h: "Drying setup", t: "Air movers positioned to sweep the wet surfaces, dehumidifiers sized to the volume of the space. Where water is trapped inside a wall or under cabinets we drill discreet access holes or lift a section of baseboard rather than tearing out the whole wall." },
               { icon: Gauge, h: "Daily monitoring", t: "We come back every day, take readings from the same marked points, and log them. Equipment moves or comes out as areas reach dry standard. You get told where things stand each day rather than wondering." },
-              { icon: Hammer, h: "Reconstruction", t: "Once the structure is genuinely dry — measured, not assumed — we patch, texture, paint, and put flooring and trim back. The goal is that you cannot tell where the damage was." },
+              { icon: Hammer, h: "Reconstruction", t: "Once the structure is genuinely dry, measured rather than assumed, we patch, texture, paint, and put flooring and trim back. The goal is that you cannot tell where the damage was." },
             ].map((s) => {
               const Icon = s.icon;
               return (

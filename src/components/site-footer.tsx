@@ -10,7 +10,7 @@ import { site, serviceAreas, services } from "@/lib/site";
  * fine print.
  *
  * The ten town names stay in here as real links rather than being dropped for
- * a tidier layout — the footer is the one place every page carries them, and
+ * a tidier layout. The footer is the one place every page carries them, and
  * they are the proximity signal the whole local-SEO case rests on.
  */
 function Label({ children }: { children: React.ReactNode }) {

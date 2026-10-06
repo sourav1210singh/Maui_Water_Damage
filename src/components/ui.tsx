@@ -6,8 +6,8 @@ import type { ComponentProps, ReactNode } from "react";
  *
  * The cap is deliberately high (1700px) so the layout keeps filling the screen
  * on large desktops instead of stranding 200px of empty sand down each side.
- * Long-form prose is constrained separately at the block level — see the
- * `prose-measure` utility — because a 1600px-wide paragraph is unreadable even
+ * Long-form prose is constrained separately at the block level. See the
+ * `prose-measure` utility, because a 1600px-wide paragraph is unreadable even
  * though the grid above it looks fine at that width.
  */
 export function Container({
@@ -44,7 +44,7 @@ export function Eyebrow({
   onDark = false,
 }: {
   children: ReactNode;
-  /** surf-600 is a dark teal — legible on sand, nearly invisible on navy. */
+  /** surf-600 is a dark teal: legible on sand, nearly invisible on navy. */
   onDark?: boolean;
 }) {
   return (

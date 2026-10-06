@@ -3,7 +3,7 @@
  *
  * The mark is a droplet drawn as an outline with a filled waterline inside it,
  * rather than a solid blob. That reads as water held at a controlled level,
- * which is literally the job — mitigation is about stopping water where it is
+ * which is literally the job. Mitigation is about stopping water where it is
  * and drying back to a measured standard. The wave sits slightly below centre
  * so the shape still reads as a droplet at 24px rather than a filled circle.
  *
@@ -54,7 +54,7 @@ export function Mark({ tone, className = "" }: { tone: Tone; className?: string 
 
 /**
  * Centred, mark-over-wordmark lockup. Used where the logo is the anchor of a
- * composition rather than a corner mark — currently the footer.
+ * composition rather than a corner mark, currently the footer.
  */
 export function LogoStacked({
   className = "",

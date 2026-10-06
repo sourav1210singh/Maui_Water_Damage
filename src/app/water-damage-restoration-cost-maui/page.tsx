@@ -22,11 +22,11 @@ export const metadata: Metadata = {
 const faqs: Faq[] = [
   {
     q: "How much does water damage restoration cost on Maui?",
-    a: "Most Maui homes cost between $1,500 and $6,000 for mitigation — the extraction, drying and monitoring stage. A minor single-room leak caught early starts around $1,200. A major Category 3 loss involving sewage or ground flooding runs from $15,000 upward once demolition and rebuilding are included. Island freight and longer drying times put Maui roughly 15 to 25 percent above mainland averages.",
+    a: "Most Maui homes cost between $1,500 and $6,000 for mitigation, which is the extraction, drying and monitoring stage. A minor single-room leak caught early starts around $1,200. A major Category 3 loss involving sewage or ground flooding runs from $15,000 upward once demolition and rebuilding are included. Island freight and longer drying times put Maui roughly 15 to 25 percent above mainland averages.",
   },
   {
     q: "Is mitigation priced separately from the repair work?",
-    a: "Yes, and it is worth understanding the split. Mitigation is the emergency stage — extraction, drying equipment and daily monitoring — and is usually billed against published industry rates that insurers recognise. Reconstruction is the rebuild: drywall, paint, flooring, cabinetry. A quote covering only mitigation can look much cheaper than one covering both, so check which you are being given.",
+    a: "Yes, and it is worth understanding the split. Mitigation is the emergency stage: extraction, drying equipment and daily monitoring. It is usually billed against published industry rates that insurers recognise. Reconstruction is the rebuild: drywall, paint, flooring, cabinetry. A quote covering only mitigation can look much cheaper than one covering both, so check which you are being given.",
   },
   {
     q: "Does homeowners insurance cover the cost?",
@@ -38,7 +38,7 @@ const faqs: Faq[] = [
   },
   {
     q: "Can I reduce what it costs?",
-    a: "Three things make a real difference. Call quickly — a Category 1 loss becomes Category 2 after about 48 hours and the price roughly doubles when porous material has to be removed instead of dried. Photograph everything before moving it, so your adjuster can see what they are paying for. And do not run a dehumidifier for a week hoping it dries on its own; the hidden moisture keeps going and you end up paying for mold remediation as well.",
+    a: "Three things make a real difference. Call quickly. A Category 1 loss becomes Category 2 after about 48 hours and the price roughly doubles when porous material has to be removed instead of dried. Photograph everything before moving it, so your adjuster can see what they are paying for. And do not run a dehumidifier for a week hoping it dries on its own; the hidden moisture keeps going and you end up paying for mold remediation as well.",
   },
 ];
 
@@ -83,7 +83,7 @@ export default function CostPage() {
             </h1>
 
             {/* The extractable answer. Self-contained, specific, first thing
-                after the H1 — this is the paragraph we want lifted. */}
+                after the H1. This is the paragraph we want lifted. */}
             <p className="mt-6 border-l-[3px] border-surf-500 pl-5 text-[17px] leading-relaxed text-ocean-100 sm:text-lg">
               Water damage restoration on Maui typically costs{" "}
               <strong className="font-semibold text-white">
@@ -104,7 +104,7 @@ export default function CostPage() {
         </Container>
       </section>
 
-      {/* THE table — this format is what Google lifted into the AI Overview
+      {/* THE table. This format is what Google lifted into the AI Overview
           when we tested the equivalent Hawaii cost query */}
       <Section className="bg-sand-50">
         <Container>
@@ -142,7 +142,7 @@ export default function CostPage() {
                   { s: "Minor", d: "One room, clean water, found quickly. Under about 100 sq ft, no saturated structure.", c: "$1,200 – $2,500", t: "2–3 days" },
                   { s: "Moderate", d: "Water heater or supply line failure. Carpet, padding and lower drywall across one or two rooms.", c: "$2,500 – $6,000", t: "3–5 days" },
                   { s: "Major", d: "Undetected for days, several rooms, cabinetry and subfloor involved. Often some mold.", c: "$6,000 – $15,000", t: "5–10 days" },
-                  { s: "Severe", d: "Category 3 — sewage backup or ground flooding. Full demolition and rebuild.", c: "$15,000 – $40,000+", t: "2–6 weeks" },
+                  { s: "Severe", d: "Category 3: sewage backup or ground flooding. Full demolition and rebuild.", c: "$15,000 – $40,000+", t: "2–6 weeks" },
                 ].map((row) => (
                   <tr key={row.s}>
                     <th scope="row" className="whitespace-nowrap py-4 pr-4 align-top font-display font-semibold text-ocean-800">{row.s}</th>
@@ -271,8 +271,8 @@ export default function CostPage() {
               <p>
                 <strong className="font-semibold text-ocean-900">Generally not covered:</strong>{" "}
                 gradual seepage, a leak that was visible and left alone,
-                maintenance failures, and flooding that enters from outside —
-                that last one needs separate flood insurance.
+                maintenance failures, and flooding that enters from outside.
+                That last one needs separate flood insurance.
               </p>
               <p>
                 <strong className="font-semibold text-ocean-900">The mold problem:</strong>{" "}

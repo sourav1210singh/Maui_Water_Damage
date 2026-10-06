@@ -34,7 +34,7 @@ export default function ContactPage() {
             </h1>
             <p className="mt-5 text-[17px] leading-relaxed text-ocean-100">
               A person answers this phone at any hour. If water is coming in
-              right now, call — do not fill in a form and wait.
+              right now, call. Do not fill in a form and wait.
             </p>
           </div>
         </Container>
@@ -52,7 +52,7 @@ export default function ContactPage() {
                 <Phone className="size-8 shrink-0" aria-hidden="true" />
                 <span>
                   <span className="block text-sm font-medium opacity-90">
-                    Emergency line — 24 hours
+                    Emergency line, 24 hours
                   </span>
                   <span className="nums block font-display text-2xl font-bold tracking-tight">
                     {site.phone}
@@ -81,7 +81,7 @@ export default function ContactPage() {
                       Where we go
                     </dt>
                     <dd className="mt-0.5 text-[15px] text-ink-700">
-                      All of Maui County —{" "}
+                      All of Maui County:{" "}
                       {serviceAreas.map((a) => a.name).join(", ")}, and
                       everywhere between.
                     </dd>

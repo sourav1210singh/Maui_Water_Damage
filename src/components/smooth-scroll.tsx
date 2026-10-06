@@ -22,7 +22,7 @@ const getServerSnapshot = () => false;
  *
  * Two things worth knowing:
  *
- * 1. `scroll-behavior: smooth` must NOT be set on <html> at the same time —
+ * 1. `scroll-behavior: smooth` must NOT be set on <html> at the same time,
  *    the two fight each other and produce a stutter. It has been removed from
  *    globals.css; Lenis handles scrolling instead.
  *

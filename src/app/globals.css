@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* ───────────────────────────────────────────────────────────────
-   Maui Water Damage Pros — design tokens
+   Maui Water Damage Pros design tokens
 
    Palette is rooted in the island rather than the usual SaaS blue:
    deep ocean for authority, warm volcanic sand for ground, and a
@@ -12,7 +12,7 @@
    ─────────────────────────────────────────────────────────────── */
 
 @theme {
-  /* Deep ocean — primary brand */
+  /* Deep ocean, the primary brand colour */
   --color-ocean-50: #eef5f8;
   --color-ocean-100: #d6e8ef;
   --color-ocean-200: #aed0dd;
@@ -25,26 +25,26 @@
   --color-ocean-900: #072834;
   --color-ocean-950: #041a23;
 
-  /* Volcanic ink — text and dark surfaces */
+  /* Volcanic ink, for text and dark surfaces */
   --color-ink-500: #4a5a61;
   --color-ink-700: #2a3940;
   --color-ink-900: #111e24;
   --color-ink-950: #08141a;
 
-  /* Warm sand — page ground, keeps it off sterile white */
+  /* Warm sand for the page ground, which keeps it off sterile white */
   --color-sand-50: #fbf9f5;
   --color-sand-100: #f5f1e9;
   --color-sand-200: #ebe4d7;
   --color-sand-300: #d9cfbb;
   --color-sand-400: #bfb093;
 
-  /* Emergency — reserved for call actions only */
+  /* Emergency, reserved for call actions only */
   --color-alert-400: #e85c42;
   --color-alert-500: #d6412a;
   --color-alert-600: #bc3019;
   --color-alert-700: #9a2614;
 
-  /* Surf — sparing accent for highlights and icons */
+  /* Surf, a sparing accent for highlights and icons */
   --color-surf-400: #2bb3a3;
   --color-surf-500: #0f9488;
   --color-surf-600: #0b7a70;
@@ -57,8 +57,8 @@
      db.onlinewebfonts.com. That is not used here: Helvetica is a licensed
      Monotype typeface and that CDN redistributes it without a licence, so
      embedding it would hand the client a liability on a commercial site.
-     This stack renders real Helvetica on macOS and Arial — metrically
-     near-identical — elsewhere, so the design reads the same. */
+     This stack renders real Helvetica on macOS, and Arial, which is
+     metrically near-identical, elsewhere, so the design reads the same. */
   --font-helvetica: "Helvetica Neue", Helvetica, Arial, ui-sans-serif, sans-serif;
 
   --radius-card: 0.625rem;
@@ -66,7 +66,7 @@
 
 @layer base {
   html {
-    /* No `scroll-behavior: smooth` here on purpose — Lenis drives scrolling
+    /* No `scroll-behavior: smooth` here on purpose. Lenis drives scrolling
        and the two fight each other, producing a visible stutter. Lenis is
        disabled under prefers-reduced-motion, which falls back to native
        instant scrolling, which is the correct behaviour anyway. */
@@ -94,7 +94,7 @@
     text-wrap: pretty;
   }
 
-  /* Visible focus for keyboard users — someone stressed at 2am may well
+  /* Visible focus for keyboard users. Someone stressed at 2am may well
      be tabbing through on a cracked screen. */
   :focus-visible {
     outline: 3px solid var(--color-surf-500);
@@ -128,7 +128,7 @@
   }
 
   /* The lit top edge that makes the glass bar read as a surface. Kept as real
-     utilities rather than Tailwind arbitrary values — the commas inside
+     utilities rather than Tailwind arbitrary values, because the commas inside
      rgba() break arbitrary-value parsing, so the drop shadow silently never
      applied when written inline. */
   .glass-edge {
@@ -163,8 +163,8 @@
 
    These rules live here rather than inline because every one of
    them is either a multi-property transition with commas inside a
-   cubic-bezier() — which Tailwind's arbitrary-value parser splits in
-   the wrong place — or a value that has to change at a breakpoint,
+   cubic-bezier(), which Tailwind's arbitrary-value parser splits in
+   the wrong place, or a value that has to change at a breakpoint,
    which an inline style cannot express. React feeds them the state
    through custom properties instead.
 
@@ -208,7 +208,7 @@
 }
 
 /* Replays whenever the services tab panel is swapped. A keyframe rather
-   than a transition because the node is remounted on every tab change —
+   than a transition because the node is remounted on every tab change, and
    there is no "from" value for a transition to interpolate out of. */
 @keyframes fadeSwap {
   from {

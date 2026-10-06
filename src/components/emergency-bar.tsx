@@ -2,7 +2,7 @@ import { Phone } from "lucide-react";
 import { site } from "@/lib/site";
 
 /**
- * Fixed bottom call bar — mobile only.
+ * Fixed bottom call bar, mobile only.
  *
  * 72% of restoration leads arrive on mobile during the emergency itself,
  * so the single most important control on the site sits in the thumb zone
@@ -18,7 +18,7 @@ export function EmergencyBar() {
       >
         <Phone className="size-5 shrink-0" aria-hidden="true" />
         <span className="font-display text-[15px] font-semibold tracking-tight">
-          Call now — 24/7
+          Call now, 24/7
         </span>
         <span className="nums text-[15px] font-medium opacity-90">
           {site.phone}

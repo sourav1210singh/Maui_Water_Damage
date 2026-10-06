@@ -31,7 +31,7 @@ const faqs: Faq[] = [
   },
   {
     q: "Will my homeowners insurance cover water damage in Hawaii?",
-    a: "Sudden, accidental water damage — a burst pipe, a failed water heater, a supply hose letting go — is generally covered. Damage from long-term seepage, poor maintenance, or flooding from outside is usually not, and most Hawaii policies exclude mold entirely or cap it very low. We document everything from the first visit so your adjuster has what they need, and we will tell you honestly if we think a claim is unlikely to succeed.",
+    a: "Sudden, accidental water damage is generally covered: a burst pipe, a failed water heater, a supply hose letting go. Damage from long-term seepage, poor maintenance, or flooding from outside is usually not, and most Hawaii policies exclude mold entirely or cap it very low. We document everything from the first visit so your adjuster has what they need, and we will tell you honestly if we think a claim is unlikely to succeed.",
   },
   {
     q: "How long does drying take?",
@@ -39,7 +39,7 @@ const faqs: Faq[] = [
   },
   {
     q: "How much does water damage restoration cost on Maui?",
-    a: "Most Maui homes land between $1,500 and $6,000 for mitigation — extraction, drying and monitoring — with larger or contaminated losses running higher. Island freight on materials and the extra drying time our humidity demands both push costs above mainland averages. Our full breakdown by severity is on the cost page.",
+    a: "Most Maui homes land between $1,500 and $6,000 for mitigation, meaning extraction, drying and monitoring. Larger or contaminated losses run higher. Island freight on materials and the extra drying time our humidity demands both push costs above mainland averages. Our full breakdown by severity is on the cost page.",
   },
   {
     q: "Do I have to move out while you dry the house?",
@@ -55,7 +55,7 @@ const faqs: Faq[] = [
 export default function HomePage() {
   return (
     <>
-      {/* Hero lives in its own component now — video/poster, scrim and the
+      {/* Hero lives in its own component now. Video/poster, scrim and the
           two floating cards are enough logic to not belong inline here. */}
       <HomeHero />
 
@@ -123,7 +123,7 @@ export default function HomePage() {
                 <p className="prose-measure mt-4 text-[15px] leading-relaxed text-ocean-100 sm:text-base">
                   Warm air that never really dries out is what makes this island
                   beautiful and what makes a water leak expensive. Mold can take
-                  hold within 24 to 48 hours of a water event in this climate —
+                  hold within 24 to 48 hours of a water event in this climate,
                   considerably faster than the mainland timelines most advice is
                   written for.
                 </p>
@@ -222,7 +222,7 @@ export default function HomePage() {
             </div>
 
             <Reveal>
-              {/* Keyless Google embed — no Maps API key is configured, so the
+              {/* Keyless Google embed. No Maps API key is configured, so the
                   pins are Google's own place labels rather than branded
                   markers. Swapping in custom markers is a key away. */}
               <div className="overflow-hidden rounded-card border border-sand-300 bg-white shadow-card">

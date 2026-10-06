@@ -5,7 +5,7 @@ import { site } from "@/lib/site";
  * AI crawlers are explicitly allowed.
  *
  * This is a deliberate decision, not an oversight. The client's stated goal is
- * to be surfaced by ChatGPT, Google AI Overviews and similar engines — and an
+ * to be surfaced by ChatGPT, Google AI Overviews and similar engines, and an
  * engine cannot cite a page it is not permitted to read. Blocking these agents
  * (which a lot of boilerplate robots.txt files now do by default) would quietly
  * defeat the entire reason for the project.
@@ -28,7 +28,7 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: "PerplexityBot", allow: "/" },
       { userAgent: "ClaudeBot", allow: "/" },
       { userAgent: "Applebot-Extended", allow: "/" },
-      { userAgent: "CCBot", allow: "/" }, // Common Crawl — feeds many models
+      { userAgent: "CCBot", allow: "/" }, // Common Crawl, feeds many models
     ],
     sitemap: `${site.url}/sitemap.xml`,
     host: site.url,

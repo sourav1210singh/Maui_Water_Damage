@@ -50,7 +50,7 @@ export default function RootLayout({
         {/* Scroll-reveal elements are server-rendered with inline opacity:0 and
             are only revealed by JS. Without this, a visitor with JS disabled or
             broken gets blank sections. Content is already in the HTML for
-            crawlers either way — this is purely for humans. */}
+            crawlers either way. This is purely for humans. */}
         <noscript>
           <style>{`[data-reveal]{opacity:1!important;transform:none!important;clip-path:none!important}`}</style>
         </noscript>

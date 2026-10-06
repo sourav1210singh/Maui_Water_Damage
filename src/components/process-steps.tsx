@@ -12,7 +12,7 @@ type Step = {
   title: string;
   body: string;
   image: string;
-  /** 16:9 crop for the stacked mobile layout — using the 4:5 panel image
+  /** 16:9 crop for the stacked mobile layout. Using the 4:5 panel image
    *  there cropped it a second time and lost most of the frame. */
   imageWide: string;
   alt: string;
@@ -30,7 +30,7 @@ const steps: Step[] = [
   {
     n: "02",
     title: "We map the moisture",
-    body: "Meters and a thermal camera find the water behind walls and under flooring, not just what is visible. Water travels — a leak at a shower pan routinely shows up two rooms away.",
+    body: "Meters and a thermal camera find the water behind walls and under flooring, not just what is visible. Water travels. A leak at a shower pan routinely shows up two rooms away.",
     image: "/media/steps/step-2.jpg",
     imageWide: "/media/steps/step-2-wide.jpg",
     alt: "Technician setting down an air mover on a driveway",
@@ -54,7 +54,7 @@ const steps: Step[] = [
   {
     n: "05",
     title: "Putting it back",
-    body: "Once the structure is genuinely dry — measured, not assumed — we patch, texture, paint and put flooring and trim back. The goal is that you cannot tell where the damage was.",
+    body: "Once the structure is genuinely dry, measured rather than assumed, we patch, texture, paint and put flooring and trim back. The goal is that you cannot tell where the damage was.",
     image: "/media/steps/step-5.jpg",
     imageWide: "/media/steps/step-5-wide.jpg",
     alt: "Restored living room, dry and back in order",

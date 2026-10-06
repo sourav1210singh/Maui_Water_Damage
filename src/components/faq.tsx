@@ -10,7 +10,7 @@ const EASE = "cubic-bezier(0.4, 0, 0.2, 1)";
  * Still a native <details>, so the answer text sits in the HTML for crawlers
  * and the toggle keeps working with no JavaScript at all.
  *
- * Native <details> cannot be transitioned — it snaps. So when JS is available
+ * Native <details> cannot be transitioned. It snaps. So when JS is available
  * the default toggle is intercepted and the panel height is animated with the
  * Web Animations API instead, then the open attribute is committed at the end.
  * Under prefers-reduced-motion the interception is skipped entirely and the

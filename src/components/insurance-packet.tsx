@@ -44,8 +44,8 @@ const docs: Doc[] = [
  *
  * On lg the four cards sit on top of one another with a slight tilt, like a
  * stack of paper, and square up when the cursor enters the stack. Below lg
- * the stack is dropped entirely — overlapping absolutely-positioned cards on
- * a phone would just be four cards covering each other — and they fall back
+ * the stack is dropped entirely. Overlapping absolutely-positioned cards on
+ * a phone would just be four cards covering each other, so they fall back
  * to a plain gap-separated column with no tilt.
  */
 export function InsurancePacket() {
@@ -72,7 +72,7 @@ export function InsurancePacket() {
               <p className="prose-measure mt-4 text-[15px] leading-relaxed text-ink-700">
                 We will also tell you when we think a claim is not worth filing.
                 On a small loss the deductible sometimes exceeds the repair, and
-                a claim on record can affect your renewal — which, given what
+                a claim on record can affect your renewal, which, given what
                 has happened to condo premiums in Hawaii lately, is worth a
                 moment of thought before you pick up the phone to your carrier.
               </p>

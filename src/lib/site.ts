@@ -25,14 +25,14 @@ export const site = {
   url: "https://maui-water-damage-pros.vercel.app",
   tagline: "Water damage help on Maui, any hour.",
 
-  /** PLACEHOLDER — client must supply real number */
+  /** PLACEHOLDER: client must supply real number */
   phone: "(808) 555-0147",
   phoneHref: "tel:+18085550147",
 
   /**
    * `street` is intentionally empty until the client confirms a real address.
    * The schema builder omits streetAddress entirely when it is blank rather
-   * than emitting filler — a LocalBusiness without a street address is valid
+   * than emitting filler. A LocalBusiness without a street address is valid
    * structured data, and is the correct shape for a service-area business
    * anyway. Putting placeholder text here would publish junk into the markup
    * Google reads.
@@ -45,7 +45,7 @@ export const site = {
     country: "US",
   },
 
-  /** Central Maui coordinates — adjust once the real address is confirmed */
+  /** Central Maui coordinates, to adjust once the real address is confirmed */
   geo: { lat: 20.8893, lng: -156.4729 },
 
   email: "dispatch@example.com", // PLACEHOLDER
@@ -53,13 +53,13 @@ export const site = {
   hours: "24 hours a day, 7 days a week",
 
   /**
-   * PLACEHOLDER — the strongest differentiator in this market, but only if
+   * PLACEHOLDER: the strongest differentiator in this market, but only if
    * the client can actually commit to it. A competitor publishes
    * "45-minute arrival". We do not invent a number.
    */
   responseTime: "60 minutes",
 
-  /** PLACEHOLDER — every credential below needs client confirmation */
+  /** PLACEHOLDER: every credential below needs client confirmation */
   credentials: [
     { label: "IICRC certified", detail: "WRT · ASD · AMRT", verified: false },
     { label: "Licensed & insured", detail: "HI Contractors Lic. #______", verified: false },
@@ -116,7 +116,7 @@ export const services = [
 ] as const;
 
 /**
- * Image credits — all Unsplash, free for commercial use under the Unsplash
+ * Image credits. All Unsplash, free for commercial use under the Unsplash
  * Licence. These are MOCKUP placeholders. Real photographs of the client's
  * own crew, trucks and completed jobs should replace every one of them before
  * launch; genuine photos are the single biggest trust lever on this kind of

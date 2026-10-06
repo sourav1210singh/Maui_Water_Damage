@@ -18,7 +18,7 @@ const PAGE_BG = "#fbf9f5"; // --color-sand-50
  * Decides whether the background video is worth downloading at all.
  *
  * It is never mounted on small screens. 72% of this site's traffic is mobile,
- * mid-emergency, often on patchy island data — and a background video is pure
+ * mid-emergency, often on patchy island data, and a background video is pure
  * decoration to someone standing in water. Desktop gets the motion; phones get
  * the poster frame and a faster page. Also respects reduced-motion and the
  * browser's Save-Data hint.
@@ -86,7 +86,7 @@ export function HomeHero() {
             playsInline
             // preload="auto" rather than "none": laziness is already handled by
             // only mounting this element at all on desktop, and pairing "none"
-            // with autoPlay is contradictory — it can leave the first frame
+            // with autoPlay is contradictory. It can leave the first frame
             // stalled instead of playing.
             preload="auto"
             poster="/media/hero-crew-1600.jpg"
@@ -97,11 +97,11 @@ export function HomeHero() {
         )}
 
         {/* Scrim. The previous pass put grey text straight onto bright footage
-            and the headline vanished at 375px — this carries the contrast. */}
+            and the headline vanished at 375px, so this carries the contrast. */}
         {/* Two light layers instead of one heavy one. The flat 0.72/0.58/0.82
             wash was dimming the footage far more than the text needed; this
             drops it to roughly half and puts the contrast where it is actually
-            required — a soft pool under the copy — so the video stays bright
+            required, a soft pool under the copy, so the video stays bright
             everywhere else. */}
         <div
           className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,26,35,0.46)_0%,rgba(4,26,35,0.26)_45%,rgba(4,26,35,0.60)_100%)]"
@@ -113,7 +113,7 @@ export function HomeHero() {
         />
 
         {/* pb clears the cut-out corner panel at the bottom-right. The stat
-            card is not a factor on mobile because it is hidden there — see
+            card is not a factor on mobile because it is hidden there. See
             below. */}
         <div className="relative z-10 flex w-full flex-1 flex-col items-center px-6 pb-24 pt-10 text-center sm:pb-32 sm:pt-14 md:pt-16 lg:pt-20">
           <motion.div
@@ -128,7 +128,7 @@ export function HomeHero() {
               <span className="relative inline-flex size-2 rounded-full bg-surf-400" />
             </span>
             <span className="text-[14px] font-medium text-white">
-              Dispatching now — 24 hours a day
+              Dispatching now, 24 hours a day
             </span>
           </motion.div>
 
