@@ -74,8 +74,8 @@ export default function CostPage() {
 
   return (
     <>
-      <section data-hero-surface className="border-b border-sand-200 bg-ocean-950">
-        <Container className="pb-14 pt-28 sm:pb-20 sm:pt-32">
+      <section className="border-b border-sand-200 bg-ocean-950">
+        <Container className="py-14 sm:py-20">
           <div className="max-w-3xl">
             <Breadcrumbs trail={trail} tone="dark" />
             <h1 className="font-display text-[2rem] font-bold leading-[1.1] tracking-tight text-white sm:text-[2.9rem]">

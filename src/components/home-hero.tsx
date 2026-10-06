@@ -59,7 +59,6 @@ export function HomeHero() {
   return (
     <div className="w-full bg-sand-50 p-3 md:p-5">
       <section
-        data-hero-surface
         className="relative isolate flex min-h-[580px] w-full flex-col overflow-hidden rounded-[1.5rem] bg-ocean-950 md:min-h-[640px] md:rounded-[3rem] lg:min-h-[74vh]">
         {/* Poster is always rendered: it is the LCP element and paints
             immediately. The video, when allowed, layers over it. */}
@@ -100,7 +99,7 @@ export function HomeHero() {
         {/* pb clears the cut-out corner panel at the bottom-right. The stat
             card is not a factor on mobile because it is hidden there — see
             below. */}
-        <div className="relative z-10 flex w-full flex-1 flex-col items-center px-6 pb-28 pt-28 text-center sm:pb-32 md:pt-32 lg:pt-36">
+        <div className="relative z-10 flex w-full flex-1 flex-col items-center px-6 pb-28 pt-14 text-center sm:pb-32 md:pt-16 lg:pt-20">
           <motion.div
             data-reveal=""
             {...rise(0)}
