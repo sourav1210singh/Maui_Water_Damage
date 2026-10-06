@@ -23,7 +23,8 @@ export function localBusinessSchema() {
       "Emergency water damage restoration, structural drying and mold remediation across Maui. Available 24 hours a day.",
     address: {
       "@type": "PostalAddress",
-      streetAddress: site.address.street,
+      // Omitted while blank — see the note in site.ts
+      ...(site.address.street ? { streetAddress: site.address.street } : {}),
       addressLocality: site.address.locality,
       addressRegion: site.address.region,
       postalCode: site.address.postalCode,

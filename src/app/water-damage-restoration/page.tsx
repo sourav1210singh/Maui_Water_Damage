@@ -129,7 +129,7 @@ export default function WaterDamagePage() {
                 text="The three categories of water, and why they decide everything"
                 className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]"
               />
-            <p className="mt-4 text-[15px] leading-relaxed text-ink-700">
+            <p className="prose-measure mt-4 text-[15px] leading-relaxed text-ink-700">
               Every water loss is graded by how contaminated the water is. That
               grade determines what can be dried and kept, what has to be thrown
               away, and what your insurer will pay for. It also gets worse with
@@ -193,7 +193,7 @@ export default function WaterDamagePage() {
                   <h3 className="font-display text-[16px] font-semibold leading-snug text-ocean-900">
                     {c.title}
                   </h3>
-                  <p className="mt-2 text-[15px] leading-relaxed text-ink-700">
+                  <p className="prose-measure mt-2 text-[15px] leading-relaxed text-ink-700">
                     {c.body}
                   </p>
                 </article>
@@ -234,7 +234,7 @@ export default function WaterDamagePage() {
                       <h3 className="font-display text-[17px] font-semibold text-white">
                         {s.h}
                       </h3>
-                      <p className="mt-2 text-[15px] leading-relaxed text-ocean-100">
+                      <p className="prose-measure mt-2 text-[15px] leading-relaxed text-ocean-100">
                         {s.t}
                       </p>
                     </div>
@@ -256,7 +256,7 @@ export default function WaterDamagePage() {
                 text="What does this cost on Maui?"
                 className="font-display text-[1.5rem] font-bold leading-tight text-ocean-900"
               />
-              <p className="mt-2.5 text-[15px] leading-relaxed text-ink-700">
+              <p className="prose-measure mt-2.5 text-[15px] leading-relaxed text-ink-700">
                 Most Maui homes land between $1,500 and $6,000 for mitigation.
                 We have broken it down by severity, with the island-specific
                 reasons it runs above mainland averages.

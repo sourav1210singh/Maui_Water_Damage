@@ -54,11 +54,6 @@ export function ContactForm() {
           If water is actively coming in, please call rather than wait for us to
           ring you.
         </p>
-        <p className="mt-5 rounded-md border border-dashed border-sand-400 bg-sand-100 px-3 py-2 text-xs text-ink-500">
-          <span className="font-semibold">Mockup —</span> nothing was actually
-          submitted. This form needs connecting to the client&apos;s inbox or CRM
-          before launch.
-        </p>
       </div>
     );
   }

@@ -1,6 +1,15 @@
 import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 
+/**
+ * Page gutter.
+ *
+ * The cap is deliberately high (1700px) so the layout keeps filling the screen
+ * on large desktops instead of stranding 200px of empty sand down each side.
+ * Long-form prose is constrained separately at the block level — see the
+ * `prose-measure` utility — because a 1600px-wide paragraph is unreadable even
+ * though the grid above it looks fine at that width.
+ */
 export function Container({
   children,
   className = "",
@@ -9,7 +18,9 @@ export function Container({
   className?: string;
 }) {
   return (
-    <div className={`mx-auto w-full max-w-6xl px-5 sm:px-6 lg:px-8 ${className}`}>
+    <div
+      className={`mx-auto w-full max-w-[1700px] px-5 sm:px-8 lg:px-12 ${className}`}
+    >
       {children}
     </div>
   );
@@ -114,15 +125,5 @@ export function Breadcrumbs({
         })}
       </ol>
     </nav>
-  );
-}
-
-/** Note shown where real client-supplied facts are still missing. */
-export function PlaceholderNote({ children }: { children: ReactNode }) {
-  return (
-    <p className="mt-3 rounded-md border border-dashed border-sand-400 bg-sand-100 px-3 py-2 text-xs text-ink-500">
-      <span className="font-semibold">Mockup note — </span>
-      {children}
-    </p>
   );
 }

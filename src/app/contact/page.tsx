@@ -5,7 +5,6 @@ import {
   Section,
   Eyebrow,
   Breadcrumbs,
-  PlaceholderNote,
 } from "@/components/ui";
 import { ContactForm } from "@/components/contact-form";
 import { JsonLd, breadcrumbSchema } from "@/lib/schema";
@@ -102,14 +101,6 @@ export default function ContactPage() {
                   </div>
                 </div>
               </dl>
-
-              <PlaceholderNote>
-                Phone number, address and email are placeholders. The client
-                must supply a real number, and confirm whether they operate from
-                a physical address or as a service-area business — that choice
-                changes how the Google Business Profile is set up, which matters
-                more for emergency calls than this website does.
-              </PlaceholderNote>
             </div>
 
             {/* Form */}
@@ -118,7 +109,7 @@ export default function ContactPage() {
               <h2 className="font-display text-[1.6rem] font-bold leading-tight text-ocean-900">
                 Request a callback
               </h2>
-              <p className="mt-3 text-[15px] leading-relaxed text-ink-700">
+              <p className="prose-measure mt-3 text-[15px] leading-relaxed text-ink-700">
                 For an assessment, a second opinion on a quote, or damage you
                 have found but that is no longer actively leaking.
               </p>

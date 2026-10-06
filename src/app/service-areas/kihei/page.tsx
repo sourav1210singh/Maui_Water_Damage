@@ -7,7 +7,6 @@ import {
   Eyebrow,
   Button,
   Breadcrumbs,
-  PlaceholderNote,
 } from "@/components/ui";
 import { Stagger, StaggerItem, TextReveal, Parallax } from "@/components/motion";
 import { FaqList } from "@/components/faq";
@@ -159,7 +158,7 @@ export default function KiheiPage() {
                 text="Kīhei water damage has its own pattern"
                 className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]"
               />
-            <p className="mt-4 text-[15px] leading-relaxed text-ink-700">
+            <p className="prose-measure mt-4 text-[15px] leading-relaxed text-ink-700">
               The South Shore is the driest part of the island, so people are
               surprised by how much water damage work there is here. Almost none
               of it comes from the sky.
@@ -179,7 +178,7 @@ export default function KiheiPage() {
                     <h3 className="mt-3.5 font-display text-[17px] font-semibold text-ocean-900">
                       {item.title}
                     </h3>
-                    <p className="mt-2 text-[15px] leading-relaxed text-ink-700">
+                    <p className="prose-measure mt-2 text-[15px] leading-relaxed text-ink-700">
                       {item.body}
                     </p>
                   </article>
@@ -201,13 +200,13 @@ export default function KiheiPage() {
                 text="When one unit floods three"
                 className="font-display text-[1.75rem] font-bold leading-tight text-white sm:text-[2.1rem]"
               />
-              <p className="mt-4 text-[15px] leading-relaxed text-ocean-100">
+              <p className="prose-measure mt-4 text-[15px] leading-relaxed text-ocean-100">
                 Condo losses are the hardest to handle well, because the
                 technical work is the easy part. The difficulty is that two or
                 three insurance policies, a building manager and several owners
                 all need to agree on what happened and who pays.
               </p>
-              <p className="mt-4 text-[15px] leading-relaxed text-ocean-100">
+              <p className="prose-measure mt-4 text-[15px] leading-relaxed text-ocean-100">
                 We document each affected unit as its own file — separate
                 moisture readings, separate photographs, separate drying logs —
                 so the AOAO policy and the individual HO-6 policies can be
@@ -229,7 +228,7 @@ export default function KiheiPage() {
                   className="flex items-start gap-3 rounded-card border border-ocean-800 bg-ocean-900/50 p-4"
                 >
                   <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-surf-400" aria-hidden="true" />
-                  <span className="text-[15px] leading-relaxed text-ocean-100">{item}</span>
+                  <span className="prose-measure text-[15px] leading-relaxed text-ocean-100">{item}</span>
                 </li>
               ))}
             </ul>
@@ -275,12 +274,6 @@ export default function KiheiPage() {
                 </li>
               ))}
           </ul>
-          <PlaceholderNote>
-            Kīhei is the built template. The other nine towns use this same
-            structure with their own local context, response times and
-            questions — not the same text with the name swapped, which is what
-            the competitor does and what Google discounts.
-          </PlaceholderNote>
         </Container>
       </Section>
 

@@ -12,7 +12,7 @@ import {
   AlertTriangle,
   FileText,
 } from "lucide-react";
-import { Container, Section, Eyebrow, Button, PlaceholderNote } from "@/components/ui";
+import { Container, Section, Eyebrow, Button } from "@/components/ui";
 import {
   Reveal,
   Stagger,
@@ -229,7 +229,7 @@ export default function HomePage() {
                 className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]"
               />
               <Reveal delay={0.1}>
-                <p className="mt-4 text-[15px] leading-relaxed text-ink-700">
+                <p className="prose-measure mt-4 text-[15px] leading-relaxed text-ink-700">
                   None of this requires us, and all of it reduces what the repair
                   ends up costing you. Work through it while you wait.
                 </p>
@@ -257,7 +257,7 @@ export default function HomePage() {
                       <h3 className="font-display text-[17px] font-semibold leading-snug text-ocean-900">
                         {step.title}
                       </h3>
-                      <p className="mt-1.5 text-[15px] leading-relaxed text-ink-700">
+                      <p className="prose-measure mt-1.5 text-[15px] leading-relaxed text-ink-700">
                         {step.body}
                       </p>
                     </div>
@@ -348,18 +348,13 @@ export default function HomePage() {
                     <h3 className="font-display text-[17px] font-semibold text-ocean-900">
                       {s.title}
                     </h3>
-                    <p className="mt-2 text-[15px] leading-relaxed text-ink-700">
+                    <p className="prose-measure mt-2 text-[15px] leading-relaxed text-ink-700">
                       {s.short}
                     </p>
                   </article>
                 </StaggerItem>
               ))}
           </Stagger>
-
-          <PlaceholderNote>
-            Only the water damage page is built in this mockup. The other four
-            services follow the same page template once the scope is confirmed.
-          </PlaceholderNote>
         </Container>
       </Section>
 
@@ -389,14 +384,14 @@ export default function HomePage() {
                 className="font-display text-[1.75rem] font-bold leading-tight text-white sm:text-[2.1rem]"
               />
               <Reveal delay={0.12}>
-                <p className="mt-4 text-[15px] leading-relaxed text-ocean-100 sm:text-base">
+                <p className="prose-measure mt-4 text-[15px] leading-relaxed text-ocean-100 sm:text-base">
                   Warm air that never really dries out is what makes this island
                   beautiful and what makes a water leak expensive. Mold can take
                   hold within 24 to 48 hours of a water event in this climate —
                   considerably faster than the mainland timelines most advice is
                   written for.
                 </p>
-                <p className="mt-4 text-[15px] leading-relaxed text-ocean-100 sm:text-base">
+                <p className="prose-measure mt-4 text-[15px] leading-relaxed text-ocean-100 sm:text-base">
                   It matters financially as well as structurally. Most Hawaii
                   homeowners policies exclude mold damage outright or cap it very
                   low, so what insurance would have covered as water damage on
@@ -441,7 +436,7 @@ export default function HomePage() {
               className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]"
             />
             <Reveal delay={0.1}>
-              <p className="mt-4 text-[15px] leading-relaxed text-ink-700">
+              <p className="prose-measure mt-4 text-[15px] leading-relaxed text-ink-700">
                 Most of the stress in a water loss comes from not knowing what is
                 supposed to happen. This is the whole job.
               </p>
@@ -491,7 +486,7 @@ export default function HomePage() {
                 className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]"
               />
               <Reveal delay={0.1}>
-                <p className="mt-4 text-[15px] leading-relaxed text-ink-700">
+                <p className="prose-measure mt-4 text-[15px] leading-relaxed text-ink-700">
                   Central Maui and the South Shore are usually quickest.
                   Upcountry and the West Side take longer, and we will say so on
                   the phone rather than quote you an arrival time we cannot keep.
@@ -545,13 +540,13 @@ export default function HomePage() {
                 className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]"
               />
               <Reveal delay={0.1}>
-                <p className="mt-4 text-[15px] leading-relaxed text-ink-700">
+                <p className="prose-measure mt-4 text-[15px] leading-relaxed text-ink-700">
                   Moisture readings, photographs and daily drying logs from the
                   first visit onward, written up the way carriers expect to
                   receive them. We bill the insurer directly where the policy
                   allows it.
                 </p>
-                <p className="mt-4 text-[15px] leading-relaxed text-ink-700">
+                <p className="prose-measure mt-4 text-[15px] leading-relaxed text-ink-700">
                   We will also tell you when we think a claim is not worth
                   filing. On a small loss the deductible sometimes exceeds the
                   repair, and a claim on record can affect your renewal — which,
@@ -578,7 +573,7 @@ export default function HomePage() {
                     className="mt-0.5 size-4 shrink-0 text-surf-600"
                     aria-hidden="true"
                   />
-                  <span className="text-[15px] leading-relaxed text-ink-700">
+                  <span className="prose-measure text-[15px] leading-relaxed text-ink-700">
                     {item}
                   </span>
                 </StaggerItem>
@@ -588,27 +583,9 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      {/* ─────────────────── Reviews (honest gap) ─────────────────── */}
-      <Section className="bg-sand-50">
-        <Container>
-          <Reveal className="mx-auto max-w-2xl rounded-card border border-dashed border-sand-400 bg-white p-8 text-center">
-            <h2 className="font-display text-xl font-bold text-ocean-900">
-              Reviews go here
-            </h2>
-            <p className="mt-3 text-[15px] leading-relaxed text-ink-700">
-              This section is deliberately empty. Review content and star ratings
-              will be added once the client provides verified reviews from their
-              Google Business Profile — we do not publish invented testimonials,
-              and marking up fake ratings in schema risks a Google penalty.
-            </p>
-            <p className="mt-3 text-sm text-ink-500">
-              For context: the two businesses currently topping the Maui map pack
-              carry 595 and 972 reviews. Building this up is the single highest
-              priority outside the website itself.
-            </p>
-          </Reveal>
-        </Container>
-      </Section>
+      {/* Social-proof slot sits here. Left out rather than filled with invented
+          testimonials — see proposal 01 in ui-suggestions.html for the block
+          intended to go here once the client decides. */}
 
       {/* ─────────────────── FAQ ─────────────────── */}
       <Section className="border-t border-sand-200 bg-white">
@@ -624,7 +601,7 @@ export default function HomePage() {
                 className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]"
               />
               <Reveal delay={0.1}>
-                <p className="mt-4 text-[15px] leading-relaxed text-ink-700">
+                <p className="prose-measure mt-4 text-[15px] leading-relaxed text-ink-700">
                   Still stuck? Call. We would rather talk you through it than
                   have you guess.
                 </p>

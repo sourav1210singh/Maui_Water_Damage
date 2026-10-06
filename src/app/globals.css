@@ -105,6 +105,13 @@
     font-variant-numeric: tabular-nums;
   }
 
+  /* The page container runs wide so the layout fills large monitors, but a
+     paragraph at that width is miserable to read. Anything long-form gets
+     capped at a comfortable measure instead. */
+  .prose-measure {
+    max-width: 68ch;
+  }
+
   .shadow-card {
     box-shadow:
       0 1px 2px rgb(8 20 26 / 0.04),

@@ -94,14 +94,7 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-12 border-t border-ocean-800 pt-6">
-          <p className="rounded-md border border-dashed border-ocean-700 bg-ocean-900/60 px-3.5 py-2.5 text-xs leading-relaxed text-ocean-200">
-            <span className="font-semibold text-white">Mockup —</span> this is a
-            demonstration build for client review. Phone number, address,
-            licence details and certifications are placeholders and must be
-            replaced with verified information before launch.
-          </p>
-
-          <div className="mt-6 flex flex-col gap-2 text-xs text-ocean-300 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-2 text-xs text-ocean-300 sm:flex-row sm:items-center sm:justify-between">
             <p>
               © {new Date().getFullYear()} {site.name}. All rights reserved.
             </p>

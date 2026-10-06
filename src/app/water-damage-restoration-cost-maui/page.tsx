@@ -6,7 +6,6 @@ import {
   Section,
   Eyebrow,
   Breadcrumbs,
-  PlaceholderNote,
 } from "@/components/ui";
 import { Stagger, StaggerItem, TextReveal } from "@/components/motion";
 import { FaqList } from "@/components/faq";
@@ -116,7 +115,7 @@ export default function CostPage() {
                 text="Typical cost by how bad it is"
                 className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]"
               />
-            <p className="mt-4 text-[15px] leading-relaxed text-ink-700">
+            <p className="prose-measure mt-4 text-[15px] leading-relaxed text-ink-700">
               Severity is the main driver, and it is mostly decided by how long
               the water sat before anyone started drying.
             </p>
@@ -158,14 +157,6 @@ export default function CostPage() {
           <p className="mt-2.5 text-[13px] text-ink-500 sm:hidden" aria-hidden="true">
             Swipe the table sideways for the full description.
           </p>
-
-          <PlaceholderNote>
-            These ranges are built from published national restoration pricing
-            adjusted for Hawaii cost-of-living and freight. They are realistic
-            but illustrative — the client should replace them with their own
-            rates before this page goes live, since publishing prices they will
-            not honour creates a problem on the first phone call.
-          </PlaceholderNote>
         </Container>
       </Section>
 
@@ -180,7 +171,7 @@ export default function CostPage() {
                 text="What makes up the bill"
                 className="font-display text-[1.75rem] font-bold leading-tight text-ocean-900 sm:text-[2.1rem]"
               />
-              <p className="mt-4 text-[15px] leading-relaxed text-ink-700">
+              <p className="prose-measure mt-4 text-[15px] leading-relaxed text-ink-700">
                 Restoration is priced from itemised rates rather than a single
                 lump sum, which is why two quotes for the same job can look so
                 different. Ask for the breakdown.
@@ -229,7 +220,7 @@ export default function CostPage() {
                 text="Why the mainland numbers do not apply here"
                 className="font-display text-[1.75rem] font-bold leading-tight text-white sm:text-[2.1rem]"
               />
-            <p className="mt-4 text-[15px] leading-relaxed text-ocean-100">
+            <p className="prose-measure mt-4 text-[15px] leading-relaxed text-ocean-100">
               Almost every cost guide online is written for the mainland. Four
               things make Maui genuinely different, and they compound.
             </p>
@@ -248,7 +239,7 @@ export default function CostPage() {
                     <h3 className="mt-3.5 font-display text-[17px] font-semibold text-white">
                       {d.title}
                     </h3>
-                    <p className="mt-2 text-[15px] leading-relaxed text-ocean-100">
+                    <p className="prose-measure mt-2 text-[15px] leading-relaxed text-ocean-100">
                       {d.body}
                     </p>
                   </article>
@@ -294,7 +285,7 @@ export default function CostPage() {
             </div>
 
             <div className="mt-8 rounded-card border-l-[3px] border-surf-500 bg-white p-5">
-              <p className="text-[15px] leading-relaxed text-ink-700">
+              <p className="prose-measure text-[15px] leading-relaxed text-ink-700">
                 <strong className="font-semibold text-ocean-900">
                   Worth thinking about before you file:
                 </strong>{" "}

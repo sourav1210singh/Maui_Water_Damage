@@ -66,6 +66,11 @@ knowing what was measured rather than assumed:
 
 ## Before launch
 
+> ⚠️ **Read this list.** The on-page "mockup" notices were removed at the
+> client's request so the demo reads as a finished site. The placeholder
+> *data* is still placeholder — it is simply no longer labelled anywhere a
+> visitor can see. This checklist is now the only record of what is fake.
+
 Blocking items — the site should not go live until these are resolved:
 
 1. **Credentials.** Confirm IICRC certification (WRT/ASD/AMRT), Hawaii

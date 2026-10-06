@@ -29,9 +29,16 @@ export const site = {
   phone: "(808) 555-0147",
   phoneHref: "tel:+18085550147",
 
-  /** PLACEHOLDER — client must supply real address or confirm service-area-only */
+  /**
+   * `street` is intentionally empty until the client confirms a real address.
+   * The schema builder omits streetAddress entirely when it is blank rather
+   * than emitting filler — a LocalBusiness without a street address is valid
+   * structured data, and is the correct shape for a service-area business
+   * anyway. Putting placeholder text here would publish junk into the markup
+   * Google reads.
+   */
   address: {
-    street: "PLACEHOLDER — street address",
+    street: "",
     locality: "Kahului",
     region: "HI",
     postalCode: "96732",

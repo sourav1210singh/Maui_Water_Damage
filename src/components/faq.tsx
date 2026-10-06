@@ -25,7 +25,9 @@ export function FaqList({ items }: { items: Faq[] }) {
             />
           </summary>
           <div className="pb-5 pr-9">
-            <p className="text-[15px] leading-relaxed text-ink-700">{item.a}</p>
+            <p className="prose-measure text-[15px] leading-relaxed text-ink-700">
+              {item.a}
+            </p>
           </div>
         </details>
       ))}
