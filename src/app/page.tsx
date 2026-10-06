@@ -1,10 +1,8 @@
 import Image from "next/image";
-import Link from "next/link";
 import {
   Phone,
   ShieldCheck,
   MapPin,
-  ArrowUpRight,
 } from "lucide-react";
 import { Container, Section, Eyebrow, Button } from "@/components/ui";
 import {
@@ -21,8 +19,9 @@ import { ProcessSteps } from "@/components/process-steps";
 import { InsurancePacket } from "@/components/insurance-packet";
 import { ServicesTabs } from "@/components/services-tabs";
 import { Testimonials } from "@/components/testimonials";
+import { TownMarquee } from "@/components/town-marquee";
 import { JsonLd, faqSchema, type Faq } from "@/lib/schema";
-import { site, serviceAreas, img, photo } from "@/lib/site";
+import { site, img, photo } from "@/lib/site";
 
 const faqs: Faq[] = [
   {
@@ -165,7 +164,10 @@ export default function HomePage() {
       <Section className="border-y border-sand-200 bg-white">
         <Container>
           <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
-            <div>
+            {/* min-w-0: a grid item defaults to min-width:auto, so the
+                max-content width of the marquee track pushed this column out
+                to 1861px and burst the layout. */}
+            <div className="min-w-0">
               <Reveal direction="none">
                 <Eyebrow>Where we go</Eyebrow>
               </Reveal>
@@ -188,37 +190,12 @@ export default function HomePage() {
                 </div>
               </Reveal>
 
-              {/* Towns sit here rather than under the map: they are real text,
-                  and nothing inside an iframe is crawlable. They are the
+              {/* Towns sit here rather than under the map: they are real
+                  text, and nothing inside an iframe is crawlable. They are the
                   proximity signal this whole section exists for. */}
-              <Stagger as="ul" className="mt-8 flex flex-wrap gap-2.5">
-                {serviceAreas.map((area) => {
-                  const pill =
-                    "group inline-flex items-center gap-2 rounded-full border border-sand-300 bg-white px-4 py-2 font-display text-[14px] font-semibold text-ocean-800 transition-all duration-[250ms] ease-[cubic-bezier(0.4,0,0.2,1)] hover:-translate-y-0.5 hover:border-ocean-800 hover:bg-ocean-800 hover:text-sand-50 hover:shadow-card";
-                  return (
-                    <StaggerItem as="li" key={area.slug}>
-                      {area.slug === "kihei" ? (
-                        <Link href={`/service-areas/${area.slug}`} className={pill}>
-                          {area.name}
-                          <ArrowUpRight
-                            aria-hidden="true"
-                            className="size-3.5 text-surf-600 transition-all duration-[250ms] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-surf-400"
-                          />
-                        </Link>
-                      ) : (
-                        <span className={pill}>
-                          {area.name}
-                          {/* The region label only appears on hover: ten pills
-                              carrying it permanently would wrap into a wall. */}
-                          <span className="max-w-0 overflow-hidden whitespace-nowrap text-[12px] font-normal text-ocean-200 opacity-0 transition-all duration-[250ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:max-w-[8rem] group-hover:opacity-100">
-                            {area.region}
-                          </span>
-                        </span>
-                      )}
-                    </StaggerItem>
-                  );
-                })}
-              </Stagger>
+              <Reveal delay={0.16}>
+                <TownMarquee />
+              </Reveal>
             </div>
 
             <Reveal>

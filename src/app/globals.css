@@ -235,3 +235,66 @@
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+/* ───────────────────────────────────────────────────────────────
+   Town marquee
+
+   Ten towns on one row, moving right to left. The track holds two
+   identical passes and travels exactly -50%, which lands the second
+   pass precisely where the first started, so the loop has no seam.
+
+   It pauses on hover and on focus. The pills are links and a target
+   that will not hold still is a target nobody can hit.
+   ─────────────────────────────────────────────────────────────── */
+.town-marquee {
+  overflow: hidden;
+  /* Without this the pills snap in and out at the container edges. The
+     fade makes them arrive and leave instead. */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 56px,
+    #000 calc(100% - 56px),
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 56px,
+    #000 calc(100% - 56px),
+    transparent
+  );
+}
+
+.town-marquee__track {
+  display: flex;
+  width: max-content;
+  animation: townMarquee 34s linear infinite;
+}
+
+.town-marquee:hover .town-marquee__track,
+.town-marquee:focus-within .town-marquee__track {
+  animation-play-state: paused;
+}
+
+@keyframes townMarquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* The blanket reduced-motion block above only forces the duration to
+     near-zero, which would park the track at -50% with the first pass
+     scrolled off. Killing the animation by name is what actually stops
+     it, and the row becomes an ordinary horizontal scroller. */
+  .town-marquee__track {
+    animation-name: none;
+  }
+  .town-marquee {
+    overflow-x: auto;
+  }
+  .town-marquee__track > ul[aria-hidden="true"] {
+    display: none;
+  }
+}
