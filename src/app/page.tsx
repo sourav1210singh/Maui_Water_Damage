@@ -4,10 +4,6 @@ import {
   Phone,
   ShieldCheck,
   MapPin,
-  Droplets,
-  Wind,
-  ClipboardCheck,
-  Hammer,
   ArrowRight,
   AlertTriangle,
   FileText,
@@ -22,6 +18,7 @@ import {
 } from "@/components/motion";
 import { FaqList } from "@/components/faq";
 import { HomeHero } from "@/components/home-hero";
+import { ProcessSteps } from "@/components/process-steps";
 import { JsonLd, faqSchema, type Faq } from "@/lib/schema";
 import { site, serviceAreas, services, img, photo } from "@/lib/site";
 
@@ -68,34 +65,6 @@ const firstSteps = [
   {
     title: "Photograph everything before you move it",
     body: "Wide shots of each room and close-ups of the damage. Adjusters pay for what they can see, and this is the one step people skip.",
-  },
-];
-
-const process = [
-  {
-    icon: Phone,
-    title: "You call",
-    body: "A person answers, day or night, and we tell you a real arrival time.",
-  },
-  {
-    icon: ClipboardCheck,
-    title: "We map the moisture",
-    body: "Meters and thermal imaging find the water behind walls and under floors, not just what is visible.",
-  },
-  {
-    icon: Droplets,
-    title: "Extraction",
-    body: "Standing water out first. The faster this happens, the less has to be cut out later.",
-  },
-  {
-    icon: Wind,
-    title: "Drying and daily readings",
-    body: "Air movers and dehumidifiers, with moisture logged every day until the structure hits dry standard.",
-  },
-  {
-    icon: Hammer,
-    title: "Putting it back",
-    body: "Drywall, paint, flooring and trim, so the room looks the way it did before.",
   },
 ];
 
@@ -344,62 +313,7 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      {/* ───────────────────── Process ───────────────────── */}
-      <Section className="bg-sand-50">
-        <Container>
-          <div className="max-w-xl">
-            <Reveal direction="none">
-              <Eyebrow>What happens next</Eyebrow>
-            </Reveal>
-            <TextReveal
-              as="h2"
-              text="Five steps, and you will know where you are in them"
-              className="font-display text-[2rem] font-bold leading-[1.08] tracking-tight text-ocean-900 sm:text-[2.6rem] lg:text-[3.1rem]"
-            />
-            <Reveal delay={0.1}>
-              <p className="prose-measure mt-4 text-[15px] leading-relaxed text-ink-700">
-                Most of the stress in a water loss comes from not knowing what is
-                supposed to happen. This is the whole job.
-              </p>
-            </Reveal>
-          </div>
-
-          {/* Editorial rows rather than five cramped cards. The numeral is the
-              graphic element and the rule carries the eye down the sequence,
-              which is what the section is actually about — order. */}
-          <Stagger as="ol" className="mt-12 border-t border-sand-300">
-            {process.map((step, i) => {
-              const Icon = step.icon;
-              return (
-                <StaggerItem as="li" key={step.title}>
-                  <div className="group grid grid-cols-[auto_1fr] items-start gap-x-5 gap-y-2 border-b border-sand-300 py-7 transition-colors duration-300 hover:bg-white/60 sm:gap-x-8 md:grid-cols-[7rem_auto_1fr] md:items-center md:py-8">
-                    <span
-                      aria-hidden="true"
-                      className="nums font-display text-[2.6rem] font-bold leading-none tracking-tight text-sand-300 transition-colors duration-300 group-hover:text-surf-500 md:text-[4.5rem]"
-                    >
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-
-                    <Icon
-                      className="mt-2 size-6 shrink-0 text-surf-600 transition-transform duration-300 group-hover:scale-110 md:mt-0 md:size-7"
-                      aria-hidden="true"
-                    />
-
-                    <div className="col-span-2 md:col-span-1">
-                      <h3 className="font-display text-[1.15rem] font-bold leading-tight text-ocean-900 md:text-[1.5rem]">
-                        {step.title}
-                      </h3>
-                      <p className="prose-measure mt-1.5 text-[15px] leading-relaxed text-ink-700">
-                        {step.body}
-                      </p>
-                    </div>
-                  </div>
-                </StaggerItem>
-              );
-            })}
-          </Stagger>
-        </Container>
-      </Section>
+      <ProcessSteps />
 
       {/* ─────────────────── Service areas ─────────────────── */}
       <Section className="border-y border-sand-200 bg-white">
